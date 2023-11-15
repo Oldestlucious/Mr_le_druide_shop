@@ -1,12 +1,299 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
+
 <head>
-  <script type="module">const user = await getUserInfo() </script>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width" />
-  <title>MTSANGO</title>
-  <link rel="stylesheet" href="style.css" />
+<script type="module">const user = await getUserInfo() </script>
+
+  <style>
+    body {
+      text-align: center;
+      background-color: orange;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    h1 {
+      font-size: 50px;
+      background-color: #ff6a00;
+      text-align: center;
+      animation: slide-down 1s ease-in-out;
+      border: 3px solid orange;
+      padding: 15px 30px;
+      border-radius: 10px;
+    }
+
+    p {
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    ul {
+      background-color: #ecf0f1;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    li {
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    button {
+      background-color: #ebebeb;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background-color: #ebebeb;
+    }
+
+    .description {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .show-description {
+      max-height: none;
+    }
+
+    #menu {
+      position: absolute;
+      top: 30px;
+      /* Ajustez la position verticale */
+      right: 30px;
+      /* Ajustez la position horizontale */
+      background-color: #fff;
+      border: 3px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 15px 30px;
+      /* Ajustez le rembourrage */
+      cursor: pointer;
+    }
+
+    #menu ul {
+      list-style: none;
+      padding: 0;
+      display: none;
+      /* Masque la liste par défaut */
+    }
+
+    #menu:hover ul {
+      display: block;
+      /* Affiche la liste lorsque le menu est survolé */
+    }
+
+    #menu li {
+      margin-bottom: 15px;
+      /* Augmentez l'espacement entre les éléments de liste */
+    }
+
+    #menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 50px;
+    }
+
+
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #descriptionContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      /* Ajustez la largeur du cadre de description */
+      max-width: 600px;
+      /* Largeur maximale pour éviter un dépassement excessif */
+    }
+    #store-link {
+      position: absolute;
+      top: 30px;
+      /* Ajustez la position verticale */
+      left: 30px;
+      /* Ajustez la position horizontale */
+      background-color: #fff;
+      border: 3px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 15px 30px;
+      /* Ajustez le rembourrage */
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    #bouton-magasin {
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+      color: #333;
+    }
+
+    #store-link:hover #bouton-magasin {
+      color: #d6d6d6;
+      /* Changement de couleur du texte au survol */
+    }
+
+    #participants,
+    #transactions,
+    #transaction-form {
+      width: 800px;
+      /* Augmentez la largeur */
+      border: 10px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 30px;
+      /* Ajustez le rembourrage */
+      margin: 30px;
+      /* Augmentez la marge extérieure */
+      background-color: #ffffff;
+      /* Couleur de fond des conteneurs */
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+      /* Augmentez l'espacement entre les éléments de liste */
+      display: flex;
+      align-items: center;
+      font-size: 40px;
+    }
+
+    #transaction-form {
+      text-align: center;
+    }
+
+    /* Style pour agrandir la description */
+    #transaction-form h2 {
+      font-size: 24px;
+      /* Augmenter la taille de la police pour le titre */
+    }
+
+    #transaction-form input[type="text"],
+    #transaction-form input[type="number"] {
+      font-size: 18px;
+      /* Augmenter la taille de la police pour les champs de saisie */
+    }
+
+    #transaction-form button {
+      font-size: 18px;
+      /* Augmenter la taille de la police pour le bouton */
+    }
+
+    .participant-image {
+      max-width: 250px;
+      /* Augmentez la largeur maximale de l'image */
+      height: auto;
+      margin-right: 20px;
+      /* Augmentez la marge à droite de l'image */
+    }
+    @keyframes slide-down {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Styles CSS pour le bas de page */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 40px;
+      /* Augmentez le rembourrage */
+      text-align: center;
+      font-size: 30px;
+    }
+
+    /* Styles CSS pour les images de drapeaux */
+    .flag {
+      width: 55px;
+      /* Augmentez la largeur des images de drapeaux */
+      height: auto;
+      margin-right: 20px;
+      /* Augmentez la marge à droite des images */
+    }
+
+    /* Votre feuille de style CSS peut être personnalisée pour le design de votre choix. */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .description {
+      font-size: 25px;
+      /* Ajustez la taille du texte selon vos préférences */
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    h2 {
+
+      margin-top: 20px;
+      background-color: #669d34;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 40px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      border: 1px solid #ddd;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
 <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
 <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
 <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
@@ -206,7 +493,123 @@
   </footer>
 
 
+  <!-- Ajoutez le code Firebase ci-dessous -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import {getAnalytics} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 
-  
+    // Votre configuration Firebase ici
+    const firebaseConfig = {
+      apiKey: "AIzaSyDtr8bLIFL-For8dP2peeQAGVahKINNfd8",
+      authDomain: "mtsango-c4a13.firebaseapp.com",
+      projectId: "mtsango-c4a13",
+      storageBucket: "mtsango-c4a13.appspot.com",
+      messagingSenderId: "618035723810",
+      appId: "1:618035723810:web:26a5f44caa680b9bfb947b",
+      measurementId: "G-ZLXNZ7M7J6"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <!-- Votre script JavaScript existant -->
+  <script>
+    const participants = [
+      {nom: "Participant 1", montant: 100},
+      {nom: "Participant 2", montant: 100},
+      {nom: "Participant 3", montant: 100},
+    ];
+
+    const transactions = [];
+
+    function getCurrentDateTime() {
+      const now = new Date();
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+      return `${date} ${time}`;
+    }
+
+    function afficherParticipants() {
+      const participantList = document.getElementById('participant-list');
+      participantList.innerHTML = '';
+
+      participants.forEach(participant => {
+        const li = document.createElement('li');
+        const participantImage = document.createElement('img');
+        participantImage.src = 'https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/215ab951-c24b-a326-e698-054ab6155de1.jpeg';
+        participantImage.alt = 'Image du participant';
+        participantImage.className = 'participant-image';
+        li.appendChild(participantImage);
+        li.innerHTML += `${participant.nom} : ${participant.montant} €`;
+        participantList.appendChild(li);
+      });
+    }
+
+    function afficherTransactions() {
+      const transactionList = document.getElementById('transaction-list');
+      transactionList.innerHTML = '';
+
+      transactions.forEach(transaction => {
+        const li = document.createElement('li');
+        li.textContent = `${transaction.nom} a effectué une transaction de ${transaction.montant} € le ${transaction.date}.`;
+        transactionList.appendChild(li);
+      });
+    }
+
+    function effectuerTransaction() {
+      const nom = document.getElementById('nom').value;
+      const montant = parseInt(document.getElementById('montant').value);
+
+      if (nom && !isNaN(montant)) {
+        const date = getCurrentDateTime();
+        participants.push({nom, montant});
+        transactions.push({nom, montant, date});
+        afficherParticipants();
+        afficherTransactions();
+        document.getElementById('nom').value = '';
+        document.getElementById('montant').value = '';
+      } else {
+        alert("Veuillez remplir correctement tous les champs.");
+      }
+    }
+
+    document.getElementById('effectuer-transaction').addEventListener('click', effectuerTransaction);
+
+    afficherParticipants();
+    afficherTransactions();
+  </script>
+
+  <script>
+    const showMoreButton = document.getElementById('showMore');
+    const description = document.querySelector('.description');
+
+    showMoreButton.addEventListener('click', () => {
+      description.classList.toggle('show-description');
+    });
+  </script>
+  <script>
+    const aboutLink = document.getElementById('aboutLink');
+    const overlay = document.getElementById('overlay');
+
+    aboutLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      const descriptionTransfer = document.getElementById('descriptionTransfer');
+      descriptionTransfer.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    function closeDescription() {
+      const descriptionTransfer = document.getElementById('descriptionTransfer');
+      descriptionTransfer.style.display = 'none';
+      overlay.style.display = 'none';
+    }
+  </script>
+
+
+
 </body>
+
 </html>
