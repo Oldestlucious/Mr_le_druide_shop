@@ -1,301 +1,378 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Roboto:ital,wght@0,900;1,700;1,900&display=swap" rel="stylesheet">
 <script type="module">const user = await getUserInfo() </script>
 
   <style>
-    body {
-      text-align: center;
-      background-color: orange;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-      font-size: 20px;
-    }
-
-    h1 {
-      font-size: 50px;
-      background-color: #ff6a00;
-      text-align: center;
-      animation: slide-down 1s ease-in-out;
-      border: 3px solid orange;
-      padding: 15px 30px;
-      border-radius: 10px;
-    }
-
-    p {
-      background-color: #ecf0f1;
-      padding: 15px;
-      border-radius: 5px;
-    }
-
-    ul {
-      background-color: #ecf0f1;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    li {
-      list-style: disc;
-      margin-left: 20px;
-    }
-
-    button {
-      background-color: #ebebeb;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      text-decoration: none;
-    }
-
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    button:hover {
-      background-color: #ebebeb;
-    }
-
-    .description {
-      max-height: 200px;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .show-description {
-      max-height: none;
-    }
-
-    #menu {
-      position: absolute;
-      top: 30px;
-      /* Ajustez la position verticale */
-      right: 30px;
-      /* Ajustez la position horizontale */
-      background-color: #fff;
-      border: 3px solid #ccc;
-      /* Augmentez l'épaisseur de la bordure */
-      padding: 15px 30px;
-      /* Ajustez le rembourrage */
-      cursor: pointer;
-    }
-
-    #menu ul {
-      list-style: none;
-      padding: 0;
-      display: none;
-      /* Masque la liste par défaut */
-    }
-
-    #menu:hover ul {
-      display: block;
-      /* Affiche la liste lorsque le menu est survolé */
-    }
-
-    #menu li {
-      margin-bottom: 15px;
-      /* Augmentez l'espacement entre les éléments de liste */
-    }
-
-    #menu a {
-      text-decoration: none;
-      color: #333;
-      font-size: 50px;
-    }
+body {
+    text-align: center;
+    background-color: orange;
+    font-family: 'Roboto Slab', 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 20px;
+}
 
 
+#inscriptionForm {
+    margin: 30px;
+}
 
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-    }
+.form-input {
+    margin-bottom: 20px;
+    text-align: left;
+}
 
-    #descriptionContainer {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #fff;
-      padding: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      width: 80%;
-      /* Ajustez la largeur du cadre de description */
-      max-width: 600px;
-      /* Largeur maximale pour éviter un dépassement excessif */
-    }
-    #store-link {
-      position: absolute;
-      top: 30px;
-      /* Ajustez la position verticale */
-      left: 30px;
-      /* Ajustez la position horizontale */
-      background-color: #fff;
-      border: 3px solid #ccc;
-      /* Augmentez l'épaisseur de la bordure */
-      padding: 15px 30px;
-      /* Ajustez le rembourrage */
-      cursor: pointer;
-      font-size: 25px;
-    }
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
 
-    #bouton-magasin {
-      background: none;
-      border: none;
-      font: inherit;
-      cursor: pointer;
-      text-decoration: underline;
-      color: #333;
-    }
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-    #store-link:hover #bouton-magasin {
-      color: #d6d6d6;
-      /* Changement de couleur du texte au survol */
-    }
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 
-    #participants,
-    #transactions,
-    #transaction-form {
-      width: 800px;
-      /* Augmentez la largeur */
-      border: 10px solid #ccc;
-      /* Augmentez l'épaisseur de la bordure */
-      padding: 30px;
-      /* Ajustez le rembourrage */
-      margin: 30px;
-      /* Augmentez la marge extérieure */
-      background-color: #ffffff;
-      /* Couleur de fond des conteneurs */
-    }
+button:hover {
+    background-color: #0056b3;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 28px;
+}
 
-    li {
-      margin-bottom: 15px;
-      /* Augmentez l'espacement entre les éléments de liste */
-      display: flex;
-      align-items: center;
-      font-size: 40px;
-    }
+#modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    font-size: 50px;
+}
 
-    #transaction-form {
-      text-align: center;
-    }
+#close-button {
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-    /* Style pour agrandir la description */
-    #transaction-form h2 {
-      font-size: 24px;
-      /* Augmenter la taille de la police pour le titre */
-    }
+body {
+    text-align: center;
+    background-color: orange;
+    font-family: 'Roboto Slab', 'Roboto', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    font-size: 20px;
+}
 
-    #transaction-form input[type="text"],
-    #transaction-form input[type="number"] {
-      font-size: 18px;
-      /* Augmenter la taille de la police pour les champs de saisie */
-    }
+h1 {
+    font-size: 50px;
+    background-color: #ff6a00;
+    text-align: center;
+    animation: slide-down 1s ease-in-out;
+    border: 3px solid orange;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
 
-    #transaction-form button {
-      font-size: 18px;
-      /* Augmenter la taille de la police pour le bouton */
-    }
+p {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+}
 
-    .participant-image {
-      max-width: 250px;
-      /* Augmentez la largeur maximale de l'image */
-      height: auto;
-      margin-right: 20px;
-      /* Augmentez la marge à droite de l'image */
-    }
-    @keyframes slide-down {
-      0% {
+ul {
+    background-color: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+li {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+button {
+    background-color: #ebebeb;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #ebebeb;
+}
+
+.description {
+    max-height: 200px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.show-description {
+    max-height: none;
+}
+
+#menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background-color: #fff;
+    border: 3px solid #ccc;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    display: none;
+}
+
+#menu:hover ul {
+    display: block;
+}
+
+#menu li {
+    margin-bottom: 15px;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #333;
+    font-size: 50px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#descriptionContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 600px;
+}
+
+#store-link {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background-color: #fff;
+    border: 3px solid #ccc;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+#bouton-magasin {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #333;
+}
+
+#store-link:hover #bouton-magasin {
+    color: #d6d6d6;
+}
+
+
+#participants,
+#transactions,
+#transaction-form {
+    width: 800px;
+    border: 10px solid #ccc;
+    padding: 30px;
+    margin: 30px;
+    background-color: #ffffff;
+}
+
+#transaction-form {
+    text-align: center;
+}
+
+/* Style pour agrandir la description */
+#transaction-form h2 {
+    font-size: 24px;
+    margin: 0 auto; /* Centre le titre */
+}
+
+#transaction-form input[type="text"],
+#transaction-form input[type="number"] {
+    font-size: 18px;
+    width: 100%; /* Assure que les champs de saisie occupent la largeur disponible */
+    box-sizing: border-box; /* Inclut la bordure et le rembourrage dans la largeur totale */
+    margin: 10px auto; /* Centre les champs de saisie avec une marge en haut et en bas */
+}
+
+#transaction-form button {
+    font-size: 18px;
+    margin: 10px auto; /* Centre le bouton avec une marge en haut et en bas */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+
+#transaction-form {
+    text-align: center;
+}
+
+#transaction-form h2 {
+    font-size: 24px;
+}
+
+#transaction-form input[type="text"],
+#transaction-form input[type="number"] {
+    font-size: 18px;
+}
+
+#transaction-form button {
+    font-size: 18px;
+}
+
+.participant-image {
+    max-width: 250px;
+    height: auto;
+    margin-right: 20px;
+}
+
+@keyframes slide-down {
+    0% {
         transform: translateY(-50px);
         opacity: 0;
-      }
+    }
 
-      100% {
+    100% {
         transform: translateY(0);
         opacity: 1;
-      }
     }
+}
 
-    /* Styles CSS pour le bas de page */
-    .footer {
-      background-color: #333;
-      color: #fff;
-      padding: 40px;
-      /* Augmentez le rembourrage */
-      text-align: center;
-      font-size: 30px;
-    }
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px;
+    text-align: center;
+    font-size: 30px;
+}
 
-    /* Styles CSS pour les images de drapeaux */
-    .flag {
-      width: 55px;
-      /* Augmentez la largeur des images de drapeaux */
-      height: auto;
-      margin-right: 20px;
-      /* Augmentez la marge à droite des images */
-    }
+.flag {
+    width: 55px;
+    height: auto;
+    margin-right: 20px;
+}
 
-    /* Votre feuille de style CSS peut être personnalisée pour le design de votre choix. */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-    }
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    text-align: center;
+}
 
-    .description {
-      font-size: 25px;
-      /* Ajustez la taille du texte selon vos préférences */
-    }
+.description {
+    font-size: 25px;
+}
 
-    main {
-      padding: 20px;
-    }
+main {
+    padding: 20px;
+}
 
-    h2 {
+h2 {
+    margin-top: 20px;
+    background-color: #669d34;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 40px;
+}
 
-      margin-top: 20px;
-      background-color: #669d34;
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 40px;
-    }
+ul {
+    list-style: none;
+    padding: 0;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+li {
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 10px;
+}
 
-    li {
-      border: 1px solid #ddd;
-      margin: 10px;
-      padding: 10px;
-    }
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin-top: 10px;
+}
 
-    button {
-      padding: 10px 20px;
-      font-size: 18px;
-      margin-top: 10px;
-    }
   </style>
-<script src="https://replit.com/public/js/repl-auth-v2.js"></script>
-<script src="https://replit.com/public/js/repl-auth-v2.js"></script>
+
 <script src="https://replit.com/public/js/repl-auth-v2.js"></script>
 </head>
 
@@ -376,35 +453,93 @@
       <h3>Voir la suite de la description</h3>
     </button>
     <br />
+
+    
     <section id="cagnottes">
       <h2>Cagnottes Disponibles</h2>
       <ul>
         <li>
           <h3>Cagnotte ~ 100€</h3>
-          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
-            <button>
-              <h2>Participer</h2>
-            </button>
-          </a>
+          <button onclick="displayModal('')">
+           <h2> Participer</h2>
+          </button>
         </li>
         <li>
           <h3>Cagnotte ~ 200€</h3>
-          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
-            <button>
-              <h2>Participer</h2>
-            </button>
-          </a>
+          <button onclick="displayModal('')">
+           <h2> Participer</h2>
+
+          </button>
         </li>
         <li>
           <h3>Cagnotte ~ 300€</h3>
-          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
-            <button>
-              <h2>Participer</h2>
-            </button>
-          </a>
+          <button onclick="displayModal('')">
+           <h2>
+    Participer
+    </h2>
+
+          </button>
         </li>
       </ul>
     </section>
+
+
+
+<div id="modal">
+  <div id="modal-content">
+    <span id="close-button" onclick="closeModal()">&times;</span>
+    <div id="container">
+      <h1>Inscription à la Cagnotte Rotative</h1>
+      <form id="inscriptionForm">
+        <!-- Vos éléments de formulaire ici -->
+            <div class="form-input">
+                <label for="fullName">Nom complet :</label>
+                <input type="text" id="fullName" placeholder="Entrez votre nom complet" required>
+            </div>
+            <div class="form-input">
+                <label for="email">Adresse e-mail :</label>
+                <input type="email" id="email" placeholder="Entrez votre adresse e-mail" required>
+            </div>
+            <div class="form-input">
+                <label for="phoneNumber">Numéro de téléphone :</label>
+                <input type="tel" id="phoneNumber" placeholder="Entrez votre numéro de téléphone" required>
+            </div>
+            <div class="form-input">
+                <label for="address">Adresse :</label>
+                <input type="text" id="address" placeholder="Entrez votre adresse" required>
+            </div>
+            <div class="form-input">
+                <label for="department">Département :</label>
+                <input type="text" id="department" placeholder="Entrez votre département" required>
+            </div>
+            <div class="form-input">
+                <label for="idCardFront">Téléchargez le recto de votre carte d'identité :</label>
+                <input type="file" id="idCardFront" accept="image/*" capture="environment" required>
+            </div>
+            <div class="form-input">
+                <label for="idCardBack">Téléchargez le verso de votre carte d'identité :</label>
+                <input type="file" id="idCardBack" accept="image/*" capture="environment" required>
+            </div>
+            <div class="form-input">
+                <label for="facePhoto">Téléchargez une photo de votre visage :</label>
+                <input type="file" id="facePhoto" accept="image/*" capture="environment" required>
+            </div>
+            
+            <button id="inscriptionButton">S'inscrire</button>
+        </form>
+    </div>        
+      
+  </div>
+</div>   
+<script>
+  function displayModal(url) {
+    document.getElementById("modal").style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById("modal").style.display = "none";
+  }
+</script>
   </main>
 
   <div id="participants">
@@ -491,7 +626,6 @@
       qualité.</p>
     <p style="color: #000;">Investissez dès maintenant dans votre avenir financier avec nous.</p>
   </footer>
-
 
   <!-- Ajoutez le code Firebase ci-dessous -->
   <script type="module">
