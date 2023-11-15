@@ -1,310 +1,298 @@
-
-.percentage-icon {
-    position: fixed;
-    left: 0;
-    right: 0;
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    border-radius: 50%;
-    animation: vibrate 0.10s linear infinite;
-  }
-
-  @keyframes vibrate {
-    0% {
-      transform: translate(-2px, 0);
-    }
-    50% {
-      transform: translate(2px, 0);
-    }
-    100% {
-      transform: translate(-2px, 0);
-    }
-  }
-
-
-
-
-
-
-span {
-  color: red;
-}
-
-
-
-
-
-h2 {
-text-align: center; 
-font-size: 50px; 
-color: #66FF33;
-}
-    
-
-
-
-
-
-
 body {
-        background: linear-gradient(to right, #ff0000, #ffa500, #ffff00, #008000, #0000ff, #4b0082, #ee82ee);
-        background-size: 600% 600%;
-        animation: AnimationBackground 10s ease infinite;
+      text-align: center;
+      background-color: orange;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-size: 20px;
+    }
+
+    h1 {
+      font-size: 50px;
+      background-color: #ff6a00;
+      text-align: center;
+      animation: slide-down 1s ease-in-out;
+      border: 3px solid orange;
+      padding: 15px 30px;
+      border-radius: 10px;
+    }
+
+    p {
+      background-color: #ecf0f1;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    ul {
+      background-color: #ecf0f1;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    li {
+      list-style: disc;
+      margin-left: 20px;
+    }
+
+    button {
+      background-color: #ebebeb;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    button:hover {
+      background-color: #ebebeb;
+    }
+
+    .description {
+      max-height: 200px;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .show-description {
+      max-height: none;
+    }
+
+    #menu {
+      position: absolute;
+      top: 30px;
+      /* Ajustez la position verticale */
+      right: 30px;
+      /* Ajustez la position horizontale */
+      background-color: #fff;
+      border: 3px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 15px 30px;
+      /* Ajustez le rembourrage */
+      cursor: pointer;
+    }
+
+    #menu ul {
+      list-style: none;
+      padding: 0;
+      display: none;
+      /* Masque la liste par défaut */
+    }
+
+    #menu:hover ul {
+      display: block;
+      /* Affiche la liste lorsque le menu est survolé */
+    }
+
+    #menu li {
+      margin-bottom: 15px;
+      /* Augmentez l'espacement entre les éléments de liste */
+    }
+
+    #menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 50px;
+    }
+
+
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #descriptionContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      width: 80%;
+      /* Ajustez la largeur du cadre de description */
+      max-width: 600px;
+      /* Largeur maximale pour éviter un dépassement excessif */
+    }
+
+
+
+    #store-link {
+      position: absolute;
+      top: 30px;
+      /* Ajustez la position verticale */
+      left: 30px;
+      /* Ajustez la position horizontale */
+      background-color: #fff;
+      border: 3px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 15px 30px;
+      /* Ajustez le rembourrage */
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    #bouton-magasin {
+      background: none;
+      border: none;
+      font: inherit;
+      cursor: pointer;
+      text-decoration: underline;
+      color: #333;
+    }
+
+    #store-link:hover #bouton-magasin {
+      color: #d6d6d6;
+      /* Changement de couleur du texte au survol */
+    }
+
+    #participants,
+    #transactions,
+    #transaction-form {
+      width: 800px;
+      /* Augmentez la largeur */
+      border: 10px solid #ccc;
+      /* Augmentez l'épaisseur de la bordure */
+      padding: 30px;
+      /* Ajustez le rembourrage */
+      margin: 30px;
+      /* Augmentez la marge extérieure */
+      background-color: #ffffff;
+      /* Couleur de fond des conteneurs */
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 15px;
+      /* Augmentez l'espacement entre les éléments de liste */
+      display: flex;
+      align-items: center;
+      font-size: 40px;
+    }
+
+    #transaction-form {
+      text-align: center;
+    }
+
+
+    /* Style pour agrandir la description */
+    #transaction-form h2 {
+      font-size: 24px;
+      /* Augmenter la taille de la police pour le titre */
+    }
+
+    #transaction-form input[type="text"],
+    #transaction-form input[type="number"] {
+      font-size: 18px;
+      /* Augmenter la taille de la police pour les champs de saisie */
+    }
+
+    #transaction-form button {
+      font-size: 18px;
+      /* Augmenter la taille de la police pour le bouton */
+    }
+
+    .participant-image {
+      max-width: 250px;
+      /* Augmentez la largeur maximale de l'image */
+      height: auto;
+      margin-right: 20px;
+      /* Augmentez la marge à droite de l'image */
+    }
+
+
+
+
+
+    @keyframes slide-down {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
       }
 
-      @keyframes AnimationBackground {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
       }
-      
-
-
-
-audio {
-  display: block;
-  width: 100%;
-}
-
-
-
-
-
-.sponsor-icon {
-    position: fixed;
-    bottom: 10px;
-    right: 20%;
-    top: 1px;
-    left: 170px;
-    width: 0px;
-    height: 30%;
-    object-fit: cover;
-}
-
-
-  .association-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .association-button {
-    padding: 10px 20px;
-    background-color: #AED6F1;
-    border: 1px solid #EAECEE;
-    border-radius: 5px;
-  }
-
-
-
-
-
-
-
-
-
-
-
-  .shopping-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: yellow;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  .arrow-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-
-
-
-
-
-
-
-
-
-  .eye {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background-color: #990000;
-    border-radius: 50%;
-    animation: blink 1s linear infinite;
-  }
-
-  .eye::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #145A32;
-    border-radius: 50%;
-    animation: close 1s linear infinite;
-  }
-
-  @keyframes blink {
-    0% {
-      opacity: 1;
     }
-    50% {
-      opacity: 0;
+
+    /* Styles CSS pour le bas de page */
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 40px;
+      /* Augmentez le rembourrage */
+      text-align: center;
+      font-size: 30px;
     }
-    100% {
-      opacity: 1;
+
+    /* Styles CSS pour les images de drapeaux */
+    .flag {
+      width: 55px;
+      /* Augmentez la largeur des images de drapeaux */
+      height: auto;
+      margin-right: 20px;
+      /* Augmentez la marge à droite des images */
     }
-  }
 
-  @keyframes close {
-    0% {
-      transform: translateX(0px);
+    /* Votre feuille de style CSS peut être personnalisée pour le design de votre choix. */
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
     }
-    50% {
-      transform: translateX(25px);
+
+    .description {
+      font-size: 25px;
+      /* Ajustez la taille du texte selon vos préférences */
     }
-    100% {
-      transform: translateX(0px);
+
+
+    main {
+      padding: 20px;
     }
-  }
 
+    h2 {
 
-
-
-
-
-
-
-
- 
-
-      .pancarte {
-        font-family: sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-        color: #FF0000;
-        background-color: #FFFFFF;
-        padding: 10px;
-        border: 2px solid #000000;
-      }
-    
-    
-  
-
-
-
-
-.placard {
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
-  }
-
-
-
-
-
-
-
-
- .slider {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .slider ul {
-    display: flex;
-    padding: 0;
-    width: 400%;
-    animation: slide 3s infinite;
-  }
-
-  .slider li {
-    width: 25%;
-    list-style: none;
-  }
-
-  .slider img {
-    width: 100%;
-  }
-
-  @keyframes slide {
-    0% {
-      margin-left: 0;
+      margin-top: 20px;
+      background-color: #669d34;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 40px;
     }
-    20% {
-      margin-left: 0;
+
+    ul {
+      list-style: none;
+      padding: 0;
     }
-    25% {
-      margin-left: -100%;
+
+    li {
+      border: 1px solid #ddd;
+      margin: 10px;
+      padding: 10px;
     }
-    45% {
-      margin-left: -100%;
+
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-top: 10px;
     }
-    50% {
-      margin-left: -200%;
-    }
-    70% {
-      margin-left: -200%;
-    }
-    75% {
-      margin-left: -300%;
-    }
-    95% {
-      margin-left: -300%;
-    }
-    100% {
-      margin-left: 0;
-    }
-  }
-
-
-
-  
-
-#map {
-        width: 100%;
-        height: 400px;
-        background-color: #000;
-      }
-
-
-
-
-
-
-
-
-
-
-
-
-footer {
-  text-align: center;
-  padding: 20px 0;
-}
-
-footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-footer ul li {
-  margin-bottom: 10px;
-}
