@@ -1,211 +1,206 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script type="module">const user = await getUserInfo() </script>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width" />
-  <title>SOIRÉE GASY</title>
+  <title>MTSANGO</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-
-
-<div class="percentage-icon">
-  <span>980M Abonne<?php echo $percentage; ?></span>
-</div>
-   
- 
-    
-    <div class="character"></div>
-    
-
-
-<div class="eye" style="float: left;">
-<div class="sponsor-icon">
-    <img src="img/20230127174504.png" alt="Sponsor Icon" width="100" height="100">
-</div>
-
-</div>
-
-
-
-
-
- <h1 style="text-align: center; font-size: 50px; color: #FFFF00;">Soirée GASY</h1>
-
-
-<h2>fa hainao ra</h2>
-
-
-<p style="text-align: center; font-size: 20px; color: #ffffff;">Venez vivre une soirée inoubliable avec nous!</p>
-
-
-
-
-
-
-<div style="text-align: center;">
-  <h1>Venez à la salle de fête!</h1>
-  <p>Adresse: 123 rue principale, Ville, Pays</p>
-  <p>Venez vous amuser et profiter de la fête!</p>
-  <div style="background-color: yellow; padding: 10px;">
-    <span style="font-size: 30px;">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+  <div id="store-link">
+    <a href="https://magasin-mtsango.oldestlucious.repl.co/" target="_blank">
+      <button id="bouton-magasin">Magasin</button>
+    </a>
   </div>
-</div>
-
-
-
-   
-
-<div class="association-container">
-  <h3>￼VEUX-tu participer￼￼:</h3>
-  <button class="association-button">Rejoins-Nous</button>
-</div>
-
-
-
-
-
-<div style="text-align: center;">
-      <img src="img/20230127165401.png" alt="Image 1" style="width: 300px; height: 300px;">
-      <img src="img/20230127165109.png" alt="Image 2" style="width: 300px; height: 300px;">
-      <video width="320" height="240" controls>
-        <source src="https://www.youtube.com/embed/rk-DlkiCwjo" type="video/mp4">
-      </video>
-    </div>
-
-
-
-
-
-
-   <div class="pancarte">
-      <p>Venez à la salle de fête!</p>
-      <p>Adresse: 123 rue principale, Ville, Pays</p>
-      <p>Venez vous amuser et profiter de la fête!</p>
-    </div>
-
-
-
-
-
-
-<div class="placard">
-  <h1>Venez nombreux!</h1>
-  <p>Le centre se trouve à l'adresse suivante:</p>
-  <p>123 Rue de la Salle</p>
-  <a href="https://www.google.com/maps/place/123+Rue+de+la+Salle" target="_blank">Voir sur Google Maps</a>
-  <button onclick="window.open('https://www.google.com/maps/place/123+Rue+de+la+Salle')">Voir sur la carte</button>
-</div>
-
-
-  
-
-
-
-
-
-
-
-<div class="slider">
-  <ul>
-    <li><img src="img/20230127170629.jpg" alt="image1" /></li>
-    <li><img src="img/20230127165109.png" alt="image2" /></li>
-    <li><img src="img/20230127165401.png" alt="image3" /></li>
-    <li><img src="img/20230127192052.png" alt="image4" /></li>
-
-<li><img src="img/20230128000617.png" alt="image5" /></li>
-
-<li><img src="img/20230128000706.png" alt="image6" /></li>
-
-<li><img src="img/20230128000323.png" alt="image7" /></li>
-    
-<li><img src="img/20230128000706.png" alt="image8" /></li>
-    
-<li><img src="img/20230128000923.png" alt="image9" /></li>
-  </ul>
-</div>
-
-
-
-
-
-
-
-<div class="shopping-btn">
-  Shopping
-</div>
-
-<div class="arrow-btn">
-  <a href="#">
-    <i class="fas fa-arrow-left"></i>
-  </a>
-  <a href="#">
-    <i class="fas fa-arrow-right"></i>
-  </a>
-</div>
-
-
-
-
-<div id="map"></div>
-
-
-
-
-
- 
-<h1 style="text-align: center;">Rejoignez-nous pour une fête privée!</h1>
-
-<div style="text-align: center;">
-  <button>Réservation</button>
-  <button>Participer</button>
-</div>
-
-
-
-
-
-  
-
-
-
-
-<div style="text-align: center;">
-  <a href="contact.html">Contactez-nous</a>
-</div>
-
-
-
-
-
-
-
-
- <footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <h2>Contact</h2>
-        <ul>
-          <li>Email: contact@example.com</li>
-          <li>Téléphone: +33 123 456 789</li>
-          <li>Adresse: 12 rue de la paix, 75001 Paris</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <h2>Réseaux sociaux</h2>
-        <ul>
-          <li><a href="https://www.facebook.com/" style="color: #3b5998;">Facebook</a></li>
-          <li><a href="https://twitter.com/" style="color: #00aced;">Twitter</a></li>
-          <li><a href="https://www.instagram.com/" style="color: #517fa4;">Instagram</a></li>
-        </ul>
+  <div id="menu">
+    Menu &#9662;
+    <ul>
+      <li><a href="https://fonctinalite.oldestlucious.repl.co/">Se connecter</a></li>
+      <li><a href="#" id="aboutLink">À propos de nous</a></li>
+    </ul>
+  </div>
+  <div id="overlay" style="display: none;">
+    <div id="descriptionContainer">
+      <span id="closeButton" onclick="closeDescription()">&times;</span>
+      <div id="descriptionTransfer" style="display: none;">
+        <h2>Bienvenue sur Mtsango.com, le Club d'Économie !</h2>
+        <p>Rejoignez notre club et plongez dans le monde de la finance et de l'économie tout en augmentant votre épargne
+          personnelle. Notre concept est simple : chaque mois, les membres du club déposent 100€. Ce qui rend notre club
+          unique, c'est qu'un membre est sélectionné chaque mois pour recevoir 500€. Et voici le point clé : chaque
+          personne reçoit sa part complète chaque mois.
+
+          Imaginez les possibilités : plus de membres signifient plus d'argent. Plus il y a de participants, plus les
+          récompenses sont importantes. Chacun a sa chance, chacun son tour, et personne ne repart les mains vides.
+
+          En rejoignant notre club, vous bénéficierez de nombreux avantages :
+
+          - Apprentissage financier : Vous apprendrez à gérer intelligemment votre argent et à investir judicieusement.
+          - Épargne : Vous constituerez progressivement un fonds d'épargne grâce à vos dépôts mensuels.
+          - Communauté : Faites partie d'une communauté de personnes passionnées par l'économie.
+          - Opportunité : Chaque mois, c'est un membre différent qui gagne gros. Vous ne manquerez jamais votre tour.
+
+          Vous pouvez également participer aux différentes cagnottes disponibles, allant de 100€ à 300€, pour augmenter
+          vos chances de gagner davantage.
+
+          Restez connecté avec nous sur Facebook, Twitter et LinkedIn pour ne rien manquer de nos actualités.
+
+          Pour toute question ou demande, n'hésitez pas à nous contacter à l'adresse e-mail :
+          mtsango.economie13@gmail.com
+
+          Rejoignez les 1 million de personnes qui nous font confiance et investissez dès maintenant dans votre avenir
+          financier avec nous sur Mtsango.com.</p>
       </div>
     </div>
   </div>
-</footer>
+
+  <header>
+    <h1>Mtsango.com</h1>
+  </header>
+  <main>
+    <h2>Bienvenue au Club d'Économie !</h2>
+
+    <!-- Description complète -->
+    <div class="description">
+      <p>Nous sommes ravis de vous accueillir au sein de notre club. Voici une opportunité unique d'explorer le monde de
+        la finance et de l'économie tout en augmentant votre épargne personnelle.</p>
+      <p>Notre concept est simple : chaque mois, les membres du club déposent 100€. Ce qui distingue notre club, c'est
+        que chaque mois, l'un de nos membres est choisi pour recevoir 500€. Et voici le point clé : chaque personne
+        reçoit sa part complète chaque mois.</p>
+      <p>Imaginez ce que cela signifie : plus de membres signifie plus d'argent. Plus il y a de participants, plus les
+        récompenses sont importantes. Chacun a sa chance, chacun son tour, et personne ne repart les mains vides.</p>
+      <p>Pourquoi rejoindre notre club ?</p>
+      <ul>
+        <li>Apprentissage financier : Vous apprendrez à gérer intelligemment votre argent et à investir judicieusement.
+        </li>
+        <li>Épargne : Vous constituerez progressivement un fonds d'épargne grâce à vos dépôts mensuels.</li>
+        <li>Communauté : Faites partie d'une communauté de personnes passionnées par l'économie.</li>
+        <li>Opportunité : Chaque mois, c'est un membre différent qui gagne gros. Vous ne manquerez jamais votre tour.
+        </li>
+      </ul>
+    </div>
+
+    <button id="showMore">
+      <h3>Voir la suite de la description</h3>
+    </button>
+    <br />
+    <section id="cagnottes">
+      <h2>Cagnottes Disponibles</h2>
+      <ul>
+        <li>
+          <h3>Cagnotte ~ 100€</h3>
+          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
+            <button>
+              <h2>Participer</h2>
+            </button>
+          </a>
+        </li>
+        <li>
+          <h3>Cagnotte ~ 200€</h3>
+          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
+            <button>
+              <h2>Participer</h2>
+            </button>
+          </a>
+        </li>
+        <li>
+          <h3>Cagnotte ~ 300€</h3>
+          <a href="https://participer-mtsango.oldestlucious.repl.co/" target="_blank">
+            <button>
+              <h2>Participer</h2>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <div id="participants">
+    <h2>Liste des Participants</h2>
+    <ul id="participant-list">
+      <!-- Participants seront ajoutés dynamiquement ici -->
+    </ul>
+  </div>
+<div id="transaction-form">
+    <!-- Titre du formulaire -->
+    <h2>Effectuer une transaction</h2>
+    <!-- Champ de saisie pour le nom du participant -->
+    <input type="text" id="nom" placeholder="Nom du participant">
+    <!-- Champ de saisie pour le montant en euros -->
+    <input type="number" id="montant" placeholder="Montant (€)">
+    <!-- Bouton pour effectuer la transaction -->
+    <button id="effectuer-transaction">Effectuer la transaction</button>
+  </div>
+
+  <div id="transactions">
+    <h2>Transactions</h2>
+    <ul id="transaction-list">
+      <!-- Transactions seront ajoutées dynamiquement ici -->
+    </ul>
+  </div>
+  <!-- Bas de page -->
+  <div class="footer">
+    <!-- Utilisation de l'élément <marquee> pour le défilement vertical -->
+    <marquee direction="up" scrollamount="2">
+      <div>
+        <img class="flag"
+          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/fee39b97-a498-0d62-6054-00b3055caa92.png"
+          alt="Drapeau Comores">
+        Comores : Chaque mois, donne 100 €
+      </div>
+      <div>
+        <img class="flag"
+          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/91dd9569-c7a4-21ff-a7ce-29554bbffc20.png"
+          alt="Drapeau Mayotte">
+        Mayotte : Chaque mois, donne 100 €
+      </div>
+      <div>
+        <img class="flag"
+          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/410e7a93-9cf4-2495-1dc4-1fa72370d3d2.png"
+          alt="Drapeau Madagascar">
+        Madagascar: Chaque mois, donne 100 €
+      </div>
+      <div>
+        <img class="flag"
+          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/edc1f384-a38a-d7fc-08e9-c7b92a38e23d.png"
+          alt="Drapeau La Réunion">
+        Réunion : Chaque mois, donne 100 €
+      </div>
+      <div>
+        <img class="flag"
+          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/896f325e-76c9-ca0e-baa6-200370928eea.png"
+          alt="Drapeau France">
+        France : Chaque mois, donne 100 €
+      </div>
+    </marquee>
+  </div>
+  <hr />
+  <footer style="background-color: #000; text-align: center; padding: 20px;">
+    <div style="display: flex; justify-content: center; align-items: center; color: #fff;">
+      <div style="flex: 1;">
+        <h3 style="color: #fff;">Restons Connectés</h3>
+        <a href="#" style="color: #fff; text-decoration: none; margin-right: 20px;"><img
+            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/41e54920-9749-a61e-ac07-93dd08b9f5d5.png"
+            alt="Facebook" width="80" height="60"></a>
+        <a href="#" style="color: #fff; text-decoration: none; margin-right: 20px;"><img
+            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/cac4e5e0-2131-b31a-c9c2-220fae5d4292.png"
+            alt="Twitter" width="80" height="60"></a>
+        <a href="#" style="color: #ff8000; text-decoration: none; margin-right: 20px;"><img
+            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/524e6428-1aea-1625-7400-79b1a2a30edb.png"
+            alt="LinkedIn" width="80" height="60"></a>
+      </div>
+      <div style="flex: 1;">
+        <h3 style="color: #fff;">Contactez-nous</h3>
+        <p style="color: #333;">Adresse e-mail : <a href="mailto:mtsango.economie13@gmail.com"
+            style="color: #333; text-decoration: none;">mtsango.economie13@gmail.com</a></p>
+      </div>
+    </div>
+    <p style="color: #000;">Rejoignez les 1 million de personnes qui nous font confiance et découvrez une expérience de
+      qualité.</p>
+    <p style="color: #000;">Investissez dès maintenant dans votre avenir financier avec nous.</p>
+  </footer>
 
 
 
