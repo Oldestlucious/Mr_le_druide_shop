@@ -18,7 +18,7 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
-  </script>
+  
 
   <!-- Votre script JavaScript existant -->
   <script>
@@ -85,17 +85,17 @@
 
     afficherParticipants();
     afficherTransactions();
-  </script>
+  
 
-  <script>
+  
     const showMoreButton = document.getElementById('showMore');
     const description = document.querySelector('.description');
 
     showMoreButton.addEventListener('click', () => {
       description.classList.toggle('show-description');
     });
-  </script>
-  <script>
+  
+
     const aboutLink = document.getElementById('aboutLink');
     const overlay = document.getElementById('overlay');
 
