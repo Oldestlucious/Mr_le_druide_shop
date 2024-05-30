@@ -1,765 +1,641 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KZ24DXK2');</script>
-<!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LZ GANG - Accueil</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Roboto+Slab:wght@100..900&display=swap');
+        body {
+            font-family: 'Anta', sans-serif;
+        }
+        /* Si vous voulez utiliser Roboto Slab pour certains éléments */
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+        }
 
-  
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Roboto:ital,wght@0,900;1,700;1,900&display=swap" rel="stylesheet">
-<script type="module">const user = await getUserInfo() </script>
+    img {
+        max-width: 100%; /* Limite la largeur de l'image à la taille de son conteneur */
+        height: auto; /* Permet à l'image de conserver ses proportions originales */
+        display: block; /* Assure que l'image ne se superpose pas aux éléments adjacents */
+        margin: auto; /* Centre l'image horizontalement */
+    }
 
-  <style>
+        
 body {
-    text-align: center;
-    background-color: orange;
-    font-family: 'Roboto Slab', 'Roboto', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
     margin: 0;
-    font-size: 20px;
-}
-
-
-#inscriptionForm {
-    margin: 30px;
-}
-
-.form-input {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    font-size: 18px;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input[type="file"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    font-size: 18px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-#modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 28px;
-}
-
-#modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    font-size: 50px;
-}
-
-#close-button {
-    float: right;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-body {
-    text-align: center;
-    background-color: orange;
-    font-family: 'Roboto Slab', 'Roboto', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    font-size: 20px;
-}
-
-h1 {
-    font-size: 50px;
-    background-color: #ff6a00;
-    text-align: center;
-    animation: slide-down 1s ease-in-out;
-    border: 3px solid orange;
-    padding: 15px 30px;
-    border-radius: 10px;
-}
-
-p {
-    background-color: #ecf0f1;
-    padding: 15px;
-    border-radius: 5px;
-}
-
-ul {
-    background-color: #ecf0f1;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-li {
-    list-style: disc;
-    margin-left: 20px;
-}
-
-button {
-    background-color: #ebebeb;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
-button:hover {
-    background-color: #ebebeb;
-}
-
-.description {
-    max-height: 200px;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-}
-
-.show-description {
-    max-height: none;
-}
-
-#menu {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    background-color: #fff;
-    border: 3px solid #ccc;
-    padding: 15px 30px;
-    cursor: pointer;
-}
-
-#menu ul {
-    list-style: none;
     padding: 0;
-    display: none;
+    background-color: #333;
+    position: relative;
 }
 
-#menu:hover ul {
-    display: block;
+header {
+    text-align: center;
+    padding: 20px 0;
 }
 
-#menu li {
-    margin-bottom: 15px;
+header h1 {
+    margin: 0;
+    color: #fff;
 }
 
-#menu a {
+
+   .header {
+    height: 300px; /* Ajustez la hauteur selon vos besoins */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+     
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
     text-decoration: none;
-    color: #333;
-    font-size: 50px;
+    color: #fff;
 }
 
-#overlay {
+        .product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.products {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.product {
+    display: inline-block;
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.hidden {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
 }
 
-#descriptionContainer {
+/* Styles pour le bouton d'interrogation */
+.interrogation-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 50%; /* Rendre le bouton rond */
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999; /* Pour être au-dessus du reste du contenu */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+.interrogation-button:hover {
+    background-color: #2980b9; /* Changement de couleur au survol */
+}
+
+/* Styles pour le bouton de menu */
+.menu-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.menu-icon {
+    width: 100%;
+    height: 4px;
+    background-color: #fff;
+    margin: 6px 0;
+}
+
+/* Styles pour la boîte de dialogue du code d'accès */
+.access-code-dialog {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    width: 80%;
-    max-width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Pour être au-dessus du reste du contenu */
 }
 
-#store-link {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    background-color: #fff;
-    border: 3px solid #ccc;
-    padding: 15px 30px;
-    cursor: pointer;
-    font-size: 25px;
-}
-
-#bouton-magasin {
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    text-decoration: underline;
-    color: #333;
-}
-
-#store-link:hover #bouton-magasin {
-    color: #d6d6d6;
-}
-
-
-#participants,
-#transactions,
-#transaction-form {
-    width: 800px;
-    border: 10px solid #ccc;
-    padding: 30px;
-    margin: 30px;
-    background-color: #ffffff;
-}
-
-#transaction-form {
-    text-align: center;
-}
-
-/* Style pour agrandir la description */
-#transaction-form h2 {
-    font-size: 24px;
-    margin: 0 auto; /* Centre le titre */
-}
-
-#transaction-form input[type="text"],
-#transaction-form input[type="number"] {
-    font-size: 18px;
-    width: 100%; /* Assure que les champs de saisie occupent la largeur disponible */
-    box-sizing: border-box; /* Inclut la bordure et le rembourrage dans la largeur totale */
-    margin: 10px auto; /* Centre les champs de saisie avec une marge en haut et en bas */
-}
-
-#transaction-form button {
-    font-size: 18px;
-    margin: 10px auto; /* Centre le bouton avec une marge en haut et en bas */
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    font-size: 40px;
-}
-
-#transaction-form {
-    text-align: center;
-}
-
-#transaction-form h2 {
-    font-size: 24px;
-}
-
-#transaction-form input[type="text"],
-#transaction-form input[type="number"] {
-    font-size: 18px;
-}
-
-#transaction-form button {
-    font-size: 18px;
-}
-
-.participant-image {
-    max-width: 250px;
-    height: auto;
-    margin-right: 20px;
-}
-
-@keyframes slide-down {
-    0% {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.footer {
-    background-color: #333;
-    color: #fff;
-    padding: 40px;
-    text-align: center;
-    font-size: 30px;
-}
-
-.flag {
-    width: 55px;
-    height: auto;
-    margin-right: 20px;
-}
-
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    text-align: center;
-}
-
-.description {
-    font-size: 25px;
-}
-
-main {
-    padding: 20px;
-}
-
-h2 {
-    margin-top: 20px;
-    background-color: #669d34;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 40px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    border: 1px solid #ddd;
-    margin: 10px;
+.access-code-dialog input {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
     padding: 10px;
+    box-sizing: border-box;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    margin-top: 10px;
+/* Styles pour le formulaire d'abonnement */
+.abonnement-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Pour être au-dessus du reste du contenu */
 }
 
-  </style>
+.abonnement-form input {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.abonnement-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #2ecc71;
+    border-radius: 50%; /* Rendre le bouton rond */
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999; /* Pour être au-dessus du reste du contenu */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+.abonnement-button:hover {
+    background-color: #27ae60; /* Changement de couleur au survol */
+}
+
+/* Styles pour le carré de modification */
+.modification-square {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; /* Caché par défaut */
+}
+
+/* Styles pour les boutons de modification */
+.modification-button {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px 20px; /* Ajout de padding pour un meilleur aspect */
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+.modification-button:hover {
+    background-color: #2980b9; /* Changement de couleur au survol */
+}
+
+        /* Les styles sont inchangés */
+        .menu-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+/* Style pour le texte à l'intérieur du carré */
+        #about-content {
+            font-size: 14px;
+        }  
+        .a2a_button_snapchat {
+            background-color: yellow;
+        }
+        /* Styles pour la section d'accueil */
+        
 
 
+        .accueil {
+    background-image: url("https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/183d0bf0-b8a6-e0d3-5bbf-6ac87dc0f8dc.jpeg"); /* Remplacez "chemin/vers/votre/image.jpg" par le chemin de votre image */
+    background-size: cover; /* Pour que l'image remplisse l'ensemble de la section */
+    background-position: center; /* Pour centrer l'image dans la section */
+    color: white; /* Couleur du texte pour une meilleure lisibilité sur l'image */
+    text-align: center; /* Pour centrer le contenu textuel */
+    padding: 100px 0; /* Ajustez le rembourrage selon vos préférences */
+}
+
+
+        .accueil h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .accueil p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Styles pour les boutons d'action */
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FF5733;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 20px;
+            margin-right: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #FF5733; /* Changement de couleur au survol */
+        }
+        
+
+
+
+.carousel {
+    display: flex;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    scroll-snap-type: x mandatory; /* Force le défilement d'une image à la fois */
+    scroll-behavior: smooth; /* Ajoute un défilement fluide */
+    width: 100%;
+    height: 150px; /* Hauteur de votre choix */
+    margin: 0 auto; /* Centre le carousel */
+    animation: scroll 5s infinite linear; /* Défilement automatique */
+}
+
+.item {
+    flex: 0 0 auto; /* Empêche le redimensionnement des éléments */
+    scroll-snap-align: start; /* Aligne chaque image sur le début de la fenêtre d'affichage */
+    margin-right: 10px; /* Marge entre chaque image */
+    min-width: 200px; /* Largeur minimale pour afficher l'image */
+    height: 100px; /* Hauteur de votre choix */
+    background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+}
+
+/* Animation pour le défilement automatique */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+   </style>
 </head>
-
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ24DXK2"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<!-- Section d'accueil -->
+<section class="accueil">
+    <h2 style="color: black;">Bienvenue chez.   LZ GAnG !</h2>
 
+    <p style="color: black;">Découvrez nos produits de qualité et profitez d'une expérience d'achat exceptionnelle.</p>
 
-  
-  <div id="store-link">
-    <a href="https://magasin-mtsango.oldestlucious.repl.co/" target="_blank">
-      <button id="bouton-magasin">Magasin</button>
-    </a>
-  </div>
-  <div id="menu">
-    Menu &#9662;
-    <ul>
-      <li><a href="https://fonctinalite.oldestlucious.repl.co/">Se connecter</a></li>
-      <li><a href="#" id="aboutLink">À propos de nous</a></li>
-    </ul>
-  </div>
-  <div id="overlay" style="display: none;">
-    <div id="descriptionContainer">
-      <span id="closeButton" onclick="closeDescription()">&times;</span>
-      <div id="descriptionTransfer" style="display: none;">
-        <h2>Bienvenue sur Mtsango.com, le Club d'Économie !</h2>
-        <p>Rejoignez notre club et plongez dans le monde de la finance et de l'économie tout en augmentant votre épargne
-          personnelle. Notre concept est simple : chaque mois, les membres du club déposent 100€. Ce qui rend notre club
-          unique, c'est qu'un membre est sélectionné chaque mois pour recevoir 500€. Et voici le point clé : chaque
-          personne reçoit sa part complète chaque mois.
+    <a href="#produits" class="cta-button">Découvrir nos produits</a>
+</section>
+</br>
+<div class="carousel">
+        <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg');"></div>
+        <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eb78b0ae-06cf-777e-5877-6876a6ce3c2b.jpeg');"></div>
+      <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg');"></div>
 
-          Imaginez les possibilités : plus de membres signifient plus d'argent. Plus il y a de participants, plus les
-          récompenses sont importantes. Chacun a sa chance, chacun son tour, et personne ne repart les mains vides.
-
-          En rejoignant notre club, vous bénéficierez de nombreux avantages :
-
-          - Apprentissage financier : Vous apprendrez à gérer intelligemment votre argent et à investir judicieusement.
-          - Épargne : Vous constituerez progressivement un fonds d'épargne grâce à vos dépôts mensuels.
-          - Communauté : Faites partie d'une communauté de personnes passionnées par l'économie.
-          - Opportunité : Chaque mois, c'est un membre différent qui gagne gros. Vous ne manquerez jamais votre tour.
-
-          Vous pouvez également participer aux différentes cagnottes disponibles, allant de 100€ à 300€, pour augmenter
-          vos chances de gagner davantage.
-
-          Restez connecté avec nous sur Facebook, Twitter et LinkedIn pour ne rien manquer de nos actualités.
-
-          Pour toute question ou demande, n'hésitez pas à nous contacter à l'adresse e-mail :
-          mtsango.economie13@gmail.com
-
-          Rejoignez les 1 million de personnes qui nous font confiance et investissez dès maintenant dans votre avenir
-          financier avec nous sur Mtsango.com.</p>
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <h1>Mtsango.com</h1>
-  </header>
-  <main>
-    <h2>Bienvenue au Club d'Économie !</h2>
-
-    <!-- Description complète -->
-    <div class="description">
-      <p>Nous sommes ravis de vous accueillir au sein de notre club. Voici une opportunité unique d'explorer le monde de
-        la finance et de l'économie tout en augmentant votre épargne personnelle.</p>
-      <p>Notre concept est simple : chaque mois, les membres du club déposent 100€. Ce qui distingue notre club, c'est
-        que chaque mois, l'un de nos membres est choisi pour recevoir 500€. Et voici le point clé : chaque personne
-        reçoit sa part complète chaque mois.</p>
-      <p>Imaginez ce que cela signifie : plus de membres signifie plus d'argent. Plus il y a de participants, plus les
-        récompenses sont importantes. Chacun a sa chance, chacun son tour, et personne ne repart les mains vides.</p>
-      <p>Pourquoi rejoindre notre club ?</p>
-      <ul>
-        <li>Apprentissage financier : Vous apprendrez à gérer intelligemment votre argent et à investir judicieusement.
-        </li>
-        <li>Épargne : Vous constituerez progressivement un fonds d'épargne grâce à vos dépôts mensuels.</li>
-        <li>Communauté : Faites partie d'une communauté de personnes passionnées par l'économie.</li>
-        <li>Opportunité : Chaque mois, c'est un membre différent qui gagne gros. Vous ne manquerez jamais votre tour.
-        </li>
-      </ul>
-    </div>
-
-    <button id="showMore">
-      <h3>Voir la suite de la description</h3>
-    </button>
-    <br />
+        <!-- Ajoutez plus d'éléments avec la classe "item" pour plus d'images -->
+</div>
+    
 
     
-    <section id="cagnottes">
-      <h2>Cagnottes Disponibles</h2>
-      <ul>
-        <li>
-          <h3>Cagnotte ~ 100€</h3>
-          <button onclick="displayModal('')">
-           <h2> Participer</h2>
-          </button>
-        </li>
-        <li>
-          <h3>Cagnotte ~ 200€</h3>
-          <button onclick="displayModal('')">
-           <h2> Participer</h2>
+<!-- Image horizontale -->
+    <!-- Vos produits existants -->
+    <section id="produits" class="products">
+        <!-- Vos produits existants -->
+  <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eb78b0ae-06cf-777e-5877-6876a6ce3c2b.jpeg" alt="Réfrigérateur">
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">BONBONNE</h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 90€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+            <p style="font-style: italic;">Maintenant</p>
+    </div>
+    
+        
+        <div class="product">
+            <img id="imagePrincipale2" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/07d8d2e1-0b51-819c-a38a-473998039de2.jpeg" alt="Lave-linge">
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">OCB Slim</h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+            <p style="font-style: italic;">Maintenant</p>
+        </div>
 
-          </button>
-        </li>
-        <li>
-          <h3>Cagnotte ~ 300€</h3>
-          <button onclick="displayModal('')">
-           <h2>
-    Participer
-    </h2>
+        
+        <div class="product">
+            <img id="imagePrincipale3" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/63cfe854-c0b0-8b8f-0a88-57814b6cd354.jpeg" alt="Cuisinière">
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">OCB Slim</h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+            <p style="font-style: italic;">Maintenant</p>
+        </div>
+        <div class="product">
+            <img id="imagePrincipale4" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/104a86e7-5a84-12d0-ba7f-f51846c9e53b.jpeg" alt="Four">            
+        </div>
 
-          </button>
-        </li>
-      </ul>
+
+<div class="product">           
+            <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e9ad1119-09db-c86b-0b37-3ec7f0406883.jpg" alt="Réfrigérateur">
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;"> Briquet BIC </h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 29€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+            <p style="font-style: italic;">Maintenant</p>
+            
+</div>
+
+
+ <div class="product">           
+            <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e69b8122-9a4f-2541-2102-64c88397c3ff.jpg" alt="Réfrigérateur">
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">VIP Tik Tok ventouse </h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+            <p style="font-style: italic;">Maintenant</p>
+            
+ </div>       
+        
+        <div class="product">
+            <div style="position: relative; display: inline-block;">
+              <img id="imagePrincipale5" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg" alt="Micro-ondes" style="max-width: 100%;">
+              <div style="position: absolute; top: 5px; left: 5px; background-color: green; color: white; padding: 5px; border-radius: 5px;">
+                <span style="font-weight: bold;"> Non disponible </span>
+              </div>
+              <div style="position: absolute; bottom: 5px; left: 5px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 5px;">
+                pas disponible après Ramadan
+              </div>
+            </div>
+            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">BONBONNE crème de luxe </h2>
+            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
+            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix : 20€</p>
+            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
+        </div>
+    </section>
+
+    <!-- Votre section de contact existante -->
+    <section id="contact">
+        <!-- Votre section de contact existante -->
     </section>
 
 
+  
 
-<div id="modal">
-  <div id="modal-content">
-    <span id="close-button" onclick="closeModal()">&times;</span>
-    <div id="container">
-      <h1>Inscription à la Cagnotte Rotative</h1>
-      <form id="inscriptionForm">
-        <!-- Vos éléments de formulaire ici -->
-            <div class="form-input">
-                <label for="fullName">Nom complet :</label>
-                <input type="text" id="fullName" placeholder="Entrez votre nom complet" required>
-            </div>
-            <div class="form-input">
-                <label for="email">Adresse e-mail :</label>
-                <input type="email" id="email" placeholder="Entrez votre adresse e-mail" required>
-            </div>
-            <div class="form-input">
-                <label for="phoneNumber">Numéro de téléphone :</label>
-                <input type="tel" id="phoneNumber" placeholder="Entrez votre numéro de téléphone" required>
-            </div>
-            <div class="form-input">
-                <label for="address">Adresse :</label>
-                <input type="text" id="address" placeholder="Entrez votre adresse" required>
-            </div>
-            <div class="form-input">
-                <label for="department">Département :</label>
-                <input type="text" id="department" placeholder="Entrez votre département" required>
-            </div>
-            <div class="form-input">
-                <label for="idCardFront">Téléchargez le recto de votre carte d'identité :</label>
-                <input type="file" id="idCardFront" accept="image/*" capture="environment" required>
-            </div>
-            <div class="form-input">
-                <label for="idCardBack">Téléchargez le verso de votre carte d'identité :</label>
-                <input type="file" id="idCardBack" accept="image/*" capture="environment" required>
-            </div>
-            <div class="form-input">
-                <label for="facePhoto">Téléchargez une photo de votre visage :</label>
-                <input type="file" id="facePhoto" accept="image/*" capture="environment" required>
-            </div>
-            
-            <button id="inscriptionButton">S'inscrire</button>
-        </form>
-    </div>        
-      
-  </div>
-</div>   
-<script>
-  function displayModal(url) {
-    document.getElementById("modal").style.display = "block";
-  }
 
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
-</script>
-  </main>
-
-  <div id="participants">
-    <h2>Liste des Participants</h2>
-    <ul id="participant-list">
-      <!-- Participants seront ajoutés dynamiquement ici -->
-    </ul>
-  </div>
-<div id="transaction-form">
-    <!-- Titre du formulaire -->
-    <h2>Effectuer une transaction</h2>
-    <!-- Champ de saisie pour le nom du participant -->
-    <input type="text" id="nom" placeholder="Nom du participant">
-    <!-- Champ de saisie pour le montant en euros -->
-    <input type="number" id="montant" placeholder="Montant (€)">
-    <!-- Bouton pour effectuer la transaction -->
-    <button id="effectuer-transaction">Effectuer la transaction</button>
-  </div>
-
-  <div id="transactions">
-    <h2>Transactions</h2>
-    <ul id="transaction-list">
-      <!-- Transactions seront ajoutées dynamiquement ici -->
-    </ul>
-  </div>
-  <!-- Bas de page -->
-  <div class="footer">
-    <!-- Utilisation de l'élément <marquee> pour le défilement vertical -->
-    <marquee direction="up" scrollamount="2">
-      <div>
-        <img class="flag"
-          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/fee39b97-a498-0d62-6054-00b3055caa92.png"
-          alt="Drapeau Comores">
-        Comores : Chaque mois, donne 100 €
-      </div>
-      <div>
-        <img class="flag"
-          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/91dd9569-c7a4-21ff-a7ce-29554bbffc20.png"
-          alt="Drapeau Mayotte">
-        Mayotte : Chaque mois, donne 100 €
-      </div>
-      <div>
-        <img class="flag"
-          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/410e7a93-9cf4-2495-1dc4-1fa72370d3d2.png"
-          alt="Drapeau Madagascar">
-        Madagascar: Chaque mois, donne 100 €
-      </div>
-      <div>
-        <img class="flag"
-          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/edc1f384-a38a-d7fc-08e9-c7b92a38e23d.png"
-          alt="Drapeau La Réunion">
-        Réunion : Chaque mois, donne 100 €
-      </div>
-      <div>
-        <img class="flag"
-          src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/896f325e-76c9-ca0e-baa6-200370928eea.png"
-          alt="Drapeau France">
-        France : Chaque mois, donne 100 €
-      </div>
-    </marquee>
-  </div>
-  <hr />
-  <footer style="background-color: #000; text-align: center; padding: 20px;">
-    <div style="display: flex; justify-content: center; align-items: center; color: #fff;">
-      <div style="flex: 1;">
-        <h3 style="color: #fff;">Restons Connectés</h3>
-        <a href="#" style="color: #fff; text-decoration: none; margin-right: 20px;"><img
-            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/41e54920-9749-a61e-ac07-93dd08b9f5d5.png"
-            alt="Facebook" width="80" height="60"></a>
-        <a href="#" style="color: #fff; text-decoration: none; margin-right: 20px;"><img
-            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/cac4e5e0-2131-b31a-c9c2-220fae5d4292.png"
-            alt="Twitter" width="80" height="60"></a>
-        <a href="#" style="color: #ff8000; text-decoration: none; margin-right: 20px;"><img
-            src="https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/524e6428-1aea-1625-7400-79b1a2a30edb.png"
-            alt="LinkedIn" width="80" height="60"></a>
-      </div>
-      <div style="flex: 1;">
-        <h3 style="color: #fff;">Contactez-nous</h3>
-        <p style="color: #333;">Adresse e-mail : <a href="mailto:mtsango.economie13@gmail.com"
-            style="color: #333; text-decoration: none;">mtsango.economie13@gmail.com</a></p>
-      </div>
+    <footer style="background-color: #3498db; color: #fff;">
+    <p>&copy; 2024 LZ GANG. Tous droits réservés.</p>
+    
+    <!-- Ajout des contacts -->
+    <div>
+        <h3>Contactez-nous</h3>
+        <ul>
+            <li><strong>Téléphone:</strong> +07 44 89 27 82</li>
+            <li><strong>Email:</strong> contact@Lzgang.com</li>
+            <li><strong>Adresse:</strong> traversedes rosier Marseille 13014. </li>
+            <!-- Ajoutez d'autres moyens de contact si nécessaire -->
+        </ul>
     </div>
-    <p style="color: #000;">Rejoignez les 1 million de personnes qui nous font confiance et découvrez une expérience de
-      qualité.</p>
-    <p style="color: #000;">Investissez dès maintenant dans votre avenir financier avec nous.</p>
-  </footer>
+</footer>
 
-  <!-- Ajoutez le code Firebase ci-dessous -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import {getAnalytics} from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
 
-    // Votre configuration Firebase ici
-    const firebaseConfig = {
-      apiKey: "AIzaSyDtr8bLIFL-For8dP2peeQAGVahKINNfd8",
-      authDomain: "mtsango-c4a13.firebaseapp.com",
-      projectId: "mtsango-c4a13",
-      storageBucket: "mtsango-c4a13.appspot.com",
-      messagingSenderId: "618035723810",
-      appId: "1:618035723810:web:26a5f44caa680b9bfb947b",
-      measurementId: "G-ZLXNZ7M7J6"
-    };
+<div id="social-sharing">
+  <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+    <a class="a2a_button_snapchat"></a>
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+    <script>
+  var socialSharing = document.getElementById('social-sharing');
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-
-  <!-- Votre script JavaScript existant -->
-  <script>
-    const participants = [
-      {nom: "Participant 1", montant: 100},
-      {nom: "Participant 2", montant: 100},
-      {nom: "Participant 3", montant: 100},
-    ];
-
-    const transactions = [];
-
-    function getCurrentDateTime() {
-      const now = new Date();
-      const date = now.toLocaleDateString();
-      const time = now.toLocaleTimeString();
-      return `${date} ${time}`;
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 0) { // Si la page est défilée vers le bas
+      socialSharing.style.display = 'none'; // Masquer le code
+    } else { // Si la page est défilée vers le haut
+      socialSharing.style.display = 'block'; // Afficher le code
     }
+  });
+    </script>
+    
+    <!-- Bouton d'interrogation -->
+    <button class="interrogation-button" onclick="toggleDialog()">?</button>
 
-    function afficherParticipants() {
-      const participantList = document.getElementById('participant-list');
-      participantList.innerHTML = '';
+    <!-- Bouton de menu -->
+    <div id="menuButton" class="menu-button" onclick="toggleMenu()">
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+        <div class="menu-icon"></div>
+    </div>
 
-      participants.forEach(participant => {
-        const li = document.createElement('li');
-        const participantImage = document.createElement('img');
-        participantImage.src = 'https://mcusercontent.com/af7ccd2d5a4dcbc18080f78f7/images/215ab951-c24b-a326-e698-054ab6155de1.jpeg';
-        participantImage.alt = 'Image du participant';
-        participantImage.className = 'participant-image';
-        li.appendChild(participantImage);
-        li.innerHTML += `${participant.nom} : ${participant.montant} €`;
-        participantList.appendChild(li);
-      });
-    }
+    <!-- Boîte de dialogue du code d'accès -->
+    <div id="accessCodeDialog" class="hidden access-code-dialog">
+        <h2> Accès partenariat </h2>
+        <input type="password" id="accessCodeInput" placeholder="Code d'accès"><br>
+        <button onclick="verifierCode()">Valider</button>
+    </div>
 
-    function afficherTransactions() {
-      const transactionList = document.getElementById('transaction-list');
-      transactionList.innerHTML = '';
+    <!-- Bouton "S'abonner" -->
+    <button class="abonnement-button" onclick="toggleAbonnement()">S'abonner</button>
 
-      transactions.forEach(transaction => {
-        const li = document.createElement('li');
-        li.textContent = `${transaction.nom} a effectué une transaction de ${transaction.montant} € le ${transaction.date}.`;
-        transactionList.appendChild(li);
-      });
-    }
+    <!-- Formulaire d'abonnement -->
+    <div id="abonnementForm" class="hidden abonnement-form">
+        <h2>S'abonner</h2>
+        <form>
+           <input type="email" placeholder="Email" id="emailInput" required><br>
+            <input type="tel" placeholder="Numéro de téléphone" id="telephoneInput" required><br>
+            <input type="password" placeholder="Mot de passe" id="passwordInput" required><br>
+            <button type="button" onclick="sabonner()">S'abonner</button>
+        </form>
+    </div>
+    <!-- Carré de modification -->
+    <div id="modificationSquare" class="modification-square" style="display: none;">
+        <h2>Menu de Modification</h2>
+        <button class="modification-button" onclick="modifierImagePrincipale()">Modifier l'image principale</button>
+        <button class="modification-button" onclick="modifierDescription()">Modifier la description</button>
+        <button class="modification-button" onclick="modifierPrix()">Modifier le prix</button>
+        <button class="modification-button" onclick="toggleMenu()">Fermer</button>
+    </div>
+    <script>
+        var accessCodeEntered = false;
 
-    function effectuerTransaction() {
-      const nom = document.getElementById('nom').value;
-      const montant = parseInt(document.getElementById('montant').value);
+        // Fonction pour afficher ou cacher la boîte de dialogue du code d'accès
+        function toggleDialog() {
+            var dialog = document.getElementById("accessCodeDialog");
+            if (dialog.classList.contains("hidden")) {
+                dialog.classList.remove("hidden");
+            } else {
+                dialog.classList.add("hidden");
+            }
+        }
 
-      if (nom && !isNaN(montant)) {
-        const date = getCurrentDateTime();
-        participants.push({nom, montant});
-        transactions.push({nom, montant, date});
-        afficherParticipants();
-        afficherTransactions();
-        document.getElementById('nom').value = '';
-        document.getElementById('montant').value = '';
-      } else {
-        alert("Veuillez remplir correctement tous les champs.");
-      }
-    }
+        // Fonction pour vérifier le code d'accès
+        function verifierCode() {
+            var code = document.getElementById("accessCodeInput").value;
+            if (code === "15") { // Code d'accès prédéfini (à remplacer par votre propre code)
+                accessCodeEntered = true;
+                document.getElementById("menuButton").classList.remove("menu-button-disabled");
+                // Afficher le carré de modification si le code est correct
+                document.getElementById("modificationSquare").style.display = "block";
+                // Cacher la boîte de dialogue du code d'accès
+                document.getElementById("accessCodeDialog").classList.add("hidden");
+            } else {
+                alert("Code incorrect. Veuillez réessayer.");
+            }
+        }
 
-    document.getElementById('effectuer-transaction').addEventListener('click', effectuerTransaction);
+        // Fonction pour afficher ou cacher le formulaire d'abonnement
+        function toggleAbonnement() {
+            var form = document.getElementById("abonnementForm");
+            if (form.classList.contains("hidden")) {
+                form.classList.remove("hidden");
+            } else {
+                form.classList.add("hidden");
+            }
+        }
 
-    afficherParticipants();
-    afficherTransactions();
-  </script>
+        // Fonction pour traiter l'abonnement
+        function sabonner() {
+            // Récupérer les valeurs des champs du formulaire
+            var email = document.getElementById("emailInput").value;
+            var telephone = document.getElementById("telephoneInput").value;
+            var motDePasse = document.getElementById("passwordInput").value;
+            
+            // Traitement de l'abonnement (vous pouvez remplacer cette partie par votre propre logique d'abonnement)
+            // Par exemple, vous pouvez utiliser Firebase pour gérer l'authentification et l'inscription des utilisateurs.
+            // Voici un exemple d'utilisation de Firebase pour l'authentification :
+            firebase.auth().createUserWithEmailAndPassword(email, motDePasse)
+                .then((userCredential) => {
+                    // Inscription réussie, vous pouvez rediriger l'utilisateur ou effectuer d'autres actions
+                    alert("Inscription réussie !");
+                    // Fermer le formulaire d'abonnement
+                    toggleAbonnement();
+                })
+                .catch((error) => {
+                    // Gérer les erreurs d'inscription (par exemple, afficher un message d'erreur à l'utilisateur)
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(errorMessage);
+                });
+        }
 
-  <script>
-    const showMoreButton = document.getElementById('showMore');
-    const description = document.querySelector('.description');
+        // Fonction pour modifier l'image principale
+        function modifierImagePrincipale() {
+            if (!accessCodeEntered) {
+                return; // Ne rien faire si le code d'accès n'a pas été entré
+            }
 
-    showMoreButton.addEventListener('click', () => {
-      description.classList.toggle('show-description');
-    });
-  </script>
-  <script>
-    const aboutLink = document.getElementById('aboutLink');
-    const overlay = document.getElementById('overlay');
+            var nouvelleImage = prompt("Entrez l'URL de la nouvelle image :");
+            if (nouvelleImage !== null) {
+                // Remplacer l'attribut src de l'élément img avec la nouvelle image
+                var product = prompt("Entrez le numéro de produit (1 à 5) :");
+                if (product >= 1 && product <= 5) {
+                    document.getElementById("imagePrincipale" + product).src = nouvelleImage;
+                } else {
+                    alert("Numéro de produit invalide.");
+                }
+            }
+        }
 
-    aboutLink.addEventListener('click', (event) => {
-      event.preventDefault();
-      const descriptionTransfer = document.getElementById('descriptionTransfer');
-      descriptionTransfer.style.display = 'block';
-      overlay.style.display = 'block';
-    });
+        // Fonction pour modifier la description du produit
+        function modifierDescription() {
+            if (!accessCodeEntered) {
+                return; // Ne rien faire si le code d'accès n'a pas été entré
+            }
 
-    function closeDescription() {
-      const descriptionTransfer = document.getElementById('descriptionTransfer');
-      descriptionTransfer.style.display = 'none';
-      overlay.style.display = 'none';
-    }
-  </script>
+            var nouvelleDescription = prompt("Entrez la nouvelle description :");
+            if (nouvelleDescription !== null) {
+                // Remplacer le contenu de l'élément p avec la nouvelle description
+                var product = prompt("Entrez le numéro de produit (1 à 5) :");
+                if (product >= 1 && product <= 5) {
+                    document.getElementById("descriptionProduit" + product).textContent = nouvelleDescription;
+                } else {
+                    alert("Numéro de produit invalide.");
+                }
+            }
+        }
 
+        // Fonction pour modifier le prix du produit
+        function modifierPrix() {
+            if (!accessCodeEntered) {
+                return; // Ne rien faire si le code d'accès n'a pas été entré
+            }
 
+            var nouveauPrix = prompt("Entrez le nouveau prix :");
+            if (nouveauPrix !== null) {
+                // Remplacer le contenu de l'élément p avec le nouveau prix
+                var product = prompt("Entrez le numéro de produit (1 à 5) :");
+                if (product >= 1 && product <= 5) {
+                    document.getElementById("prixProduit" + product).textContent = "Prix: " + nouveauPrix + "€";
+                } else {
+                    alert("Numéro de produit invalide.");
+                }
+            }
+        }
 
+        // Fonction pour afficher ou cacher le carré de modification
+        function toggleMenu() {
+            if (accessCodeEntered) {
+                var square = document.getElementById("modificationSquare");
+                if (square.style.display === "block") {
+                    square.style.display = "none";
+                } else {
+                    square.style.display = "block";
+                }
+            }
+        }
+    </script>
 </body>
-
-</html>
+  </html>
