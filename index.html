@@ -3,639 +3,737 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LZ GANG - Accueil</title>
+    <title>ChachaMode</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Roboto+Slab:wght@100..900&display=swap');
+
+<style>
         body {
-            font-family: 'Anta', sans-serif;
-        }
-        /* Si vous voulez utiliser Roboto Slab pour certains éléments */
-        h1, h2, h3 {
-            font-family: 'Roboto Slab', serif;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
-    img {
-        max-width: 100%; /* Limite la largeur de l'image à la taille de son conteneur */
-        height: auto; /* Permet à l'image de conserver ses proportions originales */
-        display: block; /* Assure que l'image ne se superpose pas aux éléments adjacents */
-        margin: auto; /* Centre l'image horizontalement */
-    }
+        header {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
 
-        
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #333;
-    position: relative;
-}
+        .header-video {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
 
-header {
-    text-align: center;
-    padding: 20px 0;
-}
+        .header-video video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
 
-header h1 {
-    margin: 0;
-    color: #fff;
-}
+        .header-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            height: 100%;
+        }
 
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-   .header {
-    height: 300px; /* Ajustez la hauteur selon vos besoins */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.header img {
-    max-width: 100%;
-    max-height: 100%;
-}
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
 
-     
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #fff;
-}
+        main {
+            padding: 20px;
+            text-align: center;
+        }
 
         .product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: scroll;
+        }
+
+        .carousel img {
+            max-width: 100%;
+            margin: 10px;
+            flex-shrink: 0;
+            height: auto;
+        }
+
+        .video video {
+    max-width: 100%; /* Limite la largeur maximale de la vidéo à 100% de la largeur du conteneur */
+    height: auto; /* Permet à la hauteur de la vidéo de s'ajuster automatiquement en fonction de la largeur */
+    display: block; /* Assurez-vous que la vidéo est affichée en tant que bloc pour appliquer les dimensions correctement */
+    margin: 0 auto; /* Centre la vidéo horizontalement dans son conteneur */
 }
 
-.product img {
-    max-width: 100%;
-    height: auto;
-}
 
 
-.products {
-    text-align: center;
-    margin-top: 20px;
-}
 
-.product {
-    display: inline-block;
-    margin: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+        button.buy-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    color: #fff;
-}
+        button.buy-button:hover {
+            background-color: #45a049;
+        }
 
-.hidden {
-    display: none;
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
 
-/* Styles pour le bouton d'interrogation */
-.interrogation-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #3498db;
-    border: none;
-    border-radius: 50%; /* Rendre le bouton rond */
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 999; /* Pour être au-dessus du reste du contenu */
-    transition: background-color 0.3s; /* Animation de transition */
-}
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
 
-.interrogation-button:hover {
-    background-color: #2980b9; /* Changement de couleur au survol */
-}
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-/* Styles pour le bouton de menu */
-.menu-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.menu-icon {
-    width: 100%;
-    height: 4px;
-    background-color: #fff;
-    margin: 6px 0;
-}
-
-/* Styles pour la boîte de dialogue du code d'accès */
-.access-code-dialog {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Pour être au-dessus du reste du contenu */
-}
-
-.access-code-dialog input {
-    margin-bottom: 10px;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* Styles pour le formulaire d'abonnement */
-.abonnement-form {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Pour être au-dessus du reste du contenu */
-}
-
-.abonnement-form input {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.abonnement-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #2ecc71;
-    border-radius: 50%; /* Rendre le bouton rond */
-    width: 60px;
-    height: 60px;
-    text-align: center;
-    line-height: 60px;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 999; /* Pour être au-dessus du reste du contenu */
-    transition: background-color 0.3s; /* Animation de transition */
-}
-
-.abonnement-button:hover {
-    background-color: #27ae60; /* Changement de couleur au survol */
-}
-
-/* Styles pour le carré de modification */
-.modification-square {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none; /* Caché par défaut */
-}
-
-/* Styles pour les boutons de modification */
-.modification-button {
-    display: block;
-    margin-bottom: 10px;
-    padding: 10px 20px; /* Ajout de padding pour un meilleur aspect */
-    background-color: #3498db;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s; /* Animation de transition */
-}
-
-.modification-button:hover {
-    background-color: #2980b9; /* Changement de couleur au survol */
-}
-
-        /* Les styles sont inchangés */
-        .menu-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
         }
 
-/* Style pour le texte à l'intérieur du carré */
-        #about-content {
-            font-size: 14px;
-        }  
-        .a2a_button_snapchat {
-            background-color: yellow;
-        }
-        /* Styles pour la section d'accueil */
-        
-
-
-        .accueil {
-    background-image: url("https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/183d0bf0-b8a6-e0d3-5bbf-6ac87dc0f8dc.jpeg"); /* Remplacez "chemin/vers/votre/image.jpg" par le chemin de votre image */
-    background-size: cover; /* Pour que l'image remplisse l'ensemble de la section */
-    background-position: center; /* Pour centrer l'image dans la section */
-    color: white; /* Couleur du texte pour une meilleure lisibilité sur l'image */
-    text-align: center; /* Pour centrer le contenu textuel */
-    padding: 100px 0; /* Ajustez le rembourrage selon vos préférences */
-}
-
-
-        .accueil h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        #cart-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            z-index: 2;
         }
 
-        .accueil p {
-            font-size: 18px;
-            margin-bottom: 30px;
+        #cart-button .icon {
+            font-size: 24px;
         }
 
-        /* Styles pour les boutons d'action */
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #FF5733;
-            color: #fff;
+        #cart-modal .modal-content {
+            max-width: 600px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .hamburger-menu .icon {
+            font-size: 24px;
+            color: white;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            z-index: 1;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .side-menu.open {
+            transform: translateX(0);
+        }
+
+        .side-menu ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 50px 0 0;
+        }
+
+        .side-menu ul li {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .side-menu ul li a {
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-size: 20px;
-            margin-right: 20px;
+            font-size: 18px;
+            display: block;
         }
 
-        .cta-button:hover {
-            background-color: #FF5733; /* Changement de couleur au survol */
-        }
-        
 
 
 
-.carousel {
-    display: flex;
-    overflow-x: auto; /* Permet le défilement horizontal */
-    scroll-snap-type: x mandatory; /* Force le défilement d'une image à la fois */
-    scroll-behavior: smooth; /* Ajoute un défilement fluide */
+.video-description {
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.video-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 150px; /* Hauteur de votre choix */
-    margin: 0 auto; /* Centre le carousel */
-    animation: scroll 5s infinite linear; /* Défilement automatique */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-.item {
-    flex: 0 0 auto; /* Empêche le redimensionnement des éléments */
-    scroll-snap-align: start; /* Aligne chaque image sur le début de la fenêtre d'affichage */
-    margin-right: 10px; /* Marge entre chaque image */
-    min-width: 200px; /* Largeur minimale pour afficher l'image */
-    height: 100px; /* Hauteur de votre choix */
-    background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+#product-video {
+    width: 80%;
+    max-width: 600px;
 }
 
-/* Animation pour le défilement automatique */
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+   
+    .hidden {
+        display: none;
+    }
+
+    #product-list {
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+    }
+
+
+
+.video-overlay {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
 }
 
-   </style>
-</head>
-<body>
-<!-- Section d'accueil -->
-<section class="accueil">
-    <h2 style="color: black;">Bienvenue chez.   LZ GAnG !</h2>
-
-    <p style="color: black;">Découvrez nos produits de qualité et profitez d'une expérience d'achat exceptionnelle.</p>
-
-    <a href="#produits" class="cta-button">Découvrir nos produits</a>
-</section>
-</br>
-<div class="carousel">
-        <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg');"></div>
-        <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eb78b0ae-06cf-777e-5877-6876a6ce3c2b.jpeg');"></div>
-      <div class="item" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg');"></div>
-
-        <!-- Ajoutez plus d'éléments avec la classe "item" pour plus d'images -->
-</div>
-    
-
-    
-<!-- Image horizontale -->
-    <!-- Vos produits existants -->
-    <section id="produits" class="products">
-        <!-- Vos produits existants -->
-  <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eb78b0ae-06cf-777e-5877-6876a6ce3c2b.jpeg" alt="Réfrigérateur">
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">BONBONNE</h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 90€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-            <p style="font-style: italic;">Maintenant</p>
-    </div>
-    
-        
-        <div class="product">
-            <img id="imagePrincipale2" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/07d8d2e1-0b51-819c-a38a-473998039de2.jpeg" alt="Lave-linge">
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">OCB Slim</h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-            <p style="font-style: italic;">Maintenant</p>
-        </div>
-
-        
-        <div class="product">
-            <img id="imagePrincipale3" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/63cfe854-c0b0-8b8f-0a88-57814b6cd354.jpeg" alt="Cuisinière">
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">OCB Slim</h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-            <p style="font-style: italic;">Maintenant</p>
-        </div>
-        <div class="product">
-            <img id="imagePrincipale4" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/104a86e7-5a84-12d0-ba7f-f51846c9e53b.jpeg" alt="Four">            
-        </div>
-
-
-<div class="product">           
-            <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e9ad1119-09db-c86b-0b37-3ec7f0406883.jpg" alt="Réfrigérateur">
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;"> Briquet BIC </h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 29€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-            <p style="font-style: italic;">Maintenant</p>
-            
-</div>
-
-
- <div class="product">           
-            <img id="imagePrincipale1" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e69b8122-9a4f-2541-2102-64c88397c3ff.jpg" alt="Réfrigérateur">
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">VIP Tik Tok ventouse </h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix: 30€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-            <p style="font-style: italic;">Maintenant</p>
-            
- </div>       
-        
-        <div class="product">
-            <div style="position: relative; display: inline-block;">
-              <img id="imagePrincipale5" src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/744b6860-cdec-d51e-8730-acdd9a95d8f3.jpg" alt="Micro-ondes" style="max-width: 100%;">
-              <div style="position: absolute; top: 5px; left: 5px; background-color: green; color: white; padding: 5px; border-radius: 5px;">
-                <span style="font-weight: bold;"> Non disponible </span>
-              </div>
-              <div style="position: absolute; bottom: 5px; left: 5px; background-color: rgba(0, 0, 0, 0.5); color: white; padding: 5px;">
-                pas disponible après Ramadan
-              </div>
-            </div>
-            <h2 style="font-size: 24px; color: #FF5733; text-decoration: underline;">BONBONNE crème de luxe </h2>
-            <p id="descriptionProduit2" style="font-style: italic; color: #333; margin-bottom: 10px;">100 % made in France</p>
-            <p id="prixProduit1" style="font-weight: bold; color: #FF5733; margin-bottom: 10px;">Prix : 20€</p>
-            <a href="tel:+07 44 89 27 82" style="display: inline-block; padding: 10px 20px; background-color: #FF5733; color: white; text-decoration: none; border-radius: 5px;">Acheter</a>
-        </div>
-    </section>
-
-    <!-- Votre section de contact existante -->
-    <section id="contact">
-        <!-- Votre section de contact existante -->
-    </section>
-
+.video-overlay video {
+    width: 80%;
+    height: auto;
+}
 
   
-
-
-    <footer style="background-color: #3498db; color: #fff;">
-    <p>&copy; 2024 LZ GANG. Tous droits réservés.</p>
     
-    <!-- Ajout des contacts -->
-    <div>
-        <h3>Contactez-nous</h3>
-        <ul>
-            <li><strong>Téléphone:</strong> +07 44 89 27 82</li>
-            <li><strong>Email:</strong> contact@Lzgang.com</li>
-            <li><strong>Adresse:</strong> traversedes rosier Marseille 13014. </li>
-            <!-- Ajoutez d'autres moyens de contact si nécessaire -->
-        </ul>
+   .buy-button {
+    display: block;
+    margin: 10px auto; /* Marge automatique sur les côtés pour centrer horizontalement */
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="header-video">
+            <video autoplay muted loop playsinline>
+                <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture des vidéos.
+            </video>
+            <div class="header-content">
+                <h1>Chacha Mode</h1>
+                <button class="hamburger-menu" onclick="toggleSideMenu()">
+                    <span class="icon">☰</span>
+                </button>
+                <nav>
+    <nav>
+    <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#product-list">Robes de Mariage</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+                
+                <div class="side-menu" id="side-menu">
+                    <ul>
+                        <li><a href="#" onclick="showCart()">Voir Panier</a></li>
+                        <li><a href="#" onclick="closeSideMenu()">Fermer</a></li>
+                        <li><a href="#" onclick="showLoginForm()">Connexion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+
+
+<section class="product">
+    <h2>Robe de Mariage Élégante</h2>
+    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
+    <p>Prix : 250.00 €</p>
+    <div class="carousel">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
     </div>
-</footer>
+    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
+    <div class="video-overlay" id="video-overlay">
+        <video id="product-video" controls>
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture des vidéos.
+        </video>
+    </div>
+    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
+</section>
 
-
-<div id="social-sharing">
-  <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-    <a class="a2a_button_snapchat"></a>
-    <a class="a2a_button_facebook"></a>
-    <a class="a2a_button_twitter"></a>
-    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-</div>
-<script async src="https://static.addtoany.com/menu/page.js"></script>
-    <script>
-  var socialSharing = document.getElementById('social-sharing');
-
-  window.addEventListener('scroll', function() {
-    if (window.scrollY > 0) { // Si la page est défilée vers le bas
-      socialSharing.style.display = 'none'; // Masquer le code
-    } else { // Si la page est défilée vers le haut
-      socialSharing.style.display = 'block'; // Afficher le code
+<script>
+    function showVideo() {
+        var overlay = document.getElementById('video-overlay');
+        overlay.style.display = 'flex';
     }
-  });
-    </script>
-    
-    <!-- Bouton d'interrogation -->
-    <button class="interrogation-button" onclick="toggleDialog()">?</button>
 
-    <!-- Bouton de menu -->
-    <div id="menuButton" class="menu-button" onclick="toggleMenu()">
-        <div class="menu-icon"></div>
-        <div class="menu-icon"></div>
-        <div class="menu-icon"></div>
+    function hideVideo() {
+        var overlay = document.getElementById('video-overlay');
+        overlay.style.display = 'none';
+    }
+
+    document.getElementById('video-overlay').addEventListener('click', function(event) {
+        if (event.target.id === 'video-overlay') {
+            hideVideo();
+        }
+    });
+</script>
+
+
+
+
+<section class="product">
+    <h2>Robe de Mariage Élégante</h2>
+    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
+    <p>Prix : 250.00 €</p>
+    <div class="carousel">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
+    </div>
+    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
+    <div class="video-overlay" id="video-overlay">
+        <video id="product-video" controls>
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture des vidéos.
+        </video>
+    </div>
+    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
+</section>
+
+        
+        
+
+<section class="product">
+    <h2>Robe de Mariage Élégante</h2>
+    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
+    <p>Prix : 250.00 €</p>
+    <div class="carousel">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
+    </div>
+    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
+    <div class="video-overlay" id="video-overlay">
+        <video id="product-video" controls>
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture des vidéos.
+        </video>
+    </div>
+    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
+</section>
+
+    </main>
+
+    <div id="buy-options" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeBuyOptions()">&times;</span>
+            <h2>Options d'Achat</h2>
+            <button onclick="addToCart()">Acheter par Carte 💳</button>
+            <button onclick="buyPhysically()">Acheter Physiquement 🛒</button>
+        </div>
     </div>
 
-    <!-- Boîte de dialogue du code d'accès -->
-    <div id="accessCodeDialog" class="hidden access-code-dialog">
-        <h2> Accès partenariat </h2>
-        <input type="password" id="accessCodeInput" placeholder="Code d'accès"><br>
-        <button onclick="verifierCode()">Valider</button>
+    <div id="payment-form-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closePaymentFormModal()">&times;</span>
+            <h2>Formulaire de Paiement</h2>
+            <form id="payment-form">
+                <label for="card-name">Nom sur la carte :</label>
+                <input type="text" id="card-name" required><br><br>
+                <label for="card-number">Numéro de carte :</label>
+                <input type="text" id="card-number" required><br><br>
+                <label for="expiry-date">Date d'expiration :</label>
+                <input type="text" id="expiry-date" placeholder="MM/YY" required><br><br>
+                <label for="cvv">CVV :</label>
+                <input type="text" id="cvv" required><br><br>
+
+                <button type="submit">Payer</button>
+            </form>
+        </div>
     </div>
 
-    <!-- Bouton "S'abonner" -->
-    <button class="abonnement-button" onclick="toggleAbonnement()">S'abonner</button>
+    <div id="message-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeMessageModal()">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
 
-    <!-- Formulaire d'abonnement -->
-    <div id="abonnementForm" class="hidden abonnement-form">
-        <h2>S'abonner</h2>
-        <form>
-           <input type="email" placeholder="Email" id="emailInput" required><br>
-            <input type="tel" placeholder="Numéro de téléphone" id="telephoneInput" required><br>
-            <input type="password" placeholder="Mot de passe" id="passwordInput" required><br>
-            <button type="button" onclick="sabonner()">S'abonner</button>
-        </form>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeCartModal()">&times;</span>
+            <h2>Votre Panier</h2>
+            <div id="cart-items"></div>
+            <p><strong>Total:</strong> <span id="cart-total">0.00</span> €</p>
+            <button onclick="proceedToCheckout()">Passer à la Caisse</button>
+        </div>
     </div>
-    <!-- Carré de modification -->
-    <div id="modificationSquare" class="modification-square" style="display: none;">
-        <h2>Menu de Modification</h2>
-        <button class="modification-button" onclick="modifierImagePrincipale()">Modifier l'image principale</button>
-        <button class="modification-button" onclick="modifierDescription()">Modifier la description</button>
-        <button class="modification-button" onclick="modifierPrix()">Modifier le prix</button>
-        <button class="modification-button" onclick="toggleMenu()">Fermer</button>
+
+    <div id="registration-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeRegistrationModal()">&times;</span>
+            <h2>Inscription</h2>
+            <form id="registration-form">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" required><br><br>
+                <label for="email">Email :</label>
+                <input type="email" id="email" required><br><br>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" required><br><br>
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
     </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeLoginModal()">&times;</span>
+            <h2>Connexion</h2>
+            <form id="login-form">
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" required><br><br>
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" required><br><br>
+                <button type="submit">Se Connecter</button>
+            </form>
+        </div>
+    </div>
+
+<section id="product-list" class="hidden">
+    <h2>Produits de Mariage</h2>
+    <div class="product">
+        <h2>Robe de Mariage Élégante</h2>
+        <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
+        <p>Prix : 250.00 €</p>
+        <div class="carousel">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
+        </div>
+        <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
+        <div class="video-overlay" id="video-overlay">
+            <video id="product-video" controls>
+                <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23d" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture des vidéos.
+            </video>
+        </div>
+        <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
+    </div>
+</section>
+
+<script>
+   // Fonction pour afficher la vidéo
+function showVideo() {
+    var overlay = document.getElementById('video-overlay');
+    overlay.style.display = 'flex';
+}
+
+// Fonction pour masquer la vidéo
+function hideVideo() {
+    var overlay = document.getElementById('video-overlay');
+    overlay.style.display = 'none';
+}
+
+// Ajouter un événement de clic sur l'overlay pour masquer la vidéo lorsqu'on clique en dehors de la vidéo
+document.getElementById('video-overlay').addEventListener('click', function(event) {
+    if (event.target.id === 'video-overlay') {
+        hideVideo();
+    }
+});
+
+</script>
+
+
+<script>
+    document.querySelector('a[href="#product-list"]').addEventListener('click', function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+
+        var productListSection = document.getElementById('product-list');
+        var bodyChildren = document.body.children;
+
+        // Masquer tous les autres éléments du body
+        for (var i = 0; i < bodyChildren.length; i++) {
+            if (bodyChildren[i] !== productListSection) {
+                bodyChildren[i].classList.add('hidden');
+            }
+        }
+
+        // Afficher la section en plein écran
+        productListSection.classList.remove('hidden');
+        productListSection.classList.add('full-screen');
+    });
+</script>
+
+<script>
+function showVideo() {
+    document.getElementById('video-overlay').style.display = 'flex';
+}
+
+function hideVideo() {
+    document.getElementById('video-overlay').style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const videoOverlay = document.getElementById('video-overlay');
+    videoOverlay.addEventListener('click', hideVideo);
+});
+</script>
+
+                
+
     <script>
-        var accessCodeEntered = false;
+        let cart = [];
 
-        // Fonction pour afficher ou cacher la boîte de dialogue du code d'accès
-        function toggleDialog() {
-            var dialog = document.getElementById("accessCodeDialog");
-            if (dialog.classList.contains("hidden")) {
-                dialog.classList.remove("hidden");
-            } else {
-                dialog.classList.add("hidden");
-            }
+        function showBuyOptions() {
+            document.getElementById('buy-options').style.display = 'block';
         }
 
-        // Fonction pour vérifier le code d'accès
-        function verifierCode() {
-            var code = document.getElementById("accessCodeInput").value;
-            if (code === "15") { // Code d'accès prédéfini (à remplacer par votre propre code)
-                accessCodeEntered = true;
-                document.getElementById("menuButton").classList.remove("menu-button-disabled");
-                // Afficher le carré de modification si le code est correct
-                document.getElementById("modificationSquare").style.display = "block";
-                // Cacher la boîte de dialogue du code d'accès
-                document.getElementById("accessCodeDialog").classList.add("hidden");
-            } else {
-                alert("Code incorrect. Veuillez réessayer.");
-            }
+        function closeBuyOptions() {
+            document.getElementById('buy-options').style.display = 'none';
         }
 
-        // Fonction pour afficher ou cacher le formulaire d'abonnement
-        function toggleAbonnement() {
-            var form = document.getElementById("abonnementForm");
-            if (form.classList.contains("hidden")) {
-                form.classList.remove("hidden");
-            } else {
-                form.classList.add("hidden");
-            }
+        function showPaymentForm() {
+            document.getElementById('payment-form-modal').style.display = 'block';
         }
 
-        // Fonction pour traiter l'abonnement
-        function sabonner() {
-            // Récupérer les valeurs des champs du formulaire
-            var email = document.getElementById("emailInput").value;
-            var telephone = document.getElementById("telephoneInput").value;
-            var motDePasse = document.getElementById("passwordInput").value;
-            
-            // Traitement de l'abonnement (vous pouvez remplacer cette partie par votre propre logique d'abonnement)
-            // Par exemple, vous pouvez utiliser Firebase pour gérer l'authentification et l'inscription des utilisateurs.
-            // Voici un exemple d'utilisation de Firebase pour l'authentification :
-            firebase.auth().createUserWithEmailAndPassword(email, motDePasse)
-                .then((userCredential) => {
-                    // Inscription réussie, vous pouvez rediriger l'utilisateur ou effectuer d'autres actions
-                    alert("Inscription réussie !");
-                    // Fermer le formulaire d'abonnement
-                    toggleAbonnement();
-                })
-                .catch((error) => {
-                    // Gérer les erreurs d'inscription (par exemple, afficher un message d'erreur à l'utilisateur)
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    alert(errorMessage);
+        function closePaymentFormModal() {
+            document.getElementById('payment-form-modal').style.display = 'none';
+        }
+
+        function addToCart() {
+            const product = {
+                id: 1,
+                name: 'Robe de Mariage Élégante',
+                price: 250.00
+            };
+            cart.push(product);
+            updateCartTotal();
+            closeBuyOptions();
+            showModal('Produit ajouté au panier pour paiement par carte bleue.');
+        }
+
+        function buyPhysically() {
+            showModal('Veuillez contacter le 01 23 45 67 89 pour acheter physiquement.');
+            closeBuyOptions();
+        }
+
+        function showCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <span>${item.name} - ${item.price.toFixed(2)} €</span>
+                        <button onclick="removeFromCart(${index})">Supprimer</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
                 });
+            }
+
+            document.getElementById('cart-modal').style.display = 'block';
+            updateCartTotal();
         }
 
-        // Fonction pour modifier l'image principale
-        function modifierImagePrincipale() {
-            if (!accessCodeEntered) {
-                return; // Ne rien faire si le code d'accès n'a pas été entré
-            }
-
-            var nouvelleImage = prompt("Entrez l'URL de la nouvelle image :");
-            if (nouvelleImage !== null) {
-                // Remplacer l'attribut src de l'élément img avec la nouvelle image
-                var product = prompt("Entrez le numéro de produit (1 à 5) :");
-                if (product >= 1 && product <= 5) {
-                    document.getElementById("imagePrincipale" + product).src = nouvelleImage;
-                } else {
-                    alert("Numéro de produit invalide.");
-                }
-            }
+        function closeCartModal() {
+            document.getElementById('cart-modal').style.display = 'none';
         }
 
-        // Fonction pour modifier la description du produit
-        function modifierDescription() {
-            if (!accessCodeEntered) {
-                return; // Ne rien faire si le code d'accès n'a pas été entré
+        function updateCartTotal() {
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('cart-total').innerText = total.toFixed(2);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            showCart();
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                showModal('Votre panier est vide.');
+                return;
             }
 
-            var nouvelleDescription = prompt("Entrez la nouvelle description :");
-            if (nouvelleDescription !== null) {
-                // Remplacer le contenu de l'élément p avec la nouvelle description
-                var product = prompt("Entrez le numéro de produit (1 à 5) :");
-                if (product >= 1 && product <= 5) {
-                    document.getElementById("descriptionProduit" + product).textContent = nouvelleDescription;
-                } else {
-                    alert("Numéro de produit invalide.");
-                }
+            const loggedIn = checkLoginStatus(); // Function to check if user is logged in
+
+            if (loggedIn) {
+                showPaymentForm();
+            } else {
+                showRegistrationModal();
             }
         }
 
-        // Fonction pour modifier le prix du produit
-        function modifierPrix() {
-            if (!accessCodeEntered) {
-                return; // Ne rien faire si le code d'accès n'a pas été entré
-            }
-
-            var nouveauPrix = prompt("Entrez le nouveau prix :");
-            if (nouveauPrix !== null) {
-                // Remplacer le contenu de l'élément p avec le nouveau prix
-                var product = prompt("Entrez le numéro de produit (1 à 5) :");
-                if (product >= 1 && product <= 5) {
-                    document.getElementById("prixProduit" + product).textContent = "Prix: " + nouveauPrix + "€";
-                } else {
-                    alert("Numéro de produit invalide.");
-                }
-            }
+        function showRegistrationModal() {
+            document.getElementById('registration-modal').style.display = 'block';
+            closeCartModal();
         }
 
-        // Fonction pour afficher ou cacher le carré de modification
-        function toggleMenu() {
-            if (accessCodeEntered) {
-                var square = document.getElementById("modificationSquare");
-                if (square.style.display === "block") {
-                    square.style.display = "none";
-                } else {
-                    square.style.display = "block";
-                }
-            }
+        function closeRegistrationModal() {
+            document.getElementById('registration-modal').style.display = 'none';
         }
-    </script>
+
+        function showLoginForm() {
+            document.getElementById('login-modal').style.display = 'block';
+document.body.style.overflow = 'hidden'; // Bloquer le défilement de la page sous le modal
+        }
+            function closeLoginModal() {
+        document.getElementById('login-modal').style.display = 'none';
+        document.body.style.overflow = 'auto'; // Réactiver le défilement de la page lorsque le modal est fermé
+    }
+
+    function checkLoginStatus() {
+        // Dummy function to simulate user login status
+        // Replace with your actual logic to check if user is logged in
+        return false; // Return true if user is logged in, false otherwise
+    }
+
+    function showModal(message) {
+        document.getElementById('modal-message').innerText = message;
+        document.getElementById('message-modal').style.display = 'block';
+    }
+
+    function closeMessageModal() {
+        document.getElementById('message-modal').style.display = 'none';
+    }
+
+    function toggleSideMenu() {
+        const sideMenu = document.getElementById('side-menu');
+        sideMenu.classList.toggle('open');
+    }
+
+    function closeSideMenu() {
+        const sideMenu = document.getElementById('side-menu');
+        sideMenu.classList.remove('open');
+    }
+
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page par défaut
+
+        // Simuler le traitement du paiement (remplacer par votre logique de paiement réelle)
+        setTimeout(function() {
+            showModal('Paiement effectué avec succès !');
+            cart = []; // Réinitialiser le panier après le paiement
+            updateCartTotal();
+            closeCartModal();
+            closePaymentFormModal();
+        }, 2000); // Temps simulé de traitement du paiement (2 secondes ici)
+    });
+
+    document.getElementById('registration-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page par défaut
+
+        // Logique pour l'inscription de l'utilisateur (à remplacer par votre propre logique)
+        showModal('Inscription réussie ! Veuillez maintenant procéder au paiement.');
+
+        // Simuler la fermeture du modal d'inscription
+        closeRegistrationModal();
+        showPaymentForm();
+    });
+
+    function closeRegistrationModal() {
+        document.getElementById('registration-modal').style.display = 'none';
+    }
+</script>
 </body>
-  </html>
+</html>
+
