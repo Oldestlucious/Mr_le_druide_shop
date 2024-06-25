@@ -402,6 +402,80 @@ border-radius: 5px;
         margin: 10px auto; /* Espacement extérieur et centrage horizontal */
         text-align: center; /* Alignement du texte au centre */
     }
+
+    #accueil.hidden {
+    display: none;
+    }
+
+
+
+
+
+
+
+
+#accueil-section {
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Utilisation de 100vh pour occuper toute la hauteur de la vue */
+    text-align: center; /* Pour centrer le texte à l'intérieur des éléments */
+}
+
+#accueil-section h2,
+#accueil-section p,
+#accueil-section button {
+    margin-bottom: 20px; /* Espacement entre les éléments */
+}
+
+
+.full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Couleur de fond */
+    z-index: 1000; /* Assurez-vous que la section est au-dessus du reste du contenu */
+    overflow-y: auto; /* Ajoutez le défilement vertical si nécessaire */
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.image-container {
+    width: 300px; /* Largeur de votre choix */
+    height: 200px; /* Hauteur de votre choix */
+    margin-bottom: 20px; /* Espacement entre les images */
+    position: relative;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre complètement le conteneur */
+    transition: transform 0.3s ease; /* Effet de transition facultatif */
+}
+
+.image-container:hover img {
+    transform: scale(1.1); /* Effet de zoom au survol */
+    }
+
+
+
+
+    #buy-options .modal-content img {
+    width: 50px; /* Ajustez la taille selon vos besoins */
+    height: auto;
+    margin-right: 10px; /* Espacement entre l'image et le bouton */
+    }
 </style>
 
 </head>
@@ -413,7 +487,7 @@ border-radius: 5px;
                 Votre navigateur ne supporte pas la lecture des vidéos.
             </video>
             <div class="header-content">
-  <h1 class="nabla-chacha-mode">Chacha Mode</h1>
+  <h1 class="nabla-chacha-mode">Chacha Mode </h1>
             
                 <button class="hamburger-menu" onclick="toggleSideMenu()">
                     <span class="icon">☰</span>
@@ -421,7 +495,8 @@ border-radius: 5px;
                 <nav>
     <nav>
     <ul>
-        <li><a href="#">Accueil</a></li>
+        <li id="accueil"><a href="#accueil">Accueil</a></li>
+               
         <li><a href="#product-list">Robes de Mariage</a></li>
         <li><a href="#">Contact</a></li>
     </ul>
@@ -525,12 +600,23 @@ border-radius: 5px;
     </main>
 
     <div id="buy-options" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeBuyOptions()">&times;</span>
-            <h2>Options d'Achat</h2>
-            <button onclick="addToCart()">Acheter par Carte 💳</button>
-            <button onclick="buyPhysically()">Acheter Physiquement 🛒</button>
+    <div class="modal-content">
+        <span class="close-button" onclick="closeBuyOptions()">&times;</span>
+        <h2>Options d'Achat</h2>
+        <div>
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/09b39c09-e9e5-55fb-d973-6953f4291b7b.jpeg" alt="Carte Bleue 1">
+            
         </div>
+        <div>
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2fe9171b-a083-2d29-0c1f-fb9f79d63ad2.jpeg" alt="Carte Bleue 2">
+            <h2>
+               Chacha Mode 
+            </h2>
+            
+            <button onclick="buyPhysically()">Acheter Physiquement 🛒</button>
+            <button onclick="addToCart()">Acheter par Carte 💳</button>
+        </div>
+    </div>
     </div>
 
     <div id="payment-form-modal" class="modal">
@@ -609,8 +695,8 @@ border-radius: 5px;
         <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
         <p>Prix : 250.00 €</p>
         <div class="carousel">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b5744719-2152-71dc-c2cc-2e4b734a15f1.jpg" alt="Robe de Mariage 1">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b07a671b-ad01-6efd-10fc-221faa5e4146.jpg" alt="Robe de Mariage 2">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
         </div>
         <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
         <div class="video-overlay" id="video-overlay">
@@ -622,6 +708,42 @@ border-radius: 5px;
         <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
     </div>
 </section>
+
+
+<section id="accueil-section" class="hidden full-screen">
+    <h2>Accueil</h2>
+    <p>Bienvenue sur notre boutique en ligne ! Découvrez nos accessoires de robe femme, robes de mariée, et bien plus encore.</p>
+    <button onclick="window.location.href='index.html'">Retour à la page d'accueil</button>
+    <div class="centered">
+        <div class="image-container">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/4cbba359-f24e-7001-fa76-c670b23061fa.jpeg" alt="Image 1">
+        </div>
+        <div class="image-container">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/fa6bb8e8-720b-462a-8073-4396342486df.jpeg" alt="Image 2">
+        </div>
+        <div class="image-container">
+            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/9f6d9b47-0a91-d32d-4ec2-2d98bb246040.jpeg" alt="Image 3">
+        </div>
+    </div>
+    <button id="back-to-top" onclick="scrollToTop()">⏏️</button>
+</section>
+
+<script>
+document.getElementById('accueil').addEventListener('click', function(event) {
+    event.preventDefault(); // Empêche le comportement par défaut du lien
+
+    var accueilSection = document.getElementById('accueil-section');
+    accueilSection.classList.toggle('hidden'); // Affiche ou masque la section d'accueil
+
+    if (!accueilSection.classList.contains('hidden')) {
+        accueilSection.classList.add('full-screen'); // Ajoute la classe full-screen lorsque la section est visible
+        document.body.style.overflow = 'hidden'; // Empêche le défilement de la page sous la section d'accueil
+    } else {
+        accueilSection.classList.remove('full-screen'); // Retire la classe full-screen lorsque la section est masquée
+        document.body.style.overflow = 'auto'; // Réactive le défilement de la page
+    }
+});
+</script>
 
 <script>
    // Fonction pour afficher la vidéo
@@ -644,6 +766,7 @@ document.getElementById('video-overlay').addEventListener('click', function(even
 });
 
 </script>
+    
 <script>
    function scrollToTop() {
     document.body.scrollTop = 0; // pour Safari
