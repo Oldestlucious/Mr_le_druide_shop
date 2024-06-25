@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChachaMode</title>
     <link rel="stylesheet" href="styles.css">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
 <style>
+.nabla-chacha-mode {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
+}
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -228,14 +239,14 @@
 
 
 
-
 .video-description {
-    cursor: pointer;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #333;
+    cursor: pointer; /* Changement du curseur pour indiquer que l'élément est cliquable */
+    text-align: center; /* Centrer le texte horizontalement */
+    margin-top: 20px; /* Marge supérieure de 20 pixels */
+    font-size: 16px; /* Taille de police de 16 pixels */
+    color: #333; /* Couleur du texte sombre */
 }
+
 
 .video-overlay {
     display: none;
@@ -300,6 +311,79 @@
     text-align: center;
 }
 
+
+
+    
+
+ .centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#product-list h2 {
+    margin-bottom: 20px;
+}
+
+#product-list button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#product-list button:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#product-list button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#back-to-top:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-top:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+    }
+
+
+.nabla-chacha-mode {
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "EDPT" 100,
+    "EHLT" 12;
+}
+
 </style>
 
 </head>
@@ -311,7 +395,8 @@
                 Votre navigateur ne supporte pas la lecture des vidéos.
             </video>
             <div class="header-content">
-                <h1>Chacha Mode</h1>
+  <h1 class="nabla-chacha-mode">Chacha Mode</h1>
+            
                 <button class="hamburger-menu" onclick="toggleSideMenu()">
                     <span class="icon">☰</span>
                 </button>
@@ -349,9 +434,10 @@
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
     </div>
     <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
+
     <div class="video-overlay" id="video-overlay">
         <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154412038.mp4?alt=media&token=dd3376ff-5990-4b87-b2ac-9d5f4aba0144" type="video/mp4">
             Votre navigateur ne supporte pas la lecture des vidéos.
         </video>
     </div>
@@ -384,13 +470,13 @@
     <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
     <p>Prix : 250.00 €</p>
     <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/72897a80-d4cf-6d8c-486d-7e1b2bc2ead3.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ec7cbb2e-1cf9-d9e7-a8b8-dd05046854fe.jpg" alt="Robe de Mariage 2">
     </div>
     <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
     <div class="video-overlay" id="video-overlay">
         <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154048846.mp4?alt=media&token=fcc45e25-7391-41ee-9011-5fb4fe4153fd" type="video/mp4">
             Votre navigateur ne supporte pas la lecture des vidéos.
         </video>
     </div>
@@ -405,13 +491,13 @@
     <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
     <p>Prix : 250.00 €</p>
     <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e8b4752-b87c-1c8d-faa7-9608a58caaf0.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/51e266fe-8651-b7bd-e780-be70e5323b53.jpg" alt="Robe de Mariage 2">
     </div>
     <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
     <div class="video-overlay" id="video-overlay">
         <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23dc" type="video/mp4">
+            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154646587.mp4?alt=media&token=ab581570-e3c5-49d8-b045-cddf1d2540b0" type="video/mp4">
             Votre navigateur ne supporte pas la lecture des vidéos.
         </video>
     </div>
@@ -495,9 +581,13 @@
         </div>
     </div>
 
-<section id="product-list" class="hidden">
+<section id="product-list" class="hidden centered">
     <h2>Produits de Mariage</h2>
-    <div class="product">
+    <button onclick="window.location.href='index.html'">Retour à la page d'accueil</button>
+
+
+<button id="back-to-top" onclick="scrollToTop()">⏏️ Retour en haut</button>
+
         <h2>Robe de Mariage Élégante</h2>
         <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
         <p>Prix : 250.00 €</p>
@@ -537,7 +627,12 @@ document.getElementById('video-overlay').addEventListener('click', function(even
 });
 
 </script>
-
+<script>
+   function scrollToTop() {
+    document.body.scrollTop = 0; // pour Safari
+    document.documentElement.scrollTop = 0; // pour Chrome, Firefox, IE et Opera
+   }
+        </script>
 
 <script>
     document.querySelector('a[href="#product-list"]').addEventListener('click', function(event) {
@@ -558,6 +653,9 @@ document.getElementById('video-overlay').addEventListener('click', function(even
         productListSection.classList.add('full-screen');
     });
 </script>
+
+
+
 
 <script>
 function showVideo() {
