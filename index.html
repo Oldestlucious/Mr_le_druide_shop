@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cbf32627-b28f-7374-b8d5-6f78ea113758.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ChachaMode</title>
@@ -77,12 +78,27 @@
             text-align: center;
         }
 
+
+
         .product {
             border: 1px solid #ccc;
             padding: 20px;
             margin: 20px auto;
             max-width: 600px;
         }
+
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+
+.product h2,
+.product p {
+  font-family: "Quintessential", serif;
+  font-weight: 400;
+  font-style: normal;
+    }
+
+
 
         .carousel {
             display: flex;
@@ -110,7 +126,8 @@
             background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
-            border: none;
+            
+border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
         }
@@ -137,7 +154,8 @@
             background-color: #fefefe;
             margin: 5% auto;
             padding: 20px;
-            border: 1px solid #888;
+            
+border-radius: 5px;
             width: 80%;
             max-width: 400px;
         }
@@ -263,7 +281,7 @@
 
 #product-video {
     width: 80%;
-    max-width: 600px;
+    max-width: 400px;
 }
 
    
@@ -289,7 +307,7 @@
     background: rgba(0, 0, 0, 0.8);
     justify-content: center;
     align-items: center;
-    z-index: 1001;
+    z-index: 9999;
 }
 
 .video-overlay video {
@@ -298,20 +316,6 @@
 }
 
   
-    
-   .buy-button {
-    display: block;
-    margin: 10px auto; /* Marge automatique sur les côtés pour centrer horizontalement */
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-align: center;
-}
-
-
 
     
 
@@ -331,7 +335,7 @@
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #28a745;
+    background-color: #f09a22;
     color: white;
     border: none;
     border-radius: 5px;
@@ -341,6 +345,8 @@
 #product-list button:hover {
     background-color: #218838;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+border-radius: 5px;
+
 }
 
 #product-list button:focus {
@@ -384,6 +390,18 @@
     "EHLT" 12;
 }
 
+
+
+    .price-tag {
+        background-color: #669e5f; /* Couleur de fond */
+        border: 1px solid #ccc; /* Bordure */
+        padding: 10px; /* Espacement intérieur */
+        width: fit-content; /* Ajuste la largeur au contenu */
+        font-weight: bold; /* Texte en gras pour le rendre plus visible */
+        border-radius: 5px; /* Coins arrondis */
+        margin: 10px auto; /* Espacement extérieur et centrage horizontal */
+        text-align: center; /* Alignement du texte au centre */
+    }
 </style>
 
 </head>
@@ -428,7 +446,7 @@
 <section class="product">
     <h2>Robe de Mariage Élégante</h2>
     <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
-    <p>Prix : 250.00 €</p>
+    <p class="price-tag">Prix : 250.00 €</p>
     <div class="carousel">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
@@ -470,8 +488,8 @@
     <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
     <p>Prix : 250.00 €</p>
     <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/72897a80-d4cf-6d8c-486d-7e1b2bc2ead3.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ec7cbb2e-1cf9-d9e7-a8b8-dd05046854fe.jpg" alt="Robe de Mariage 2">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b72e4ecc-f635-4294-b700-ef8ad8ab3973.jpg" alt="Robe de Mariage 1">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/21d50b55-4ace-f33e-5f28-d97682b3a964.jpg" alt="Robe de Mariage 2">
     </div>
     <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
     <div class="video-overlay" id="video-overlay">
@@ -585,8 +603,7 @@
     <h2>Produits de Mariage</h2>
     <button onclick="window.location.href='index.html'">Retour à la page d'accueil</button>
 
-
-<button id="back-to-top" onclick="scrollToTop()">⏏️ Retour en haut</button>
+<button id="back-to-top" onclick="scrollToTop()">⏏️</button>
 
         <h2>Robe de Mariage Élégante</h2>
         <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
