@@ -1,977 +1,1017 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cbf32627-b28f-7374-b8d5-6f78ea113758.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChachaMode</title>
-    <link rel="stylesheet" href="styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
-<style>
-.nabla-chacha-mode {
-  font-family: "Nabla", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "EDPT" 100,
-    "EHLT" 12;
+    <title>Market Collection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+/* Style pour le bouton de retour en haut */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px; /* Positionné à 20px du bas */
+    right: 20px;  /* Positionné à 20px de la droite */
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000; /* Assure que le bouton est au-dessus des autres éléments */
+    opacity: 0; /* Caché par défaut */
+    transition: opacity 0.3s;
 }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+
+.scroll-to-top:hover {
+    background-color: #555;
+}
+
+.scroll-to-top.show {
+    opacity: 1; /* Affiché lorsque la classe "show" est ajoutée */
+    }
+
+
+
+
+
+
+        
+/* Styling for each section title */
+h2 {
+    font-size: 24px;
+    margin: 20px 0;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    color: white;
+    border: 2px solid; /* Apply border with specific colors below */
+}
+
+/* Section-specific styles */
+.boissons-alcoolisees {
+    background-color: #b71c1c; /* Rouge pour boissons alcoolisées */
+    border-color: #d32f2f; /* Bordure plus claire */
+}
+
+.boissons-sans-alcool {
+    background-color: #0277bd; /* Bleu pour boissons sans alcool */
+    border-color: #039be5; /* Bordure plus claire */
+}
+
+.amuse-gueules {
+    background-color: #f57c00; /* Orange pour amuse-gueules */
+    border-color: #ff9800; /* Bordure plus claire */
+}
+
+
+
+
+
+/* Global container styling */
+#products {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+
+
+
+
+
+
+
+
+
+/* Encadrement pour chaque section */
+.section-container {
+    margin-bottom: 50px; /* Espace entre les sections */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
+    border: 1px solid #ddd;
+}
+
+/* Background for each section */
+#boissons-alcoolisees {
+    background-color: #f3f3f3; /* Gris clair pour les boissons alcoolisées */
+}
+
+#boissons-sans-alcool {
+    background-color: #e0f7fa; /* Bleu clair pour les boissons sans alcool */
+}
+
+#amuse-gueules {
+    background-color: #f9fbe7; /* Jaune très clair pour les amuse-gueules */
+}
+
+/* Styling for each product item */
+.product {
+    margin-bottom: 40px; /* Espace entre chaque produit */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour les produits */
+    background-color: #fff; /* Fond blanc pour les produits */
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05); /* Effet zoom au survol */
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Title of each product */
+.product h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Product description */
+.product p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Buy button */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5722; /* Couleur du bouton */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e64a19; /* Couleur du bouton au survol */
+}
+
+/* Spacing between sections (alcool, sans alcool, amuse-gueules) */
+#products h2 {
+    margin-top: 60px; /* Espace avant chaque section */
+}
+
+#products .product:nth-child(1) {
+    margin-top: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    #products {
+        padding: 10px;
+    }
+    .product {
+        margin-bottom: 30px;
+        padding: 15px;
+    }
+    .product h2 {
+        font-size: 18px;
+    }
+    .cta-button {
+        padding: 8px 16px;
+    }
         }
 
-        header {
-            position: relative;
-            text-align: center;
-            color: white;
-        }
 
-        .header-video {
-            position: relative;
-            height: 300px;
-            overflow: hidden;
-        }
 
-        .header-video video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0, 0, 0, 0.5);
-            height: 100%;
-        }
 
+
+/* Style global pour les titres de section */
+.section-title {
+    font-size: 26px;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin: 0; /* Pas d'espacement autour des titres */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Conteneur pour les sections avec un encadrement */
+.section-container {
+    margin: 50px 0; /* Espacement entre les sections */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce autour de l'encadrement */
+    border: 2px solid #ccc; /* Bordure autour de chaque section */
+}
+
+/* Fond pour la section des boissons alcoolisées */
+#boissons-alcoolisees {
+    background-color: #3E2723; /* Couleur marron foncé pour l'alcool */
+}
+
+#boissons-alcoolisees .section-title {
+    background-color: #6D4C41; /* Titre plus clair pour l'alcool */
+}
+
+/* Fond pour la section des boissons sans alcool */
+#boissons-sans-alcool {
+    background-color: #0288D1; /* Couleur bleue pour les boissons sans alcool */
+}
+
+#boissons-sans-alcool .section-title {
+    background-color: #03A9F4; /* Titre plus clair pour sans alcool */
+}
+
+/* Fond pour la section des amuse-gueules */
+#amuse-gueules {
+    background-color: #2E7D32; /* Couleur verte pour les amuse-gueules */
+}
+
+#amuse-gueules .section-title {
+    background-color: #4CAF50; /* Titre plus clair pour amuse-gueules */
+}
+
+/* Espacement entre les produits à l'intérieur de chaque section */
+.product {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff; /* Fond blanc pour les produits */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Légère ombre autour des produits */
+}
+
+/* Style pour le bouton d'achat */
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff5722; /* Couleur du bouton */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.cta-button:hover {
+    background-color: #e64a19; /* Couleur du bouton au survol */
+}
+
+/* Responsive design pour les sections */
+@media (max-width: 768px) {
+    .section-container {
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        padding: 10px;
+    }
+
+    .product {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+}
+
+
+
+
+        /* Votre CSS existant */
         nav ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
+            background-color: #333;
+            margin: 0;
         }
 
         nav ul li {
             display: inline;
-            margin: 0 10px;
+            margin-right: 20px;
         }
 
         nav ul li a {
-            color: white;
             text-decoration: none;
-        }
-
-        main {
-            padding: 20px;
-            text-align: center;
-        }
-
-
-
-        .product {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-        }
-
-
-
-    @import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
-
-.product h2,
-.product p {
-  font-family: "Quintessential", serif;
-  font-weight: 400;
-  font-style: normal;
-    }
-
-
-
-        .carousel {
-            display: flex;
-            overflow-x: scroll;
-        }
-
-        .carousel img {
-            max-width: 100%;
-            margin: 10px;
-            flex-shrink: 0;
-            height: auto;
-        }
-
-        .video video {
-    max-width: 100%; /* Limite la largeur maximale de la vidéo à 100% de la largeur du conteneur */
-    height: auto; /* Permet à la hauteur de la vidéo de s'ajuster automatiquement en fonction de la largeur */
-    display: block; /* Assurez-vous que la vidéo est affichée en tant que bloc pour appliquer les dimensions correctement */
-    margin: 0 auto; /* Centre la vidéo horizontalement dans son conteneur */
-}
-
-
-
-
-        button.buy-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            
-border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button.buy-button:hover {
-            background-color: #45a049;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            
-border-radius: 5px;
-            width: 80%;
-            max-width: 400px;
-        }
-
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
+            color: #fff;
             font-weight: bold;
         }
 
-        .close-button:hover,
-        .close-button:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        #cart-button {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-            z-index: 2;
-        }
-
-        #cart-button .icon {
-            font-size: 24px;
-        }
-
-        #cart-modal .modal-content {
-            max-width: 600px;
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .cart-item:last-child {
-            border-bottom: none;
-        }
-
-        .hamburger-menu {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 2;
-        }
-
-        .hamburger-menu .icon {
-            font-size: 24px;
-            color: white;
-        }
-
-        .side-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            z-index: 1;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .side-menu.open {
-            transform: translateX(0);
-        }
-
-        .side-menu ul {
-            list-style-type: none;
+        @import url('https://fonts.googleapis.com/css2?family=Anta&family=Roboto+Slab:wght@100..900&display=swap');
+        body {
+            font-family: 'Anta', sans-serif;
+            margin: 0;
             padding: 0;
-            margin: 50px 0 0;
+            background-color: #f4f4f4;
+            position: relative;
         }
 
-        .side-menu ul li {
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        .header {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .header img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .product {
+            display: inline-block;
+            margin: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .products {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            color: #333;
+            background-color: #eee;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .cta-button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .abonnement-form {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .abonnement-form input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .abonnement-button {
+            background-color: #2ecc71;
+            border-radius: 5px;
+            padding: 10px 20px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .abonnement-button:hover {
+            background-color: #27ae60;
+        }
+
+        .subscriber-circle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #2ecc71;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        #cartButton {
+            display: block;
+            margin: 20px auto;
+            z-index: 1000;
+        }
+
+        #cartSummary {
+            position: absolute;
+            top: 80px;
+            left: 20px;
+            width: 300px;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .description-banner {
+            background-color: #ffcb0d;
             padding: 15px;
             text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
         }
 
-        .side-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
+        .delivery-form {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .delivery-form input, .delivery-form select {
             display: block;
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
 
 
-.video-description {
-    cursor: pointer; /* Changement du curseur pour indiquer que l'élément est cliquable */
-    text-align: center; /* Centrer le texte horizontalement */
-    margin-top: 20px; /* Marge supérieure de 20 pixels */
-    font-size: 16px; /* Taille de police de 16 pixels */
-    color: #333; /* Couleur du texte sombre */
-}
-
-
-.video-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-#product-video {
-    width: 80%;
-    max-width: 400px;
-}
-
-   
-    .hidden {
-        display: none;
-    }
-
-    #product-list {
-        padding: 20px;
-        border: 1px solid #ccc;
-        margin-top: 10px;
-    }
 
 
 
-.video-overlay {
-    display: none; /* Masqué par défaut */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.video-overlay video {
-    width: 80%;
-    height: auto;
-}
-
-  
-
-    
-
- .centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-}
-
-#product-list h2 {
-    margin-bottom: 20px;
-}
-
-#product-list button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #f09a22;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-#product-list button:hover {
-    background-color: #218838;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-border-radius: 5px;
-
-}
-
-#product-list button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
-}
-
-#back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    padding: 15px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-#back-to-top:hover {
-    background-color: #0056b3;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-#back-to-top:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
-    }
-
-
-.nabla-chacha-mode {
-  font-family: "Nabla", system-ui;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings:
-    "EDPT" 100,
-    "EHLT" 12;
+        .section-title {
+    font-size: 24px; /* Taille du texte */
+    text-align: center; /* Centrer le texte */
+    padding: 10px; /* Espacement intérieur */
+    margin-bottom: 20px; /* Espace sous le titre */
+    border-bottom: 2px solid #ccc; /* Ligne sous le titre */
+    background-color: #f3f3f3; /* Couleur de fond gris clair */
+    border-radius: 10px; /* Bords arrondis */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
 
 
 
-    .price-tag {
-        background-color: #669e5f; /* Couleur de fond */
-        border: 1px solid #ccc; /* Bordure */
-        padding: 10px; /* Espacement intérieur */
-        width: fit-content; /* Ajuste la largeur au contenu */
-        font-weight: bold; /* Texte en gras pour le rendre plus visible */
-        border-radius: 5px; /* Coins arrondis */
-        margin: 10px auto; /* Espacement extérieur et centrage horizontal */
-        text-align: center; /* Alignement du texte au centre */
-    }
-
-    #accueil.hidden {
-    display: none;
-    }
 
 
 
 
 
 
-
-
-#accueil-section {
-    
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; /* Utilisation de 100vh pour occuper toute la hauteur de la vue */
-    text-align: center; /* Pour centrer le texte à l'intérieur des éléments */
-}
-
-#accueil-section h2,
-#accueil-section p,
-#accueil-section button {
-    margin-bottom: 20px; /* Espacement entre les éléments */
-}
-
-
-.full-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white; /* Couleur de fond */
-    z-index: 1000; /* Assurez-vous que la section est au-dessus du reste du contenu */
-    overflow-y: auto; /* Ajoutez le défilement vertical si nécessaire */
-}
-
-.centered {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
-
-.image-container {
-    width: 300px; /* Largeur de votre choix */
-    height: 200px; /* Hauteur de votre choix */
-    margin-bottom: 20px; /* Espacement entre les images */
+        /* Style for dropdown menu */
+.dropdown {
     position: relative;
-    overflow: hidden;
+    display: inline-block;
 }
 
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Assure que l'image couvre complètement le conteneur */
-    transition: transform 0.3s ease; /* Effet de transition facultatif */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Assure que le menu est au-dessus des autres éléments */
 }
 
-.image-container:hover img {
-    transform: scale(1.1); /* Effet de zoom au survol */
-    }
+.dropdown-menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 16px;
+    text-align: left;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
 
+.dropdown-menu a:hover {
+    background-color: #555;
+}
 
-
-
-    #buy-options .modal-content img {
-    width: 50px; /* Ajustez la taille selon vos besoins */
-    height: auto;
-    margin-right: 10px; /* Espacement entre l'image et le bouton */
-    }
-</style>
-
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+    </style>
 </head>
 <body>
-    <header>
-        <div class="header-video">
-            <video autoplay muted loop playsinline>
-                <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture des vidéos.
-            </video>
-            <div class="header-content">
-  <h1 class="nabla-chacha-mode">Chacha Mode </h1>
-            
-                <button class="hamburger-menu" onclick="toggleSideMenu()">
-                    <span class="icon">☰</span>
-                </button>
-                <nav>
-    <nav>
+
+
+
+
+    
+    <header class="header" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/31aacda2-2ffb-f2c5-2775-bea95b70b6bb.jpg');">
+        <h1>Livraison gratuite à partir de 60 € !</h1>
+    </header>
+
+    <div class="description-banner">
+        <p>Profitez de notre service de livraison planifiée. Commandez maintenant et choisissez votre créneau horaire de livraison parmi 1h, 2h, 3h, 4h ou 5h.</p>
+    </div>
+
+
+<nav>
     <ul>
-        <li id="accueil"><a href="#accueil">Accueil</a></li>
-               
-        <li><a href="#product-list">Robes de Mariage</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#" onclick="showSection('home')">Accueil</a></li>
+        <li class="dropdown">
+            <a href="#" onclick="toggleDropdown()">Produits</a>
+            <ul class="dropdown-menu">
+                <li><a href="#boissons-alcoolisees" onclick="scrollToSection('boissons-alcoolisees')">Boissons Alcoolisées</a></li>
+                <li><a href="#boissons-sans-alcool" onclick="scrollToSection('boissons-sans-alcool')">Boissons Sans Alcool</a></li>
+                <li><a href="#amuse-gueules" onclick="scrollToSection('amuse-gueules')">Amuse-Gueules</a></li>
+            </ul>
+        </li>
+        <li><a href="#" onclick="showSection('about')">À propos</a></li>
+        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
     </ul>
 </nav>
 
-                
-                <div class="side-menu" id="side-menu">
-                    <ul>
-                        <li><a href="#" onclick="showCart()">Voir Panier</a></li>
-                        <li><a href="#" onclick="closeSideMenu()">Fermer</a></li>
-                        <li><a href="#" onclick="showLoginForm()">Connexion</a></li>
-                    </ul>
+
+
+    
+    <button id="cartButton" class="btn btn-primary">Panier</button>
+
+    <div id="cartSummary" class="hidden">
+        <h4>Récapitulatif de la Commande</h4>
+        <ul id="cartItemsList"></ul>
+        <p>Total : <span id="cartTotal">0</span> €</p>
+        <button class="btn btn-secondary" onclick="clearCart()">Vider le Panier</button>
+        <button class="btn btn-success" onclick="showDeliveryForm()">Finaliser la Commande</button>
+    </div>
+
+    <form id="orderForm" action="https://formspree.io/f/xgvwqzba" method="POST" class="delivery-form">
+    <h5>Informations de Livraison</h5>
+    <label>Nom complet:</label>
+    <input type="text" name="name" id="deliveryName" placeholder="Nom complet" required>
+
+    <label>Adresse de livraison:</label>
+    <input type="text" name="address" id="deliveryAddress" placeholder="Adresse de livraison" required>
+
+    <label>Numéro de téléphone:</label>
+    <input type="tel" name="phone" id="deliveryPhone" placeholder="Numéro de téléphone" required>
+
+    <label>Choisir le créneau de livraison:</label>
+    <select name="deliveryTime" id="deliveryTime" required>
+        <option value="" disabled selected>Choisir un créneau</option>
+        <option value="1h">Dans 1 heure</option>
+        <option value="2h">Dans 2 heures</option>
+        <option value="3h">Dans 3 heures</option>
+        <option value="4h">Dans 4 heures</option>
+        <option value="5h">Dans 5 heures</option>
+    </select>
+
+    <label>Méthode de paiement:</label>
+    <select name="paymentMethod" id="paymentMethod" required>
+        <option value="" disabled selected>Choisir une méthode de paiement</option>
+        <option value="cash">Espèces</option>
+        <option value="card">Carte Bleue</option>
+    </select>
+
+    <input type="hidden" name="orderDetails" id="orderDetails">
+    <button type="submit" class="btn btn-primary">Confirmer la Commande</button>
+    </form>
+
+
+
+<div id="products" class="products">
+
+    <!-- Section Boissons Alcoolisées -->
+    <h2 class="boissons-alcoolisees">Nos Boissons Alcoolisées</h2>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1aaf571e-3fc8-e4f8-d318-bbd9baee6e98.jpeg" alt="POLIAKOV">
+        <h2>POLIAKOV</h2>
+        <p>Vodka Poliakoff classique, idéale pour des cocktails.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter1" href="#" class="cta-button" onclick="acheterProduit(1, 'POLIAKOV', 19.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c26f8c72-bdd5-2db0-0f9a-335d72134fb6.jpeg" alt="JACK DANIEL'S">
+        <h2>JACK DANIEL'S</h2>
+        <p>BLACK Tennessee Whiskey, riche et intense.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter2" href="#" class="cta-button" onclick="acheterProduit(2, 'JACK DANIEL\'S', 24.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5a52a894-12c6-d126-310f-b7ef831bcf27.jpeg" alt="CÎROC">
+        <h2>CÎROC</h2>
+        <p>Vodka premium à base de raisins.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter3" href="#" class="cta-button" onclick="acheterProduit(3, 'CÎROC', 24.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/430f58df-0590-8526-0510-fcdd399803af.jpeg" alt="Absolut Vodka">
+        <h2>Absolut Vodka</h2>
+        <p>Vodka suédoise, pure et élégante.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter4" href="#" class="cta-button" onclick="acheterProduit(4, 'Absolut Vodka', 20.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5c7829f3-deee-a298-09c5-b826eabcc639.jpeg" alt="Vodka Pêche">
+        <h2>Absolut Vodka Pêche</h2>
+        <p>Vodka aromatisée à la pêche, idéale pour des cocktails fruités.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter5" href="#" class="cta-button" onclick="acheterProduit(5, 'Vodka Pêche', 18.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/09ea4f7a-9f6b-56ee-8b9a-53f96a6bbc7b.jpeg" alt="Vodka Caramel">
+        <h2>Absolut Vodka Watermelon</h2>
+        <p>Vodka douce avec des notes de melon.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter6" href="#" class="cta-button" onclick="acheterProduit(6, 'Vodka Caramel', 18.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ac71af99-cdc1-2898-ee84-a257add2a5d2.jpeg" alt="Vodka Green Apple">
+        <h2>Absolut Vodka RASPBERRI</h2>
+        <p>Vodka au goût Flavour, fraîche et acidulée.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter7" href="#" class="cta-button" onclick="acheterProduit(7, 'Vodka Green Apple', 18.99)">Acheter</a>
+    </div>
+
+    <!-- Section Boissons sans Alcool -->
+    <h2 class="boissons-sans-alcool">Nos Boissons Sans Alcool</h2>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8c722ae1-3bb2-ffd9-8eba-3a64cd90ba40.jpeg" alt="Calypso Fraise">
+        <h2>Calypso Fraise</h2>
+        <p>Boisson fruitée à la fraise, rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Calypso Fraise', 3.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e1277d7f-84c8-30ce-30a9-dadfc7da18df.jpeg" alt="Calypso Bleu Limonade">
+        <h2>Calypso Bleu Limonade</h2>
+        <p>Boisson à la limonade bleue, avec une touche d’agrumes.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter9" href="#" class="cta-button" onclick="acheterProduit(9, 'Calypso Bleu Limonade', 3.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c78eef87-62a7-e4a9-59e5-4d223dbbb200.jpeg" alt="Calypso Kiwi Limonade">
+        <h2>Calypso Kiwi Limonade</h2>
+        <p>Boisson à la limonade avec une touche de kiwi.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter10" href="#" class="cta-button" onclick="acheterProduit(10, 'Calypso Kiwi Limonade', 3.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e283d4b1-fbc0-bf54-51d2-ecb2f989b660.jpeg" alt="Fanta Fraise">
+        <h2>Fanta Fraise</h2>
+        <p>Boisson gazeuse au goût de fraise.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter11" href="#" class="cta-button" onclick="acheterProduit(11, 'Fanta Strawberry', 2.00">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d2484a7f-cb5d-713c-4dd6-5697f503d249.jpeg" alt="Fanta Pêche">
+        <h2>Fanta Pêche</h2>
+        <p>Boisson gazeuse au goût de pêche.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter12" href="#" class="cta-button" onclick="acheterProduit(12, 'Fanta Pêche', 2.00)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/970b7bd9-01ea-3951-4593-dc5da15f7fce.jpeg" alt="Fanta Ananas">
+        <h2>Fanta Ananas</h2>
+        <p>Boisson gazeuse au goût d'ananas.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 2.00)">Acheter</a>
+    </div>
+
+
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c0dc9f9d-36ab-4001-e3ab-2d24fae3ddc6.jpeg" alt="Fanta Ananas">
+        <h2>Fanta Grape</h2>
+        <p>Boisson CAFÉINE FREE.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 2.00)">Acheter</a>
+    </div>
+    <!-- Section Amuse-gueules -->
+    <h2 class="amuse-gueules">Nos Amuse-Gueules</h2>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1f06447f-e55d-238c-2f4e-3fe41fcf3036.jpeg" alt="Snacks variés">
+        <h2>Snacks Sucrés</h2>
+        <p>Un assortiment de snacks sucrés : chocolats, biscuits, et confiseries.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Snacks Sucrés', 4.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/afe10c43-2e4a-fc1c-7b68-9c2eeaf4e40f.jpeg" alt="Fraises Mix">
+        <h2>Fraises Mix</h2>
+        <p>Mélange de fraises rafraîchissantes et savoureuses.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter15" href="#" class="cta-button" onclick="acheterProduit(15, 'Fraises Mix', 2.99)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f6100dc3-aa64-e493-e4d9-c50efed6b8e5.jpeg" alt="Chocolat">
+        <h2>Chocolats et Biscuits</h2>
+        <p>Un mélange de chocolats et biscuits gourmands.</p>
+        <p><strong>Prix : 19,99€</strong></p>
+        <a id="boutonAcheter16" href="#" class="cta-button" onclick="acheterProduit(16, 'Chocolats et Biscuits', 3.99)">Acheter</a>
+    </div>
+</div>
+
+
+
+
+    <div id="about" class="hidden">
+        <h2>À propos de nous</h2>
+        <p>Nous sommes une entreprise professionnelle spécialisée dans la vente de produits de qualité. Nous sommes ouverts tous les jours de midi à 6h du matin.</p>
+    </div>
+
+    <div id="contact" class="hidden">
+        <h2>Contact</h2>
+        <p>Pour toute question, veuillez nous contacter à l'adresse e-mail suivante : contact@marketcollection.com</p>
+    </div>
+
+    <footer>
+        <p>Tous droits réservés © 2024</p>
+    </footer>
+
+    <div id="subscriberCircle" class="subscriber-circle" onclick="toggleAbonnementForm()">S'abonner</div>
+
+    <div id="abonnementForm" class="abonnement-form">
+        <h2>Abonnez-vous</h2>
+        <input type="email" id="emailInput" placeholder="Entrez votre adresse e-mail">
+        <button class="abonnement-button" onclick="subscribe()">S'abonner</button>
+    </div>
+
+    <!-- Modal pour les alertes -->
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLabel">Notification</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modalMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
                 </div>
             </div>
         </div>
-    </header>
-
-    <main>
-
-
-
-<section class="product">
-    <h2>Robe de Mariage Élégante</h2>
-    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
-    <p class="price-tag">Prix : 250.00 €</p>
-    <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
     </div>
-    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
-
-    <div class="video-overlay" id="video-overlay">
-        <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154412038.mp4?alt=media&token=dd3376ff-5990-4b87-b2ac-9d5f4aba0144" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture des vidéos.
-        </video>
-    </div>
-    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
-</section>
-
-<script>
-    function showVideo() {
-        var overlay = document.getElementById('video-overlay');
-        overlay.style.display = 'flex';
-    }
-
-    function hideVideo() {
-        var overlay = document.getElementById('video-overlay');
-        overlay.style.display = 'none';
-    }
-
-    document.getElementById('video-overlay').addEventListener('click', function(event) {
-        if (event.target.id === 'video-overlay') {
-            hideVideo();
-        }
-    });
-</script>
-
-
-
-
-<section class="product">
-    <h2>Robe de Mariage Élégante</h2>
-    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
-    <p>Prix : 250.00 €</p>
-    <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b72e4ecc-f635-4294-b700-ef8ad8ab3973.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/21d50b55-4ace-f33e-5f28-d97682b3a964.jpg" alt="Robe de Mariage 2">
-    </div>
-    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
-    <div class="video-overlay" id="video-overlay">
-        <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154048846.mp4?alt=media&token=fcc45e25-7391-41ee-9011-5fb4fe4153fd" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture des vidéos.
-        </video>
-    </div>
-    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
-</section>
-
-        
-        
-
-<section class="product">
-    <h2>Robe de Mariage Élégante</h2>
-    <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
-    <p>Prix : 250.00 €</p>
-    <div class="carousel">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8e8b4752-b87c-1c8d-faa7-9608a58caaf0.jpg" alt="Robe de Mariage 1">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/51e266fe-8651-b7bd-e780-be70e5323b53.jpg" alt="Robe de Mariage 2">
-    </div>
-    <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
-    <div class="video-overlay" id="video-overlay">
-        <video id="product-video" controls>
-            <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240625_154646587.mp4?alt=media&token=ab581570-e3c5-49d8-b045-cddf1d2540b0" type="video/mp4">
-            Votre navigateur ne supporte pas la lecture des vidéos.
-        </video>
-    </div>
-    <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
-</section>
-
-    </main>
-
-    <div id="buy-options" class="modal">
-    <div class="modal-content">
-        <span class="close-button" onclick="closeBuyOptions()">&times;</span>
-        <h2>Options d'Achat</h2>
-        <div>
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/09b39c09-e9e5-55fb-d973-6953f4291b7b.jpeg" alt="Carte Bleue 1">
-            
-        </div>
-        <div>
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2fe9171b-a083-2d29-0c1f-fb9f79d63ad2.jpeg" alt="Carte Bleue 2">
-            <h2>
-               Chacha Mode 
-            </h2>
-            
-            <button onclick="buyPhysically()">Acheter Physiquement 🛒</button>
-            <button onclick="addToCart()">Acheter par Carte 💳</button>
-        </div>
-    </div>
-    </div>
-
-    <div id="payment-form-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closePaymentFormModal()">&times;</span>
-            <h2>Formulaire de Paiement</h2>
-            <form id="payment-form">
-                <label for="card-name">Nom sur la carte :</label>
-                <input type="text" id="card-name" required><br><br>
-                <label for="card-number">Numéro de carte :</label>
-                <input type="text" id="card-number" required><br><br>
-                <label for="expiry-date">Date d'expiration :</label>
-                <input type="text" id="expiry-date" placeholder="MM/YY" required><br><br>
-                <label for="cvv">CVV :</label>
-                <input type="text" id="cvv" required><br><br>
-
-                <button type="submit">Payer</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="message-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeMessageModal()">&times;</span>
-            <p id="modal-message"></p>
-        </div>
-    </div>
-
-    <div id="cart-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeCartModal()">&times;</span>
-            <h2>Votre Panier</h2>
-            <div id="cart-items"></div>
-            <p><strong>Total:</strong> <span id="cart-total">0.00</span> €</p>
-            <button onclick="proceedToCheckout()">Passer à la Caisse</button>
-        </div>
-    </div>
-
-    <div id="registration-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeRegistrationModal()">&times;</span>
-            <h2>Inscription</h2>
-            <form id="registration-form">
-                <label for="name">Nom :</label>
-                <input type="text" id="name" required><br><br>
-                <label for="email">Email :</label>
-                <input type="email" id="email" required><br><br>
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" required><br><br>
-                <button type="submit">S'inscrire</button>
-            </form>
-        </div>
-    </div>
-
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeLoginModal()">&times;</span>
-            <h2>Connexion</h2>
-            <form id="login-form">
-                <label for="username">Nom d'utilisateur :</label>
-                <input type="text" id="username" required><br><br>
-                <label for="password">Mot de passe :</label>
-                <input type="password" id="password" required><br><br>
-                <button type="submit">Se Connecter</button>
-            </form>
-        </div>
-    </div>
-
-<section id="product-list" class="hidden centered">
-    <h2>Produits de Mariage</h2>
-    <button onclick="window.location.href='index.html'">Retour à la page d'accueil</button>
-
-<button id="back-to-top" onclick="scrollToTop()">⏏️</button>
-
-        <h2>Robe de Mariage Élégante</h2>
-        <p>Description : Robe élégante pour mariage, disponible en différentes tailles et couleurs.</p>
-        <p>Prix : 250.00 €</p>
-        <div class="carousel">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/27e028e7-7aa9-0e7b-2d77-e7b594456c6a.jpg" alt="Robe de Mariage 1">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/035b2a87-f8ce-fc6a-5d14-8812a6eef2a1.jpg" alt="Robe de Mariage 2">
-        </div>
-        <p class="video-description" onclick="showVideo()">Voir modèle 🔽</p>
-        <div class="video-overlay" id="video-overlay">
-            <video id="product-video" controls>
-                <source src="https://firebasestorage.googleapis.com/v0/b/site-web-13015.appspot.com/o/InShot_20240624_144248381.mp4?alt=media&token=a08c1244-420a-4ac8-8c5d-3c2145fe23d" type="video/mp4">
-                Votre navigateur ne supporte pas la lecture des vidéos.
-            </video>
-        </div>
-        <button class="buy-button" onclick="showBuyOptions()">Acheter</button>
-    </div>
-</section>
-
-
-<section id="accueil-section" class="hidden full-screen">
-    <h2>Accueil</h2>
-    <p>Bienvenue sur notre boutique en ligne ! Découvrez nos accessoires de robe femme, robes de mariée, et bien plus encore.</p>
-    <button onclick="window.location.href='index.html'">Retour à la page d'accueil</button>
-    <div class="centered">
-        <div class="image-container">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/4cbba359-f24e-7001-fa76-c670b23061fa.jpeg" alt="Image 1">
-        </div>
-        <div class="image-container">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/fa6bb8e8-720b-462a-8073-4396342486df.jpeg" alt="Image 2">
-        </div>
-        <div class="image-container">
-            <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/9f6d9b47-0a91-d32d-4ec2-2d98bb246040.jpeg" alt="Image 3">
-        </div>
-    </div>
-    <button id="back-to-top" onclick="scrollToTop()">⏏️</button>
-</section>
-
-<script>
-document.getElementById('accueil').addEventListener('click', function(event) {
-    event.preventDefault(); // Empêche le comportement par défaut du lien
-
-    var accueilSection = document.getElementById('accueil-section');
-    accueilSection.classList.toggle('hidden'); // Affiche ou masque la section d'accueil
-
-    if (!accueilSection.classList.contains('hidden')) {
-        accueilSection.classList.add('full-screen'); // Ajoute la classe full-screen lorsque la section est visible
-        document.body.style.overflow = 'hidden'; // Empêche le défilement de la page sous la section d'accueil
-    } else {
-        accueilSection.classList.remove('full-screen'); // Retire la classe full-screen lorsque la section est masquée
-        document.body.style.overflow = 'auto'; // Réactive le défilement de la page
-    }
-});
-</script>
-
-<script>
-   // Fonction pour afficher la vidéo
-function showVideo() {
-    var overlay = document.getElementById('video-overlay');
-    overlay.style.display = 'flex';
-}
-
-// Fonction pour masquer la vidéo
-function hideVideo() {
-    var overlay = document.getElementById('video-overlay');
-    overlay.style.display = 'none';
-}
-
-// Ajouter un événement de clic sur l'overlay pour masquer la vidéo lorsqu'on clique en dehors de la vidéo
-document.getElementById('video-overlay').addEventListener('click', function(event) {
-    if (event.target.id === 'video-overlay') {
-        hideVideo();
-    }
-});
-
-</script>
-    
-<script>
-   function scrollToTop() {
-    document.body.scrollTop = 0; // pour Safari
-    document.documentElement.scrollTop = 0; // pour Chrome, Firefox, IE et Opera
-   }
-        </script>
-
-<script>
-    document.querySelector('a[href="#product-list"]').addEventListener('click', function(event) {
-        event.preventDefault(); // Empêche le comportement par défaut du lien
-
-        var productListSection = document.getElementById('product-list');
-        var bodyChildren = document.body.children;
-
-        // Masquer tous les autres éléments du body
-        for (var i = 0; i < bodyChildren.length; i++) {
-            if (bodyChildren[i] !== productListSection) {
-                bodyChildren[i].classList.add('hidden');
-            }
-        }
-
-        // Afficher la section en plein écran
-        productListSection.classList.remove('hidden');
-        productListSection.classList.add('full-screen');
-    });
-</script>
-
-
-
-
-<script>
-function showVideo() {
-    document.getElementById('video-overlay').style.display = 'flex';
-}
-
-function hideVideo() {
-    document.getElementById('video-overlay').style.display = 'none';
-}
-
-document.addEventListener('DOMContentLoaded', (event) => {
-    const videoOverlay = document.getElementById('video-overlay');
-    videoOverlay.addEventListener('click', hideVideo);
-});
-</script>
-
-                
-
+<!-- Flèche de retour en haut -->
+<a href="#" class="scroll-to-top" onclick="scrollToTop()">
+    &uarr;
+</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let cart = [];
+        var isSubscribed = false;
+        var isFormOpen = false;
+        var cart = [];
 
-        function showBuyOptions() {
-            document.getElementById('buy-options').style.display = 'block';
+        function toggleAbonnementForm() {
+            var form = document.getElementById('abonnementForm');
+            isFormOpen = !isFormOpen;
+            form.style.display = isFormOpen ? 'block' : 'none';
         }
 
-        function closeBuyOptions() {
-            document.getElementById('buy-options').style.display = 'none';
-        }
-
-        function showPaymentForm() {
-            document.getElementById('payment-form-modal').style.display = 'block';
-        }
-
-        function closePaymentFormModal() {
-            document.getElementById('payment-form-modal').style.display = 'none';
-        }
-
-        function addToCart() {
-            const product = {
-                id: 1,
-                name: 'Robe de Mariage Élégante',
-                price: 250.00
-            };
-            cart.push(product);
-            updateCartTotal();
-            closeBuyOptions();
-            showModal('Produit ajouté au panier pour paiement par carte bleue.');
-        }
-
-        function buyPhysically() {
-            showModal('Veuillez contacter le 01 23 45 67 89 pour acheter physiquement.');
-            closeBuyOptions();
-        }
-
-        function showCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            cartItemsContainer.innerHTML = '';
-
-            if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Votre panier est vide.</p>';
+        function subscribe() {
+            var emailInput = document.getElementById('emailInput');
+            var email = emailInput.value;
+            if (email && email.includes('@')) {
+                isSubscribed = true;
+                showAlert('Merci pour votre abonnement !');
+                updateSubscriberCircle();
+                toggleAbonnementForm();
             } else {
-                cart.forEach((item, index) => {
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <span>${item.name} - ${item.price.toFixed(2)} €</span>
-                        <button onclick="removeFromCart(${index})">Supprimer</button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
+                showAlert('Veuillez entrer une adresse e-mail valide.');
             }
-
-            document.getElementById('cart-modal').style.display = 'block';
-            updateCartTotal();
         }
 
-        function closeCartModal() {
-            document.getElementById('cart-modal').style.display = 'none';
+        function updateSubscriberCircle() {
+            var circle = document.getElementById('subscriberCircle');
+            circle.style.display = isSubscribed ? 'none' : 'flex';
         }
 
-        function updateCartTotal() {
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            document.getElementById('cart-total').innerText = total.toFixed(2);
+        function showAlert(message) {
+            var modalMessage = document.getElementById('modalMessage');
+            modalMessage.textContent = message;
+            var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+            alertModal.show();
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            showCart();
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                showModal('Votre panier est vide.');
+        function acheterProduit(id, nom, prix) {
+            if (!isSubscribed) {
+                showAlert('Veuillez vous abonner pour accéder aux commandes.');
                 return;
             }
+            cart.push({id: Date.now(), nom: nom, prix: prix});
+            updateCartSummary();
+            showAlert('Produit ajouté au panier.');
+        }
 
-            const loggedIn = checkLoginStatus(); // Function to check if user is logged in
-
-            if (loggedIn) {
-                showPaymentForm();
-            } else {
-                showRegistrationModal();
+        function removeProductFromCart(productId) {
+            var index = cart.findIndex(item => item.id === productId);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                updateCartSummary();
+                showAlert('Produit supprimé du panier.');
             }
         }
 
-        function showRegistrationModal() {
-            document.getElementById('registration-modal').style.display = 'block';
-            closeCartModal();
+        function updateCartSummary() {
+            var cartItemsList = document.getElementById('cartItemsList');
+            var cartTotal = document.getElementById('cartTotal');
+            cartItemsList.innerHTML = '';
+            var total = 0;
+            cart.forEach(function(item) {
+                var li = document.createElement('li');
+                li.textContent = item.nom + ' - ' + item.prix + ' €';
+                var removeButton = document.createElement('button');
+                removeButton.textContent = 'Supprimer';
+                removeButton.className = 'btn btn-danger btn-sm ms-2';
+                removeButton.onclick = function() { removeProductFromCart(item.id); };
+                li.appendChild(removeButton);
+                cartItemsList.appendChild(li);
+                total += item.prix;
+            });
+            cartTotal.textContent = total.toFixed(2);
+            document.getElementById('cartSummary').classList.remove('hidden');
         }
 
-        function closeRegistrationModal() {
-            document.getElementById('registration-modal').style.display = 'none';
+        function clearCart() {
+            cart = [];
+            updateCartSummary();
+            showAlert('Panier vidé.');
         }
 
-        function showLoginForm() {
-            document.getElementById('login-modal').style.display = 'block';
-document.body.style.overflow = 'hidden'; // Bloquer le défilement de la page sous le modal
+        function showDeliveryForm() {
+            var deliveryForm = document.getElementById('orderForm');
+            var cartSummary = document.getElementById('cartSummary');
+            var orderDetails = cart.map(item => `${item.nom} - ${item.prix} €`).join(', ');
+            document.getElementById('orderDetails').value = `Détails de la commande: ${orderDetails} | Total: ${document.getElementById('cartTotal').textContent} €`;
+            deliveryForm.style.display = 'block';
+            cartSummary.style.display = 'none';
         }
-            function closeLoginModal() {
-        document.getElementById('login-modal').style.display = 'none';
-        document.body.style.overflow = 'auto'; // Réactiver le défilement de la page lorsque le modal est fermé
+
+        function finalizeOrder() {
+    var name = document.getElementById('deliveryName').value;
+    var address = document.getElementById('deliveryAddress').value;
+    var phone = document.getElementById('deliveryPhone').value;
+    var deliveryTime = document.getElementById('deliveryTime').value;
+    var paymentMethod = document.getElementById('paymentMethod').value; // Ajouté ici
+
+    if (!name || !address || !phone || !deliveryTime || !paymentMethod) { // Ajouté ici
+        showAlert('Veuillez remplir toutes les informations de livraison.');
+        return;
     }
 
-    function checkLoginStatus() {
-        // Dummy function to simulate user login status
-        // Replace with your actual logic to check if user is logged in
-        return false; // Return true if user is logged in, false otherwise
+    if (cart.length > 0) {
+        document.getElementById('orderDetails').value = `Détails de la commande: ${cart.map(item => `${item.nom} - ${item.prix} €`).join(', ')} | Total: ${document.getElementById('cartTotal').textContent} € | Nom: ${name} | Adresse: ${address} | Téléphone: ${phone} | Créneau: ${deliveryTime} | Méthode de paiement: ${paymentMethod}`; // Ajouté ici
+
+        showAlert('Commande finalisée. Merci de votre achat !');
+        clearCart();
+        document.getElementById('orderForm').style.display = 'none';
+    } else {
+        showAlert('Le panier est vide.');
     }
+}
 
-    function showModal(message) {
-        document.getElementById('modal-message').innerText = message;
-        document.getElementById('message-modal').style.display = 'block';
-    }
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('header, .description-banner, .products, #about, #contact, footer');
+            sections.forEach(function(section) {
+                section.classList.add('hidden');
+            });
 
-    function closeMessageModal() {
-        document.getElementById('message-modal').style.display = 'none';
-    }
+            if (sectionId === 'home') {
+                document.querySelector('header').classList.remove('hidden');
+                document.querySelector('.description-banner').classList.remove('hidden');
+                document.querySelector('.products').classList.remove('hidden'); // Afficher directement les produits
+            } else if (sectionId === 'products') {
+                document.getElementById('products').classList.remove('hidden');
+            } else if (sectionId === 'about') {
+                document.getElementById('about').classList.remove('hidden');
+            } else if (sectionId === 'contact') {
+                document.getElementById('contact').classList.remove('hidden');
+            }
 
-    function toggleSideMenu() {
-        const sideMenu = document.getElementById('side-menu');
-        sideMenu.classList.toggle('open');
-    }
+            footer.classList.remove('hidden');
+        }
 
-    function closeSideMenu() {
-        const sideMenu = document.getElementById('side-menu');
-        sideMenu.classList.remove('open');
-    }
+        document.getElementById('cartButton').addEventListener('click', function() {
+            var cartSummary = document.getElementById('cartSummary');
+            cartSummary.classList.toggle('hidden');
+        });
 
-    document.getElementById('payment-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche le rechargement de la page par défaut
+        document.addEventListener('click', function(event) {
+            var form = document.getElementById('abonnementForm');
+            var circle = document.getElementById('subscriberCircle');
+            if (isFormOpen && !form.contains(event.target) && event.target !== circle) {
+                toggleAbonnementForm();
+            }
+        });
 
-        // Simuler le traitement du paiement (remplacer par votre logique de paiement réelle)
-        setTimeout(function() {
-            showModal('Paiement effectué avec succès !');
-            cart = []; // Réinitialiser le panier après le paiement
-            updateCartTotal();
-            closeCartModal();
-            closePaymentFormModal();
-        }, 2000); // Temps simulé de traitement du paiement (2 secondes ici)
+        updateSubscriberCircle();
+        showSection('home'); // Afficher la section d'accueil par défaut
+
+
+
+
+
+
+
+
+        function showSection(sectionId) {
+    var sections = document.querySelectorAll('header, .description-banner, .products, #about, #contact, footer');
+    var footer = document.querySelector('footer'); // Assurez-vous que le footer est sélectionné ici
+
+    sections.forEach(function(section) {
+        section.classList.add('hidden');
     });
 
-    document.getElementById('registration-form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Empêche le rechargement de la page par défaut
-
-        // Logique pour l'inscription de l'utilisateur (à remplacer par votre propre logique)
-        showModal('Inscription réussie ! Veuillez maintenant procéder au paiement.');
-
-        // Simuler la fermeture du modal d'inscription
-        closeRegistrationModal();
-        showPaymentForm();
-    });
-
-    function closeRegistrationModal() {
-        document.getElementById('registration-modal').style.display = 'none';
+    if (sectionId === 'home') {
+        document.querySelector('header').classList.remove('hidden');
+        document.querySelector('.description-banner').classList.remove('hidden');
+        document.querySelector('.products').classList.remove('hidden'); // Afficher directement les produits
+    } else if (sectionId === 'products') {
+        document.getElementById('products').classList.remove('hidden');
+    } else if (sectionId === 'about') {
+        document.getElementById('about').classList.remove('hidden');
+    } else if (sectionId === 'contact') {
+        document.getElementById('contact').classList.remove('hidden');
     }
+
+    if (footer) {
+        footer.classList.remove('hidden');
+    }
+        }
+    </script>
+
+<script>
+function toggleDropdown() {
+    var dropdownMenu = document.querySelector('.dropdown-menu');
+    dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+}
+
+function scrollToSection(sectionId) {
+    var section = document.querySelector('.' + sectionId);
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+}
 </script>
-</body>
-</html>
+    <script>
+// Fonction pour faire défiler la page en haut
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
+// Afficher le bouton lorsque l'utilisateur fait défiler la page
+window.onscroll = function() {
+    var button = document.querySelector('.scroll-to-top');
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        button.classList.add('show');
+    } else {
+        button.classList.remove('show');
+    }
+};
+    </script>
+</body>
+    </html>
