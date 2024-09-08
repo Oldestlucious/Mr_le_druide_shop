@@ -751,13 +751,11 @@ footer {
 
 
 
-    <header class="header" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/31aacda2-2ffb-f2c5-2775-bea95b70b6bb.jpg');">
+    <header class="header" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5db2d0f0-ee50-91a0-dac0-56bded7cc857.jpg');">
         <h1>Livraison gratuite à partir de 45 € !</h1>
     </header>
 
-    <div class="description-banner">
-        <p>Profitez de notre service de livraison planifiée. Commandez maintenant et choisissez votre créneau horaire de livraison parmi 1h, 2h, 3h, 4h ou 5h.</p>
-    </div>
+    
 
 
 <nav>
@@ -776,7 +774,9 @@ footer {
     </ul>
 </nav>
 
-
+<div class="description-banner">
+        <p>Profitez de notre service de livraison planifiée. Commandez maintenant et choisissez votre créneau horaire de livraison parmi 1h, 2h, 3h, 4h ou 5h.</p>
+</div>
 
 
     <button id="cartButton" class="btn btn-primary">Panier</button>
@@ -826,31 +826,53 @@ footer {
 <div id="products" class="products">
 
     <!-- Section Boissons Alcoolisées -->
-    <h2 class="boissons-alcoolisees">Nos Boissons Alcoolisées</h2>
+    <h2 class="boissons-alcoolisees">Nos Boissons Alcoolisées 🍾</h2>
+
+
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a41f15f2-0ad9-0038-2867-3a8221921587.jpg" alt="Calypso Fraise">
+        <h2>Flash Vodka 20 Cl</h2>
+        <p>Pure grain triple distilled POLIAKOV .</p>
+        <p><strong>Prix : 10,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Flash Vodka 20cl', 10.00)">Acheter</a>
+</div>
+    
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1aaf571e-3fc8-e4f8-d318-bbd9baee6e98.jpeg" alt="Calypso Fraise">
+        <h2>Pure Vodka 35Cl</h2>
+        <p>Pure grain triple distilled POLIAKOV .</p>
+        <p><strong>Prix : 17,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Pure Vodka 35Cl', 17.00)">Acheter</a>
+</div>
+    
     <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1aaf571e-3fc8-e4f8-d318-bbd9baee6e98.jpeg" alt="POLIAKOV">
-        <h2>POLIAKOV</h2>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5ef345d7-9422-c48d-a812-3db183be866e.jpeg" alt="POLIAKOV">
+        <h2>POLIAKOV
+           70CL
+        </h2>
         <p>Vodka Poliakoff classique, idéale pour des cocktails.</p>
         <p><strong>Prix : 20,00€</strong></p>
-        <a id="boutonAcheter1" href="#" class="cta-button" onclick="acheterProduit(1, 'POLIAKOV', 20.99)">Acheter</a>
+        <a id="boutonAcheter1" href="#" class="cta-button" onclick="acheterProduit(1, 'POLIAKOV 70Cl', 20.00)">Acheter</a>
     </div>
     <div class="product">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c26f8c72-bdd5-2db0-0f9a-335d72134fb6.jpeg" alt="JACK DANIEL'S">
-        <h2>JACK DANIEL'S</h2>
+        <h2>JACK DANIEL'S
+           1L
+        </h2>
         <p>BLACK Tennessee Whiskey, riche et intense.</p>
         <p><strong>Prix : 40,00€</strong></p>
         <a id="boutonAcheter2" href="#" class="cta-button" onclick="acheterProduit(2, 'JACK DANIEL\'S', 40.00)">Acheter</a>
     </div>
     <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5a52a894-12c6-d126-310f-b7ef831bcf27.jpeg" alt="CÎROC">
-        <h2>CÎROC</h2>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/41fb3751-1cf0-37af-d03f-a3f87242b1a6.jpeg" alt="CÎROC">
+        <h2>BELVEDERE </h2>
         <p>Vodka premium à base de raisins.</p>
         <p><strong>Prix : 55,00€</strong></p>
         <a id="boutonAcheter3" href="#" class="cta-button" onclick="acheterProduit(3, 'CÎROC', 55.00)">Acheter</a>
     </div>
     <div class="product">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/430f58df-0590-8526-0510-fcdd399803af.jpeg" alt="Absolut Vodka">
-        <h2>Absolut Vodka</h2>
+        <h2>Absolut Vodka 750ml</h2>
         <p>Vodka suédoise, pure et élégante.</p>
         <p><strong>Prix : 30,00€</strong></p>
         <a id="boutonAcheter4" href="#" class="cta-button" onclick="acheterProduit(4, 'Absolut Vodka', 30.00)">Acheter</a>
@@ -878,13 +900,97 @@ footer {
     </div>
 
     <!-- Section Boissons sans Alcool -->
-    <h2 class="boissons-sans-alcool">Nos Boissons Sans Alcool</h2>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8c722ae1-3bb2-ffd9-8eba-3a64cd90ba40.jpeg" alt="Calypso Fraise">
-        <h2>Calypso Fraise</h2>
+    <h2 class="boissons-sans-alcool">Nos Boissons Sans Alcool 🧃</h2>
+
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/21260b41-e422-e616-74b6-3093a6bfaa34.jpeg" alt="Calypso Fraise">
+        <h2>Fanta Fraise</h2>
         <p>Boisson fruitée à la fraise, rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Fraise', 3.00)">Acheter</a>
+</div>
+
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/70c289bb-8817-6842-2f83-13c2cc510a13.jpeg" alt="Calypso Fraise">
+        <h2>Fanta Grape</h2>
+        <p>Boisson fruitée , rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta grape', 3.00)">Acheter</a>
+</div>
+
+
+
+    
+    
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f45f1b73-9f4f-44a7-f3a0-6b7f075eccf8.jpeg" alt="Calypso Fraise">
+        <h2>Fanta citron 🍋 
+        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta citron', 3.00)">Acheter</a>
+</div>
+
+  
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7a8de281-b663-8b86-dd7d-d1cf4e18fe02.jpeg" alt="Calypso Fraise">
+        <h2>Fanta Mango</h2>
+        <p>Boisson fruitée à la fraise, rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Mango', 3.00)">Acheter</a>
+</div>
+    
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/64fa20ef-5d79-4574-9382-3faa6a1fcfaf.jpeg" alt="Calypso Fraise">
+        <h2>Fanta Berry</h2>
+        <p>Boisson fruitée , rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Berry', 3.00)">Acheter</a>
+</div>
+   
+<div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/0f70f0cc-0247-7d5e-abd8-d0a2cdc2914c.jpeg" alt="Calypso Fraise">
+        <h2>Fanta Exotic</h2>
+        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 1,50€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Exotic', 1.50)">Acheter</a>
+</div>
+
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e283d4b1-fbc0-bf54-51d2-ecb2f989b660.jpeg" alt="Fanta Fraise">
+        <h2>Fanta Fraise</h2>
+        <p>Boisson gazeuse au goût de fraise.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter11" href="#" class="cta-button" onclick="acheterProduit(11, 'Fanta Fraise', 3.00">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d2484a7f-cb5d-713c-4dd6-5697f503d249.jpeg" alt="Fanta Pêche">
+        <h2>Fanta Pêche</h2>
+        <p>Boisson gazeuse au goût de pêche.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter12" href="#" class="cta-button" onclick="acheterProduit(12, 'Fanta Pêche', 3.00)">Acheter</a>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/970b7bd9-01ea-3951-4593-dc5da15f7fce.jpeg" alt="Fanta Ananas">
+        <h2>Fanta Ananas</h2>
+        <p>Boisson gazeuse au goût d'ananas.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 3.00)">Acheter</a>
+    </div>
+
+
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c0dc9f9d-36ab-4001-e3ab-2d24fae3ddc6.jpeg" alt="Fanta Ananas">
+        <h2>Fanta Grape</h2>
+        <p>Boisson fruitée,  rafraîchissante et sucrée.</p>
+        <p><strong>Prix : 3,00€</strong></p>
+        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Grape', 3.00)">Acheter</a>
+    </div>
+        <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8c722ae1-3bb2-ffd9-8eba-3a64cd90ba40.jpeg" alt="Calypso Fraise">
+        <h2>Calypso Limonade</h2>
+        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
         <p><strong>Prix : 4,50€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Calypso Fraise', 4.50)">Acheter</a>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Calypso Limonade, 4.50)">Acheter</a>
     </div>
     <div class="product">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e1277d7f-84c8-30ce-30a9-dadfc7da18df.jpeg" alt="Calypso Bleu Limonade">
@@ -900,51 +1006,29 @@ footer {
         <p><strong>Prix : 4,50€</strong></p>
         <a id="boutonAcheter10" href="#" class="cta-button" onclick="acheterProduit(10, 'Calypso Kiwi Limonade', 4.50)">Acheter</a>
     </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e283d4b1-fbc0-bf54-51d2-ecb2f989b660.jpeg" alt="Fanta Fraise">
-        <h2>Fanta Fraise</h2>
-        <p>Boisson gazeuse au goût de fraise.</p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter11" href="#" class="cta-button" onclick="acheterProduit(11, 'Fanta Strawberry', 3.50">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d2484a7f-cb5d-713c-4dd6-5697f503d249.jpeg" alt="Fanta Pêche">
-        <h2>Fanta Pêche</h2>
-        <p>Boisson gazeuse au goût de pêche.</p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter12" href="#" class="cta-button" onclick="acheterProduit(12, 'Fanta Pêche', 3.50)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/970b7bd9-01ea-3951-4593-dc5da15f7fce.jpeg" alt="Fanta Ananas">
-        <h2>Fanta Ananas</h2>
-        <p>Boisson gazeuse au goût d'ananas.</p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 3.50)">Acheter</a>
-    </div>
-
 
     <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c0dc9f9d-36ab-4001-e3ab-2d24fae3ddc6.jpeg" alt="Fanta Ananas">
-        <h2>Fanta Grape</h2>
-        <p>Boisson CAFÉINE FREE.</p>
-        <p><strong>Prix : 19,99€</strong></p>
-        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 2.00)">Acheter</a>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/76f12260-f1c2-9985-416c-dac4f1aa05fe.jpeg" alt="Calypso Fraise">
+        <h2>Coca-cola</h2>
+        <p>Boisson , rafraîchissante .</p>
+        <p><strong>Prix : 1,50€</strong></p>
+        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Caca-cola', 1.50)">Acheter</a>
     </div>
     <!-- Section Amuse-gueules -->
-    <h2 class="amuse-gueules">Nos Amuse-Gueules</h2>
+    <h2 class="amuse-gueules">Nos Amuse-Gueules 🍫</h2>
     <div class="product">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1f06447f-e55d-238c-2f4e-3fe41fcf3036.jpeg" alt="Snacks variés">
-        <h2>Snacks Salé</h2>
+        <h2>Lay's saveur Bolognaise</h2>
         <p>Un assortiment de snacks sucrés : chocolats, biscuits, et confiseries.</p>
         <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Snacks Sucrés', 3.50)">Acheter</a>
+        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Lays Bolognaise', 3.50)">Acheter</a>
     </div>
     <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/afe10c43-2e4a-fc1c-7b68-9c2eeaf4e40f.jpeg" alt="Fraises Mix">
-        <h2>Fraises Mix</h2>
-        <p>Mélange de fraises rafraîchissantes et savoureuses.</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1f06447f-e55d-238c-2f4e-3fe41fcf3036.jpeg" alt="Snacks variés">
+        <h2>Lay's saveur Nature</h2>
+        <p>Un assortiment de snacks </p>
         <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter15" href="#" class="cta-button" onclick="acheterProduit(15, 'Fraises Mix', 3.50)">Acheter</a>
+        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Lays Nature', 3.50)">Acheter</a>
     </div>
     <div class="product">
         <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f6100dc3-aa64-e493-e4d9-c50efed6b8e5.jpeg" alt="Chocolat">
