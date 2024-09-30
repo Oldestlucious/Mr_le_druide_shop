@@ -1,1173 +1,367 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market Collection</title>
-
-    <!-- Intégration des polices Google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@300;400;500&family=Protest+Guerrilla&display=swap" rel="stylesheet">
-
-    <!-- Style CSS -->
+    <title>Boutique de Gâteaux</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-
-/* Récapitulatif du panier */
-#cartSummary {
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    width: 300px;
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: white;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-}
-
-/* Bannière de description */
-.description-banner {
-    background-color: #ffcb0d;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-}
-
-
-
-/* Style pour le bouton de retour en haut */
-.scroll-to-top {
-    position: fixed;
-    bottom: 20px; /* Positionné à 20px du bas */
-    right: 20px;  /* Positionné à 20px de la droite */
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 24px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    z-index: 1000; /* Assure que le bouton est au-dessus des autres éléments */
-    opacity: 0; /* Caché par défaut */
-    transition: opacity 0.3s;
-}
-
-.scroll-to-top:hover {
-    background-color: #555;
-}
-
-.scroll-to-top.show {
-    opacity: 1; /* Affiché lorsque la classe "show" est ajoutée */
-    }
-
-
-
-
-
-
-
-/* Styling for each section title */
-h2 {
-    font-size: 24px;
-    margin: 20px 0;
-    padding: 15px;
-    text-align: center;
-    border-radius: 8px;
-    color: white;
-    border: 2px solid; /* Apply border with specific colors below */
-}
-
-/* Section-specific styles */
-.boissons-alcoolisees {
-    background-color: #b71c1c; /* Rouge pour boissons alcoolisées */
-    border-color: #d32f2f; /* Bordure plus claire */
-}
-
-.boissons-sans-alcool {
-    background-color: #0277bd; /* Bleu pour boissons sans alcool */
-    border-color: #039be5; /* Bordure plus claire */
-}
-
-.amuse-gueules {
-    background-color: #f57c00; /* Orange pour amuse-gueules */
-    border-color: #ff9800; /* Bordure plus claire */
-}
-
-
-
-
-
-/* Global container styling */
-#products {
-    margin: 0 auto;
-    padding: 20px;
-    max-width: 1200px;
-}
-
-
-
-
-
-
-
-
-
-
-/* Encadrement pour chaque section */
-.section-container {
-    margin-bottom: 50px; /* Espace entre les sections */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce */
-    border: 1px solid #ddd;
-}
-
-/* Background for each section */
-#boissons-alcoolisees {
-    background-color: #f3f3f3; /* Gris clair pour les boissons alcoolisées */
-}
-
-#boissons-sans-alcool {
-    background-color: #e0f7fa; /* Bleu clair pour les boissons sans alcool */
-}
-
-#amuse-gueules {
-    background-color: #f9fbe7; /* Jaune très clair pour les amuse-gueules */
-}
-
-/* Styling for each product item */
-.product {
-    margin-bottom: 40px; /* Espace entre chaque produit */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour les produits */
-    background-color: #fff; /* Fond blanc pour les produits */
-    transition: transform 0.3s ease;
-}
-
-.product:hover {
-    transform: scale(1.05); /* Effet zoom au survol */
-}
-
-.product img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 10px;
-}
-
-/* Title of each product */
-.product h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-/* Product description */
-.product p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 10px;
-}
-
-/* Buy button */
-.cta-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #ff5722; /* Couleur du bouton */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: #e64a19; /* Couleur du bouton au survol */
-}
-
-/* Spacing between sections (alcool, sans alcool, amuse-gueules) */
-#products h2 {
-    margin-top: 60px; /* Espace avant chaque section */
-}
-
-#products .product:nth-child(1) {
-    margin-top: 20px;
-}
-
-/* Responsiveness */
-@media (max-width: 768px) {
-    #products {
-        padding: 10px;
-    }
-    .product {
-        margin-bottom: 30px;
-        padding: 15px;
-    }
-    .product h2 {
-        font-size: 18px;
-    }
-    .cta-button {
-        padding: 8px 16px;
-    }
-        }
-
-
-
-
-
-
-/* Style global pour les titres de section */
-.section-title {
-    font-size: 26px;
-    color: #fff;
-    text-align: center;
-    padding: 15px;
-    margin: 0; /* Pas d'espacement autour des titres */
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Conteneur pour les sections avec un encadrement */
-.section-container {
-    margin: 50px 0; /* Espacement entre les sections */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Ombre douce autour de l'encadrement */
-    border: 2px solid #ccc; /* Bordure autour de chaque section */
-}
-
-/* Fond pour la section des boissons alcoolisées */
-#boissons-alcoolisees {
-    background-color: #3E2723; /* Couleur marron foncé pour l'alcool */
-}
-
-#boissons-alcoolisees .section-title {
-    background-color: #6D4C41; /* Titre plus clair pour l'alcool */
-}
-
-/* Fond pour la section des boissons sans alcool */
-#boissons-sans-alcool {
-    background-color: #0288D1; /* Couleur bleue pour les boissons sans alcool */
-}
-
-#boissons-sans-alcool .section-title {
-    background-color: #03A9F4; /* Titre plus clair pour sans alcool */
-}
-
-/* Fond pour la section des amuse-gueules */
-#amuse-gueules {
-    background-color: #2E7D32; /* Couleur verte pour les amuse-gueules */
-    }
-
-
-        /* Style global */
         body {
-            font-family: 'Roboto', sans-serif;
-            font-size: 16px;
-            background-color: #f4f4f4;
-            color: #333;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.5s, color 0.5s;
         }
 
-        /* Style de l'entête (header) avec image de fond */
-        .header {
-            background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/31aacda2-2ffb-f2c5-2775-bea95b70b6bb.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 50px 20px;
-            text-align: center;
+        header {
+            background-color: #ff6f61;
             color: white;
-            position: relative;
+            padding: 20px;
+            text-align: center;
         }
 
-        /* Pour rendre l'image du header un peu plus visible */
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff4b3a;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Ajoute un voile noir transparent */
-            z-index: 1;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
         }
 
-        .header h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 36px;
-            font-weight: 600;
-            margin: 0;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Bannière descriptive */
-        .description-banner {
-            background-color: #3498db;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            margin-bottom: 20px;
-        }
-
-        .description-banner p {
-            font-size: 18px;
-            font-weight: 300;
-        }
-
-        /* Style du menu de navigation */
-        nav {
-            background-color: #333;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline-block;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #f1c40f;
-        }
-
-        /* Style pour le menu déroulant */
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu li {
-            display: block;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .dropdown-menu li a {
-            color: #333;
-            text-decoration: none;
-            padding: 10px;
-            display: block;
-        }
-
-        .dropdown-menu li a:hover {
-            background-color: #3498db;
-            color: white;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        /* Bouton de panier */
-        #cartButton {
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        #cartButton:hover {
-            background-color: #c0392b;
-        }
-
-        /* Style du récapitulatif du panier */
-        #cartSummary {
-            display: none;
+        .modal-content {
             background-color: white;
+            margin: 5% auto;
             padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        #cartSummary h4 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 22px;
-        }
-
-        #cartItemsList {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #cartSummary p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 18px;
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
             font-weight: bold;
         }
 
-        .btn-secondary {
-            background-color: #95a5a6;
-            color: white;
-        }
-
-        .btn-success {
-            background-color: #2ecc71;
-            color: white;
-        }
-
-        /* Formulaire de livraison */
-        .delivery-form {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .delivery-form h5 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .delivery-form label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 5px;
-            color: #555;
-        }
-
-        .delivery-form input, .delivery-form select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .delivery-form button {
-            background-color: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
             cursor: pointer;
         }
 
-        .delivery-form button:hover {
-            background-color: #2980b9;
-        }
-
-        /* Produits */
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .product {
-            background-color: white;
-            padding: 15px;
+        .product-card {
+            border: 1px solid #ddd;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            padding: 15px;
+            margin: 10px;
             text-align: center;
+            transition: transform 0.2s;
         }
 
-        .product img {
-            width: 100%;
-            height: auto;
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            margin-top: 10px;
+        }
+
+        .cart {
+            display: none;
+            background-color: #f1f1f1;
+            padding: 10px;
             border-radius: 5px;
         }
 
-        .product h2 {
-            font-family: 'Protest Guerrilla', sans-serif;
-            font-size: 22px;
-            margin: 15px 0;
-        }
-
-        .product p {
-            font-size: 16px;
-            color: #777;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #e74c3c;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: #c0392b;
-        }
-
-        /* Footer */
         footer {
-            background-color: #333;
-            color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
+            background-color: #ff6f61;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
-        footer a {
-            color: #3498db;
-            text-decoration: none;
+        /* Styles pour le mode sombre */
+        body.dark-mode {
+            background-color: #333;
+            color: #f9f9f9;
         }
 
-        footer a:hover {
-            color: #2980b9;
+        body.dark-mode header {
+            background-color: #444;
         }
 
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .products {
-                flex-direction: column;
-                align-items: center;
+        body.dark-mode .modal-content {
+            background-color: #555;
+            color: #f9f9f9;
+        }
+
+        body.dark-mode .btn {
+            background-color: #ff4b3a;
+        }
+
+        body.dark-mode footer {
+            background-color: #444;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .product-card {
+                width: 90%;
             }
         }
-
-
-
-
-
-
-    /* Formulaire d'abonnement */
-.abonnement-form {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    display: none;
-}
-
-.abonnement-form input {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.abonnement-button {
-    background-color: #2ecc71;
-    border-radius: 5px;
-    padding: 10px 20px;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.abonnement-button:hover {
-    background-color: #27ae60;
-}
-
-/* Icône d'abonnement en cercle */
-.subscriber-circle {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #2ecc71;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-    z-index: 1000;
-    cursor: pointer;
-}
-
-
-
-
-        /* Récapitulatif du panier */
-#cartSummary {
-    position: absolute;
-    top: 80px;
-    left: 20px;
-    width: 300px;
-    max-height: 300px;
-    overflow-y: auto;
-    background-color: white;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-}
-
-/* Bannière de description */
-.description-banner {
-    background-color: #ffcb0d;
-    padding: 15px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Formulaire de livraison */
-.delivery-form {
-    display: none;
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.delivery-form input, .delivery-form select {
-    display: block;
-    margin-bottom: 10px;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-
-
-
-  /* Style du footer */
-footer {
-    text-align: center;
-    padding: 10px 0;
-    color: #333;
-    background-color: #eee;
-}
-
-.hidden {
-    display: none;
-}  
-
-
-
-
-
-        /* Personnalisation de la modale */
-.modal-content {
-    background-color: #f9f9f9; /* Couleur de fond de la modale */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre autour de la modale */
-}
-
-.modal-header {
-    background-color: #007bff; /* Couleur de l'en-tête */
-    color: #fff; /* Couleur du texte de l'en-tête */
-    border-bottom: none; /* Supprimer la bordure du bas */
-}
-
-.modal-title {
-    font-size: 1.25rem; /* Taille de la police pour le titre */
-}
-
-.modal-body {
-    font-size: 1rem; /* Taille de la police du contenu */
-    color: #333; /* Couleur du texte */
-    padding: 1.5rem; /* Espace intérieur du contenu */
-}
-
-.modal-footer {
-    background-color: #f1f1f1; /* Couleur de fond du pied de page */
-    border-top: none; /* Supprimer la bordure du haut */
-    padding: 1rem; /* Espace intérieur du pied de page */
-}
-
-.modal-footer .btn-secondary {
-    background-color: #6c757d; /* Couleur du bouton */
-    border: none; /* Supprimer les bordures du bouton */
-    padding: 0.5rem 1rem; /* Espace intérieur du bouton */
-    font-size: 1rem; /* Taille de la police du bouton */
-    transition: background-color 0.3s ease; /* Animation de changement de couleur */
-}
-
-.modal-footer .btn-secondary:hover {
-    background-color: #5a6268; /* Couleur du bouton au survol */
-}
-
-
-
-
     </style>
 </head>
 <body>
 
-
-
-
-
-    <header class="header" style="background-image: url('https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5db2d0f0-ee50-91a0-dac0-56bded7cc857.jpg');">
-        <h1>Livraison gratuite à partir de 45 € !</h1>
+    <header>
+        <h1>Boutique de Gâteaux</h1>
+        <nav>
+            <a href="#" onclick="openBoutiqueModal()">Boutique</a>
+            <a href="#" onclick="openContactModal()">Contact</a>
+            <button onclick="toggleDarkMode()">Mode Sombre / Clair</button>
+        </nav>
     </header>
 
-    
-
-
-<nav>
-    <ul>
-        <li><a href="#" onclick="showSection('home')">Accueil</a></li>
-        <li class="dropdown">
-            <a href="#" onclick="toggleDropdown()">Produits</a>
-            <ul class="dropdown-menu">
-                <li><a href="#boissons-alcoolisees" onclick="scrollToSection('boissons-alcoolisees')">Boissons Alcoolisées</a></li>
-                <li><a href="#boissons-sans-alcool" onclick="scrollToSection('boissons-sans-alcool')">Boissons Sans Alcool</a></li>
-                <li><a href="#amuse-gueules" onclick="scrollToSection('amuse-gueules')">Amuse-Gueules</a></li>
-            </ul>
-        </li>
-        <li><a href="#" onclick="showSection('about')">À propos</a></li>
-        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
-    </ul>
-</nav>
-
-<div class="description-banner">
-        <p>Profitez de notre service de livraison planifiée. Commandez maintenant et choisissez votre créneau horaire de livraison parmi 1h, 2h, 3h, 4h ou 5h.</p>
-</div>
-
-
-    <button id="cartButton" class="btn btn-primary">Panier</button>
-
-    <div id="cartSummary" class="hidden">
-        <h4>Récapitulatif de la Commande</h4>
-        <ul id="cartItemsList"></ul>
-        <p>Total : <span id="cartTotal">0</span> €</p>
-        <button class="btn btn-secondary" onclick="clearCart()">Vider le Panier</button>
-        <button class="btn btn-success" onclick="showDeliveryForm()">Finaliser la Commande</button>
-    </div>
-
-    <form id="orderForm" action="https://formspree.io/f/xgvwqzba" method="POST" class="delivery-form">
-    <h5>Informations de Livraison</h5>
-    <label>Nom complet:</label>
-    <input type="text" name="name" id="deliveryName" placeholder="Nom complet" required>
-
-    <label>Adresse de livraison:</label>
-    <input type="text" name="address" id="deliveryAddress" placeholder="Adresse de livraison" required>
-
-    <label>Numéro de téléphone:</label>
-    <input type="tel" name="phone" id="deliveryPhone" placeholder="Numéro de téléphone" required>
-
-    <label>Choisir le créneau de livraison:</label>
-    <select name="deliveryTime" id="deliveryTime" required>
-        <option value="" disabled selected>Choisir un créneau</option>
-        <option value="1h">Dans 1 heure</option>
-        <option value="2h">Dans 2 heures</option>
-        <option value="3h">Dans 3 heures</option>
-        <option value="4h">Dans 4 heures</option>
-        <option value="5h">Dans 5 heures</option>
-    </select>
-
-    <label>Méthode de paiement:</label>
-    <select name="paymentMethod" id="paymentMethod" required>
-        <option value="" disabled selected>Choisir une méthode de paiement</option>
-        <option value="cash">Espèces</option>
-        <option value="card">Carte Bleue</option>
-    </select>
-
-    <input type="hidden" name="orderDetails" id="orderDetails">
-    <button type="submit" class="btn btn-primary">Confirmer la Commande</button>
-    </form>
-
-
-
-<div id="products" class="products">
-
-    <!-- Section Boissons Alcoolisées -->
-    <h2 class="boissons-alcoolisees">Nos Boissons Alcoolisées 🍾</h2>
-
-
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a41f15f2-0ad9-0038-2867-3a8221921587.jpg" alt="Calypso Fraise">
-        <h2>Flash Vodka 20 Cl</h2>
-        <p>Pure grain triple distilled POLIAKOV .</p>
-        <p><strong>Prix : 10,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Flash Vodka 20cl', 10.00)">Acheter</a>
-</div>
-    
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1aaf571e-3fc8-e4f8-d318-bbd9baee6e98.jpeg" alt="Calypso Fraise">
-        <h2>Pure Vodka 35Cl</h2>
-        <p>Pure grain triple distilled POLIAKOV .</p>
-        <p><strong>Prix : 17,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Pure Vodka 35Cl', 17.00)">Acheter</a>
-</div>
-    
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5ef345d7-9422-c48d-a812-3db183be866e.jpeg" alt="POLIAKOV">
-        <h2>POLIAKOV
-           70CL
-        </h2>
-        <p>Vodka Poliakoff classique, idéale pour des cocktails.</p>
-        <p><strong>Prix : 20,00€</strong></p>
-        <a id="boutonAcheter1" href="#" class="cta-button" onclick="acheterProduit(1, 'POLIAKOV 70Cl', 20.00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c26f8c72-bdd5-2db0-0f9a-335d72134fb6.jpeg" alt="JACK DANIEL'S">
-        <h2>JACK DANIEL'S
-           1L
-        </h2>
-        <p>BLACK Tennessee Whiskey, riche et intense.</p>
-        <p><strong>Prix : 40,00€</strong></p>
-        <a id="boutonAcheter2" href="#" class="cta-button" onclick="acheterProduit(2, 'JACK DANIEL\'S', 40.00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/41fb3751-1cf0-37af-d03f-a3f87242b1a6.jpeg" alt="CÎROC">
-        <h2>BELVEDERE </h2>
-        <p>Vodka premium à base de raisins.</p>
-        <p><strong>Prix : 55,00€</strong></p>
-        <a id="boutonAcheter3" href="#" class="cta-button" onclick="acheterProduit(3, 'CÎROC', 55.00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/430f58df-0590-8526-0510-fcdd399803af.jpeg" alt="Absolut Vodka">
-        <h2>Absolut Vodka 750ml</h2>
-        <p>Vodka suédoise, pure et élégante.</p>
-        <p><strong>Prix : 30,00€</strong></p>
-        <a id="boutonAcheter4" href="#" class="cta-button" onclick="acheterProduit(4, 'Absolut Vodka', 30.00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5c7829f3-deee-a298-09c5-b826eabcc639.jpeg" alt="Vodka Pêche">
-        <h2>Absolut Vodka Pêche</h2>
-        <p>Vodka aromatisée à la pêche, idéale pour des cocktails fruités.</p>
-        <p><strong>Prix : 35,00€</strong></p>
-        <a id="boutonAcheter5" href="#" class="cta-button" onclick="acheterProduit(5, 'Vodka Pêche', 35,00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/09ea4f7a-9f6b-56ee-8b9a-53f96a6bbc7b.jpeg" alt="Vodka Caramel">
-        <h2>Absolut Vodka Watermelon</h2>
-        <p>Vodka douce avec des notes de melon.</p>
-        <p><strong>Prix : 35,00€</strong></p>
-        <a id="boutonAcheter6" href="#" class="cta-button" onclick="acheterProduit(6, 'Vodka Caramel', 35,00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ac71af99-cdc1-2898-ee84-a257add2a5d2.jpeg" alt="Vodka Green Apple">
-        <h2>Absolut Vodka RASPBERRI</h2>
-        <p>Vodka au goût Flavour, fraîche et acidulée.</p>
-        <p><strong>Prix : 35,00€</strong></p>
-        <a id="boutonAcheter7" href="#" class="cta-button" onclick="acheterProduit(7, 'Vodka Green Apple', 35.00)">Acheter</a>
-    </div>
-
-    <!-- Section Boissons sans Alcool -->
-    <h2 class="boissons-sans-alcool">Nos Boissons Sans Alcool 🧃</h2>
-
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/21260b41-e422-e616-74b6-3093a6bfaa34.jpeg" alt="Calypso Fraise">
-        <h2>Fanta Fraise</h2>
-        <p>Boisson fruitée à la fraise, rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Fraise', 3.00)">Acheter</a>
-</div>
-
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/70c289bb-8817-6842-2f83-13c2cc510a13.jpeg" alt="Calypso Fraise">
-        <h2>Fanta Grape</h2>
-        <p>Boisson fruitée , rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta grape', 3.00)">Acheter</a>
-</div>
-
-
-
-    
-    
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f45f1b73-9f4f-44a7-f3a0-6b7f075eccf8.jpeg" alt="Calypso Fraise">
-        <h2>Fanta citron 🍋 
-        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta citron', 3.00)">Acheter</a>
-</div>
-
-  
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7a8de281-b663-8b86-dd7d-d1cf4e18fe02.jpeg" alt="Calypso Fraise">
-        <h2>Fanta Mango</h2>
-        <p>Boisson fruitée à la fraise, rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Mango', 3.00)">Acheter</a>
-</div>
-    
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/64fa20ef-5d79-4574-9382-3faa6a1fcfaf.jpeg" alt="Calypso Fraise">
-        <h2>Fanta Berry</h2>
-        <p>Boisson fruitée , rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Berry', 3.00)">Acheter</a>
-</div>
-   
-<div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/0f70f0cc-0247-7d5e-abd8-d0a2cdc2914c.jpeg" alt="Calypso Fraise">
-        <h2>Fanta Exotic</h2>
-        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Fanta Exotic', 3.00)">Acheter</a>
-</div>
-
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e283d4b1-fbc0-bf54-51d2-ecb2f989b660.jpeg" alt="Fanta Fraise">
-        <h2>Fanta Fraise</h2>
-        <p>Boisson gazeuse au goût de fraise.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter11" href="#" class="cta-button" onclick="acheterProduit(11, 'Fanta Fraise', 3.00">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d2484a7f-cb5d-713c-4dd6-5697f503d249.jpeg" alt="Fanta Pêche">
-        <h2>Fanta Pêche</h2>
-        <p>Boisson gazeuse au goût de pêche.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter12" href="#" class="cta-button" onclick="acheterProduit(12, 'Fanta Pêche', 3.00)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/970b7bd9-01ea-3951-4593-dc5da15f7fce.jpeg" alt="Fanta Ananas">
-        <h2>Fanta Ananas</h2>
-        <p>Boisson gazeuse au goût d'ananas.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Ananas', 3.00)">Acheter</a>
-    </div>
-
-
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c0dc9f9d-36ab-4001-e3ab-2d24fae3ddc6.jpeg" alt="Fanta Ananas">
-        <h2>Fanta Grape</h2>
-        <p>Boisson fruitée,  rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 3,00€</strong></p>
-        <a id="boutonAcheter13" href="#" class="cta-button" onclick="acheterProduit(13, 'Fanta Grape', 3.00)">Acheter</a>
-    </div>
-        <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/8c722ae1-3bb2-ffd9-8eba-3a64cd90ba40.jpeg" alt="Calypso Fraise">
-        <h2>Calypso Limonade</h2>
-        <p>Boisson fruitée, rafraîchissante et sucrée.</p>
-        <p><strong>Prix : 4,50€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Calypso Limonade, 4.50)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e1277d7f-84c8-30ce-30a9-dadfc7da18df.jpeg" alt="Calypso Bleu Limonade">
-        <h2>Calypso Bleu Limonade</h2>
-        <p>Boisson à la limonade bleue, avec une touche d’agrumes.</p>
-        <p><strong>Prix : 4,50€</strong></p>
-        <a id="boutonAcheter9" href="#" class="cta-button" onclick="acheterProduit(9, 'Calypso Bleu Limonade', 4.50)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c78eef87-62a7-e4a9-59e5-4d223dbbb200.jpeg" alt="Calypso Kiwi Limonade">
-        <h2>Calypso Kiwi Limonade</h2>
-        <p>Boisson à la limonade avec une touche de kiwi.</p>
-        <p><strong>Prix : 4,50€</strong></p>
-        <a id="boutonAcheter10" href="#" class="cta-button" onclick="acheterProduit(10, 'Calypso Kiwi Limonade', 4.50)">Acheter</a>
-    </div>
-
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/76f12260-f1c2-9985-416c-dac4f1aa05fe.jpeg" alt="Calypso Fraise">
-        <h2>Coca-cola</h2>
-        <p>Boisson , rafraîchissante .</p>
-        <p><strong>Prix : 1,50€</strong></p>
-        <a id="boutonAcheter8" href="#" class="cta-button" onclick="acheterProduit(8, 'Caca-cola', 1.50)">Acheter</a>
-    </div>
-    <!-- Section Amuse-gueules -->
-    <h2 class="amuse-gueules">Nos Amuse-Gueules 🍫</h2>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1f06447f-e55d-238c-2f4e-3fe41fcf3036.jpeg" alt="Snacks variés">
-        <h2>Lay's saveur Bolognaise</h2>
-        <p>Un assortiment de snacks sucrés : chocolats, biscuits, et confiseries.</p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Lays Bolognaise', 3.50)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/61403896-32ca-7781-5ae2-9510fd7fcc12.jpeg" alt="Snacks variés">
-        <h2>Lay's saveur Nature</h2>
-        <p>Un assortiment de snacks </p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter14" href="#" class="cta-button" onclick="acheterProduit(14, 'Lays Nature', 3.50)">Acheter</a>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f6100dc3-aa64-e493-e4d9-c50efed6b8e5.jpeg" alt="Chocolat">
-        <h2>Chocolats et Biscuits</h2>
-        <p>Un mélange de chocolats et biscuits gourmands.</p>
-        <p><strong>Prix : 3,50€</strong></p>
-        <a id="boutonAcheter16" href="#" class="cta-button" onclick="acheterProduit(16, 'Chocolats et Biscuits', 3.50)">Acheter</a>
-    </div>
-</div>
-
-
-
-
-    <div id="about" class="hidden">
-        <h2>À propos de nous</h2>
-        <p>Nous sommes une entreprise professionnelle spécialisée dans la vente de produits de qualité. Nous sommes ouverts tous les jours de midi à 6h du matin.</p>
-    </div>
-
-    <div id="contact" class="hidden">
-        <h2>Contact</h2>
-        <p>Pour toute question, veuillez nous contacter à l'adresse e-mail suivante : contact@marketcollection.com</p>
-    </div>
-
-    <footer>
-        <p>Tous droits réservés ©MarketCollection 2024 :  !</p>
-    </footer>
-
-    <div id="subscriberCircle" class="subscriber-circle" onclick="toggleAbonnementForm()">S'abonner</div>
-
-    <div id="abonnementForm" class="abonnement-form">
-        <h3>Abonnez-vous</h3>
-        <input type="email" id="emailInput" placeholder="Entrez votre adresse e-mail">
-        <button class="abonnement-button" onclick="subscribe()">S'abonner</button>
-    </div>
-
-    <!-- Modal pour les alertes -->
-    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="alertModalLabel">Notification</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <main>
+        <section class="products">
+            <h2>Nos Gâteaux</h2>
+            <div class="product-card" onclick="openReservationModal('Gâteau d\'Anniversaire', '30 €')">
+                <img src="https://via.placeholder.com/300x200" alt="Gâteau d'Anniversaire">
+                <div class="product-info">
+                    <h3>Gâteau d'Anniversaire</h3>
+                    <p>Un délicieux gâteau au chocolat, parfait pour votre anniversaire.</p>
+                    <p><strong>Prix : 30 €</strong></p>
                 </div>
-                <div class="modal-body" id="modalMessage"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+            </div>
+
+            <div class="product-card" onclick="openReservationModal('Gâteau de Mariage', '50 €')">
+                <img src="https://via.placeholder.com/300x200" alt="Gâteau de Mariage">
+                <div class="product-info">
+                    <h3>Gâteau de Mariage</h3>
+                    <p>Un magnifique gâteau à plusieurs niveaux pour célébrer votre grand jour.</p>
+                    <p><strong>Prix : 50 €</strong></p>
                 </div>
+            </div>
+            <!-- Ajouter d'autres gâteaux ici -->
+        </section>
+
+        <div class="cart" id="cart">
+            <h3>Panier</h3>
+            <ul class="cart-items"></ul>
+            <button class="btn" onclick="checkout()">Commander</button>
+        </div>
+    </main>
+
+    <!-- Modal de réservation -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeReservationModal()">&times;</span>
+            <h2>Passer Commande</h2>
+            <form id="reservationForm">
+                <input type="text" id="clientName" placeholder="Votre Nom" required>
+                <input type="email" id="clientEmail" placeholder="Votre Email" required>
+                <input type="text" id="clientPhone" placeholder="Votre Téléphone" required>
+                <input type="text" id="cakeName" readonly>
+                <input type="text" id="cakePrice" readonly>
+                <button type="submit">Confirmer la Commande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de la boutique -->
+    <div id="boutiqueModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBoutiqueModal()">&times;</span>
+            <h2>Boutique</h2>
+            <button class="btn" onclick="openAccessories()">Accessoires</button>
+            <button class="btn" onclick="openDecorationServices()">Services de Décoration</button>
+
+            <div id="boutiqueContent">
+                <!-- Contenu de la boutique par défaut -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Bougie">
+                    <div class="product-info">
+                        <h3>Bougie d'Anniversaire</h3>
+                        <p>Une bougie colorée pour ajouter une touche spéciale à votre gâteau.</p>
+                        <p><strong>Prix : 5 €</strong></p>
+                        <button class="btn" onclick="addToCart('Bougie d\'Anniversaire', '5 €')">Ajouter au Panier</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Décoration de Gâteau">
+                    <div class="product-info">
+                        <h3>Décoration de Gâteau</h3>
+                        <p>Accessoires pour personnaliser votre gâteau comme vous le souhaitez.</p>
+                        <p><strong>Prix : 10 €</strong></p>
+                        <button class="btn" onclick="addToCart('Décoration de Gâteau', '10 €')">Ajouter au Panier</button>
+                    </div>
+                </div>
+                <!-- Ajouter d'autres accessoires ici -->
             </div>
         </div>
     </div>
-<!-- Flèche de retour en haut -->
-<a href="#" class="scroll-to-top" onclick="scrollToTop()">
-    &uarr;
-</a>
 
+    <!-- Modal Contact -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeContactModal()">&times;</span>
+            <h2>Contactez-nous</h2>
+            <form id="contactForm">
+                <input type="text" id="contactName" placeholder="Votre Nom" required>
+                <input type="email" id="contactEmail" placeholder="Votre Email" required>
+                <textarea id="contactMessage" placeholder="Votre Message" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </div>
 
- <script> var isSubscribed = false; var isFormOpen = false; var cart = []; function toggleAbonnementForm() { var form = document.getElementById('abonnementForm'); isFormOpen = !isFormOpen; form.style.display = isFormOpen ? 'block' : 'none'; } function subscribe() { var emailInput = document.getElementById('emailInput'); var email = emailInput.value; if (email && email.includes('@')) { isSubscribed = true; showAlert('Merci pour votre abonnement !'); updateSubscriberCircle(); toggleAbonnementForm(); } else { showAlert('Veuillez entrer une adresse e-mail valide.'); } } function updateSubscriberCircle() { var circle = document.getElementById('subscriberCircle'); circle.style.display = isSubscribed ? 'none' : 'flex'; } function showAlert(message) { var modalMessage = document.getElementById('modalMessage'); modalMessage.textContent = message; var alertModal = new bootstrap.Modal(document.getElementById('alertModal')); alertModal.show(); } function acheterProduit(id, nom, prix) { if (!isSubscribed) { showAlert('Veuillez vous abonner pour accéder aux commandes.'); return; } cart.push({id: Date.now(), nom: nom, prix: prix}); updateCartSummary(); showAlert('Produit ajouté au panier.'); } function removeProductFromCart(productId) { var index = cart.findIndex(item => item.id === productId); if (index !== -1) { cart.splice(index, 1); updateCartSummary(); showAlert('Produit supprimé du panier.'); } } function updateCartSummary() { var cartItemsList = document.getElementById('cartItemsList'); var cartTotal = document.getElementById('cartTotal'); var cartSummary = document.getElementById('cartSummary'); cartItemsList.innerHTML = ''; var total = 0; cart.forEach(function(item) { var li = document.createElement('li'); li.textContent = item.nom + ' - ' + item.prix + ' €'; var removeButton = document.createElement('button'); removeButton.textContent = 'Supprimer'; removeButton.className = 'btn btn-danger btn-sm ms-2'; removeButton.onclick = function() { removeProductFromCart(item.id); }; li.appendChild(removeButton); cartItemsList.appendChild(li); total += item.prix; }); cartTotal.textContent = total.toFixed(2); cartSummary.style.display = cart.length > 0 ? 'block' : 'none'; } function clearCart() { cart = []; updateCartSummary(); showAlert('Panier vidé.'); } function showDeliveryForm() { var deliveryForm = document.getElementById('orderForm'); var cartSummary = document.getElementById('cartSummary'); var orderDetails = cart.map(item => `${item.nom} - ${item.prix} €`).join(', '); document.getElementById('orderDetails').value = `Détails de la commande: ${orderDetails} | Total: ${document.getElementById('cartTotal').textContent} €`; deliveryForm.style.display = 'block'; cartSummary.style.display = 'none'; } function finalizeOrder() { var name = document.getElementById('deliveryName').value; var address = document.getElementById('deliveryAddress').value; var phone = document.getElementById('deliveryPhone').value; var deliveryTime = document.getElementById('deliveryTime').value; var paymentMethod = document.getElementById('paymentMethod').value; if (!name || !address || !phone || !deliveryTime || !paymentMethod) { showAlert('Veuillez remplir toutes les informations de livraison.'); return; } if (cart.length > 0) { document.getElementById('orderDetails').value = `Détails de la commande: ${cart.map(item => `${item.nom} - ${item.prix} €`).join(', ')} | Total: ${document.getElementById('cartTotal').textContent} € | Nom: ${name} | Adresse: ${address} | Téléphone: ${phone} | Créneau: ${deliveryTime} | Méthode de paiement: ${paymentMethod}`; showAlert('Commande finalisée. Merci de votre achat !'); clearCart(); document.getElementById('orderForm').style.display = 'none'; } else { showAlert('Le panier est vide.'); } } document.getElementById('cartButton').addEventListener('click', function() { var cartSummary = document.getElementById('cartSummary'); cartSummary.style.display = cartSummary.style.display === 'none' ? 'block' : 'none'; }); // Initialisation updateSubscriberCircle(); updateCartSummary(); 
+    <footer>
+        <p>&copy; 2024 Boutique de Gâteaux. Tous droits réservés.</p>
+    </footer>
 
-
-
-
-
-
-        function showSection(sectionId) {
-    var sections = document.querySelectorAll('header, .description-banner, .products, #about, #contact, footer');
-    var footer = document.querySelector('footer'); // Assurez-vous que le footer est sélectionné ici
-
-    sections.forEach(function(section) {
-        section.classList.add('hidden');
-    });
-
-    if (sectionId === 'home') {
-        document.querySelector('header').classList.remove('hidden');
-        document.querySelector('.description-banner').classList.remove('hidden');
-        document.querySelector('.products').classList.remove('hidden'); // Afficher directement les produits
-    } else if (sectionId === 'products') {
-        document.getElementById('products').classList.remove('hidden');
-    } else if (sectionId === 'about') {
-        document.getElementById('about').classList.remove('hidden');
-    } else if (sectionId === 'contact') {
-        document.getElementById('contact').classList.remove('hidden');
-    }
-
-    if (footer) {
-        footer.classList.remove('hidden');
-    }
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
         }
-    </script>
 
-<script>
-function toggleDropdown() {
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
-}
+        function openReservationModal(cakeName, cakePrice) {
+            document.getElementById("cakeName").value = cakeName;
+            document.getElementById("cakePrice").value = cakePrice;
+            document.getElementById("reservationModal").style.display = "block";
+        }
 
-function scrollToSection(sectionId) {
-    var section = document.querySelector('.' + sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-</script>
-    <script>
-// Fonction pour faire défiler la page en haut
-function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+        function closeReservationModal() {
+            document.getElementById("reservationModal").style.display = "none";
+        }
 
-// Afficher le bouton lorsque l'utilisateur fait défiler la page
-window.onscroll = function() {
-    var button = document.querySelector('.scroll-to-top');
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-        button.classList.add('show');
-    } else {
-        button.classList.remove('show');
-    }
-};
+        function openBoutiqueModal() {
+            document.getElementById("boutiqueModal").style.display = "block";
+        }
 
+        function closeBoutiqueModal() {
+            document.getElementById("boutiqueModal").style.display = "none";
+            document.getElementById("boutiqueContent").innerHTML = '';
+        }
 
+        function openContactModal() {
+            document.getElementById("contactModal").style.display = "block";
+        }
 
+        function closeContactModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
 
+        function addToCart(itemName, itemPrice) {
+            const cartItems = document.querySelector('.cart-items');
+            const newItem = document.createElement('li');
+            newItem.textContent = `${itemName} - ${itemPrice}`;
+            cartItems.appendChild(newItem);
+            document.getElementById("cart").style.display = "block";
+        }
 
+        function checkout() {
+            alert("Merci pour votre commande !");
+            document.getElementById("cart").style.display = "none";
+            document.querySelector('.cart-items').innerHTML = ''; // Clear cart
+        }
 
+        function openAccessories() {
+            const accessoriesContent = `
+                <h3>Accessoires</h3>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Chapeau de Fête">
+                    <div class="product-info">
+                        <h3>Chapeau de Fête</h3>
+                        <p>Un chapeau coloré pour célébrer votre événement.</p>
+                        <p><strong>Prix : 7 €</strong></p>
+                        <button class="btn" onclick="addToCart('Chapeau de Fête', '7 €')">Ajouter au Panier</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Guirlande">
+                    <div class="product-info">
+                        <h3>Guirlande</h3>
+                        <p>Guirlande festive pour embellir votre lieu de fête.</p>
+                        <p><strong>Prix : 15 €</strong></p>
+                        <button class="btn" onclick="addToCart('Guirlande', '15 €')">Ajouter au Panier</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById("boutiqueContent").innerHTML = accessoriesContent;
+        }
 
-    </script>
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    var modals = document.querySelectorAll('.modal');
-    modals.forEach(function(modal) {
-        new bootstrap.Modal(modal);
-    });
-});
+        function openDecorationServices() {
+            const decorationContent = `
+                <h3>Services de Décoration</h3>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Service de Décoration de Mariage">
+                    <div class="product-info">
+                        <h3>Décoration de Mariage</h3>
+                        <p>Nous offrons des services de décoration complets pour votre mariage.</p>
+                        <p><strong>Prix : Sur devis</strong></p>
+                        <button class="btn" onclick="addToCart('Service de Décoration de Mariage', 'Sur devis')">Ajouter au Panier</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Service de Décoration d'Anniversaire">
+                    <div class="product-info">
+                        <h3>Décoration d'Anniversaire</h3>
+                        <p>Des décorations personnalisées pour rendre votre anniversaire inoubliable.</p>
+                        <p><strong>Prix : Sur devis</strong></p>
+                        <button class="btn" onclick="addToCart('Service de Décoration d\'Anniversaire', 'Sur devis')">Ajouter au Panier</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById("boutiqueContent").innerHTML = decorationContent;
+        }
 
-function showAlert(message) {
-    var modalMessage = document.getElementById('modalMessage');
-    modalMessage.textContent = message;
-    var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
-    alertModal.show();
-}
+        // Gestion des soumissions de formulaire
+        document.getElementById("reservationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert(`Commande confirmée pour ${document.getElementById("cakeName").value}.`);
+            closeReservationModal();
+            this.reset(); // Réinitialiser le formulaire
+        });
+
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Message envoyé !");
+            closeContactModal();
+            this.reset(); // Réinitialiser le formulaire
+        });
     </script>
 </body>
     </html>
