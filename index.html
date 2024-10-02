@@ -3,43 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique de Gâteaux</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
+    <title>Loveroom Secret Jungle 🌿</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+        /* Style de base */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff;
+            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            transition: background-color 0.5s, color 0.5s;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: #ff6f61;
+            background-color: #228B22;
             color: white;
             padding: 20px;
             text-align: center;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            margin: 0;
+        }
+
+        nav {
+            text-align: center;
+            padding: 15px;
+            background-color: #2E8B57;
         }
 
         nav a {
-            margin: 0 15px;
             color: white;
+            padding: 14px 20px;
             text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: white;
+            color: #2E8B57;
+        }
+
+        section {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h2, h3 {
+            font-size: 2em;
+            color: #2E8B57;
+            margin-bottom: 20px;
         }
 
         .btn {
-            background-color: #ff6f61;
+            background-color: #228B22;
             color: white;
+            padding: 10px 20px;
             border: none;
-            padding: 10px 15px;
             cursor: pointer;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .btn:hover {
-            background-color: #ff4b3a;
+            background-color: #2E8B57;
         }
 
+        .pack {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .pack-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .pack-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pack-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #228B22;
+            color: white;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -49,19 +127,16 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
+            background-color: rgba(0, 0, 0, 0.4); 
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
+            background-color: #fff;
+            margin: 15% auto;
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
             border-radius: 10px;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .close {
@@ -73,295 +148,368 @@
 
         .close:hover,
         .close:focus {
-            color: black;
-            text-decoration: none;
+            color: #000;
             cursor: pointer;
         }
 
-        .product-card {
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px;
-            text-align: center;
-            transition: transform 0.2s;
+        /* Styles des formulaires */
+        form {
+            display: flex;
+            flex-direction: column;
         }
 
-        .product-card:hover {
-            transform: scale(1.05);
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .product-info {
-            margin-top: 10px;
-        }
-
-        .cart {
-            display: none;
-            background-color: #f1f1f1;
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        textarea,
+        select {
             padding: 10px;
+            margin-bottom: 15px;
             border-radius: 5px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #ff6f61;
-            color: white;
-            position: relative;
-            bottom: 0;
+            border: 1px solid #ccc;
             width: 100%;
         }
 
-        /* Styles pour le mode sombre */
-        body.dark-mode {
-            background-color: #333;
-            color: #f9f9f9;
+        button[type="submit"] {
+            background-color: #228B22;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        body.dark-mode header {
-            background-color: #444;
+        button[type="submit"]:hover {
+            background-color: #2E8B57;
         }
 
-        body.dark-mode .modal-content {
-            background-color: #555;
-            color: #f9f9f9;
+        /* Styles pour le mode rose */
+        .pink-mode {
+            background-color: #ffcccb;
+            color: #333;
         }
 
-        body.dark-mode .btn {
-            background-color: #ff4b3a;
+        .pink-mode header {
+            background-color: #ff69b4; /* Couleur rose vif */
         }
 
-        body.dark-mode footer {
-            background-color: #444;
+        .pink-mode nav {
+            background-color: #ff1493; /* Couleur rose foncé */
         }
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .product-card {
-                width: 90%;
-            }
+        .pink-mode .btn {
+            background-color: #ff69b4; /* Couleur bouton rose */
+        }
+
+        .pink-mode .btn:hover {
+            background-color: #ff1493; /* Couleur bouton rose foncé */
+        }
+
+        /* Styles pour le panier */
+        #panier {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #panier h3 {
+            margin: 0;
+        }
+
+        #panier .article {
+            margin: 5px 0;
+        }
+
+        /* Styles pour le panier flottant */
+        #panier {
+            position: fixed;
+            top: 20%;
+            right: 0;
+            width: 300px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        /* Styles pour la notification rapide */
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .pack-card {
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Boutique de Gâteaux</h1>
-        <nav>
-            <a href="#" onclick="openBoutiqueModal()">Boutique</a>
-            <a href="#" onclick="openContactModal()">Contact</a>
-            <button onclick="toggleDarkMode()">Mode Sombre / Clair</button>
-        </nav>
+        <h1>Loveroom Secret Jungle 🌿</h1>
+        <button class="toggle-theme" onclick="toggleTheme()">Mode Punk Rose</button>
     </header>
 
-    <main>
-        <section class="products">
-            <h2>Nos Gâteaux</h2>
-            <div class="product-card" onclick="openReservationModal('Gâteau d\'Anniversaire', '30 €')">
-                <img src="https://via.placeholder.com/300x200" alt="Gâteau d'Anniversaire">
-                <div class="product-info">
-                    <h3>Gâteau d'Anniversaire</h3>
-                    <p>Un délicieux gâteau au chocolat, parfait pour votre anniversaire.</p>
-                    <p><strong>Prix : 30 €</strong></p>
-                </div>
+    <nav>
+        <a href="javascript:void(0)" onclick="openModal('aboutModal')">À propos de nous</a>
+        <a href="javascript:void(0)" onclick="openModal('contactModal')">Contact</a>
+        <a href="javascript:void(0)" onclick="openModal('reservationModal')">Réservation directe</a>
+        <a href="javascript:void(0)" onclick="openModal('boutiqueModal')">Boutique</a>
+        <a href="javascript:void(0)" onclick="togglePanier()">Panier</a>
+    </nav>
+
+    <section>
+        <h2>Nos Services :</h2>
+        <div class="pack">
+            <div class="pack-card">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ff8d406f-893c-3cbf-ba8a-8417501275e4.jpg" alt="Pack Romantique">
+                <h3>Romantique</h3>
+                <p>Décoration romantique avec des pétales de roses et bougies pour une soirée intime.</p>
+                <p><strong>Prix : 50€</strong></p>
+                <button class="btn" onclick="openReservation('Pack Romantique', 50)">Réserver</button>
             </div>
 
-            <div class="product-card" onclick="openReservationModal('Gâteau de Mariage', '50 €')">
-                <img src="https://via.placeholder.com/300x200" alt="Gâteau de Mariage">
-                <div class="product-info">
-                    <h3>Gâteau de Mariage</h3>
-                    <p>Un magnifique gâteau à plusieurs niveaux pour célébrer votre grand jour.</p>
-                    <p><strong>Prix : 50 €</strong></p>
-                </div>
+            <div class="pack-card">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c8dbf126-5faa-ecbb-3944-83668e89f983.jpg" alt="Pack Anniversaire">
+                <h3>Pack Anniversaire</h3>
+                <p>Décoration festive pour célébrer un anniversaire inoubliable dans un cadre idyllique.</p>
+                <p><strong>Prix : 50€</strong></p>
+                <button class="btn" onclick="openReservation('Pack Anniversaire', 50)">Réserver</button>
             </div>
-            <!-- Ajouter d'autres gâteaux ici -->
-        </section>
 
-        <div class="cart" id="cart">
-            <h3>Panier</h3>
-            <ul class="cart-items"></ul>
-            <button class="btn" onclick="checkout()">Commander</button>
+            <div class="pack-card">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/34f580d7-2eeb-cf49-9c46-0746e127fe45.jpg" alt="Pack Personnalisé">
+                <h3>love couple</h3>
+                <p>Décoration unique selon vos demandes pour tout type d'événements.</p>
+                <p><strong>Prix : Sur demande</strong></p>
+                <button class="btn" onclick="openReservation('Pack Personnalisé')">Réserver</button>
+            </div>
+            
+                  <div class="pack-card">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/45e8d80f-0f2c-b50e-cc6a-8ce24cab1bd6.jpg" alt="Pack Personnalisé">
+                <h3>Pack à la demande</h3>
+                <p>Décoration unique selon vos demandes pour tout type d'événements.</p>
+                <p><strong>Prix : Sur demande</strong></p>
+                <button class="btn" onclick="openReservation('Pack Personnalisé')">Réserver</button>
+            </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Modal de réservation -->
-    <div id="reservationModal" class="modal">
+    <footer>
+        <p>&copy; 2024 Loveroom Secret Jungle 🌿. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Modals -->
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeReservationModal()">&times;</span>
-            <h2>Passer Commande</h2>
-            <form id="reservationForm">
-                <input type="text" id="clientName" placeholder="Votre Nom" required>
-                <input type="email" id="clientEmail" placeholder="Votre Email" required>
-                <input type="text" id="clientPhone" placeholder="Votre Téléphone" required>
-                <input type="text" id="cakeName" readonly>
-                <input type="text" id="cakePrice" readonly>
-                <button type="submit">Confirmer la Commande</button>
-            </form>
+            <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>À propos de nous</h2>
+            <p>La Loveroom Secret Jungle est un lieu unique où romantisme et nature se rencontrent.</p>
         </div>
     </div>
-
-    <!-- Modal de la boutique -->
-    <div id="boutiqueModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeBoutiqueModal()">&times;</span>
-            <h2>Boutique</h2>
-            <button class="btn" onclick="openAccessories()">Accessoires</button>
-            <button class="btn" onclick="openDecorationServices()">Services de Décoration</button>
-
-            <div id="boutiqueContent">
-                <!-- Contenu de la boutique par défaut -->
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Bougie">
-                    <div class="product-info">
-                        <h3>Bougie d'Anniversaire</h3>
-                        <p>Une bougie colorée pour ajouter une touche spéciale à votre gâteau.</p>
-                        <p><strong>Prix : 5 €</strong></p>
-                        <button class="btn" onclick="addToCart('Bougie d\'Anniversaire', '5 €')">Ajouter au Panier</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Décoration de Gâteau">
-                    <div class="product-info">
-                        <h3>Décoration de Gâteau</h3>
-                        <p>Accessoires pour personnaliser votre gâteau comme vous le souhaitez.</p>
-                        <p><strong>Prix : 10 €</strong></p>
-                        <button class="btn" onclick="addToCart('Décoration de Gâteau', '10 €')">Ajouter au Panier</button>
-                    </div>
-                </div>
-                <!-- Ajouter d'autres accessoires ici -->
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Contact -->
+    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeContactModal()">&times;</span>
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
             <h2>Contactez-nous</h2>
             <form id="contactForm">
-                <input type="text" id="contactName" placeholder="Votre Nom" required>
-                <input type="email" id="contactEmail" placeholder="Votre Email" required>
-                <textarea id="contactMessage" placeholder="Votre Message" required></textarea>
+                <label for="contactName">Nom :</label>
+                <input type="text" id="contactName" name="contactName" required>
+
+                <label for="contactEmail">Email :</label>
+                <input type="email" id="contactEmail" name="contactEmail" required>
+
+                <label for="contactMessage">Message :</label>
+                <textarea id="contactMessage" name="contactMessage" rows="4" required></textarea>
+
                 <button type="submit">Envoyer</button>
             </form>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Boutique de Gâteaux. Tous droits réservés.</p>
-    </footer>
+    <!-- Reservation Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('reservationModal')">&times;</span>
+            <h2>Réservation</h2>
+            <form id="reservationForm">
+                <label for="serviceName">Nom du service :</label>
+                <input type="text" id="serviceName" name="serviceName" readonly>
+
+                <label for="reservationDate">Date :</label>
+                <input type="date" id="reservationDate" name="reservationDate" required>
+
+                <label for="reservationTime">Heure :</label>
+                <input type="time" id="reservationTime" name="reservationTime" required>
+
+                <label for="clientName">Votre nom :</label>
+                <input type="text" id="clientName" name="clientName" required>
+
+                <label for="clientEmail">Votre email :</label>
+                <input type="email" id="clientEmail" name="clientEmail" required>
+
+                <button type="submit">Réserver</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Boutique Modal -->
+    <div id="boutiqueModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('boutiqueModal')">&times;</span>
+            <h2>Boutique</h2>
+            <p>Achetez nos produits exclusifs :</p>
+            <div class="pack">
+                <div class="pack-card">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c5ed5648-80a5-2cf0-9ae7-7abe36969786.jpeg" alt="Bougies Parfumées">
+                    <h3>Bougies Parfumées</h3>
+                    <p>Bougies parfumées pour créer une ambiance romantique et relaxante.</p>
+                    <p><strong>Prix : 20€</strong></p>
+                    <button class="btn" onclick="addToPanier('Bougies Parfumées', 20)">Ajouter au panier</button>
+                </div>
+
+                <div class="pack-card">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f7ef1922-2990-826c-eeb5-70a605e08a67.jpg" alt="Pétales de Roses">
+                    <h3>Pétales de Roses</h3>
+                    <p>Pétales de roses fraîches pour décorer et rendre vos moments inoubliables.</p>
+                    <p><strong>Prix : 15€</strong></p>
+                    <button class="btn" onclick="addToPanier('Pétales de Roses', 15)">Ajouter au panier</button>
+                </div>
+
+                <div class="pack-card">
+                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ca3d8cf3-9554-52b6-e7c9-fc0fcb6e6ad2.jpeg" alt="Huile de Massage">
+                    <h3>Huile de Massage</h3>
+                    <p>Huile de massage aux senteurs exotiques pour une expérience relaxante.</p>
+                    <p><strong>Prix : 25€</strong></p>
+                    <button class="btn" onclick="addToPanier('Huile de Massage', 25)">Ajouter au panier</button>
+                </div>
+                   <div class="pack-card">
+                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2f70ab33-4d37-97d5-f666-a704295d253e.jpeg" alt="Pétales de Roses">
+                <h3>Brume corporelle rafraîchissante</h3>
+    <p>Une brume légère et parfumée pour hydrater et rafraîchir votre peau tout au long de la journée.</p>
+    <p><strong>Prix : 18€</strong></p>
+                <button class="btn" onclick="addToPanier('Pétales de Roses', 15)">Ajouter au panier</button>
+            </div>
+                <!-- Emplacement pour ajouter d'autres produits à l'avenir -->
+                <div id="extraProducts"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panier flottant -->
+    <div id="panier">
+        <h3>Votre Panier</h3>
+        <div id="panierItems"></div>
+        <button class="btn" onclick="validerPanier()">Valider la commande</button>
+    </div>
+
+    <!-- Notification rapide -->
+    <div id="notification"></div>
 
     <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
+        // Fonction pour ouvrir un modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
         }
 
-        function openReservationModal(cakeName, cakePrice) {
-            document.getElementById("cakeName").value = cakeName;
-            document.getElementById("cakePrice").value = cakePrice;
-            document.getElementById("reservationModal").style.display = "block";
+        // Fonction pour fermer un modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
         }
 
-        function closeReservationModal() {
-            document.getElementById("reservationModal").style.display = "none";
+        // Fonction pour ouvrir/fermer le panier
+        function togglePanier() {
+            const panier = document.getElementById('panier');
+            panier.style.display = (panier.style.display === 'none' || panier.style.display === '') ? 'block' : 'none';
         }
 
-        function openBoutiqueModal() {
-            document.getElementById("boutiqueModal").style.display = "block";
+        // Fonction pour ajouter un article au panier
+        const panierArticles = [];
+
+        function addToPanier(nom, prix) {
+            panierArticles.push({ nom, prix });
+            updatePanier();
+            showNotification(`${nom} ajouté au panier`);
+            togglePanier();  // Afficher le panier automatiquement après ajout
         }
 
-        function closeBoutiqueModal() {
-            document.getElementById("boutiqueModal").style.display = "none";
-            document.getElementById("boutiqueContent").innerHTML = '';
+        // Fonction pour mettre à jour l'affichage du panier
+        function updatePanier() {
+            const panierItems = document.getElementById('panierItems');
+            panierItems.innerHTML = '';
+            panierArticles.forEach(article => {
+                const div = document.createElement('div');
+                div.className = 'article';
+                div.textContent = `${article.nom} - ${article.prix}€`;
+                panierItems.appendChild(div);
+            });
         }
 
-        function openContactModal() {
-            document.getElementById("contactModal").style.display = "block";
+        // Fonction pour valider la commande
+        function validerPanier() {
+            if (panierArticles.length === 0) {
+                alert("Votre panier est vide.");
+                return;
+            }
+            alert("Commande validée !");
+            panierArticles.length = 0; // Vider le panier
+            updatePanier(); // Mettre à jour l'affichage
         }
 
-        function closeContactModal() {
-            document.getElementById("contactModal").style.display = "none";
+        // Fonction pour ouvrir la réservation avec des informations pré-remplies
+        function openReservation(serviceName, price) {
+            document.getElementById('serviceName').value = serviceName;
+            document.getElementById('reservationModal').style.display = "block";
         }
 
-        function addToCart(itemName, itemPrice) {
-            const cartItems = document.querySelector('.cart-items');
-            const newItem = document.createElement('li');
-            newItem.textContent = `${itemName} - ${itemPrice}`;
-            cartItems.appendChild(newItem);
-            document.getElementById("cart").style.display = "block";
+        // Fonction pour changer de thème
+        function toggleTheme() {
+            document.body.classList.toggle('pink-mode');
         }
 
-        function checkout() {
-            alert("Merci pour votre commande !");
-            document.getElementById("cart").style.display = "none";
-            document.querySelector('.cart-items').innerHTML = ''; // Clear cart
+        // Afficher la notification rapide
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);  // Notification disparaît après 2 secondes
         }
 
-        function openAccessories() {
-            const accessoriesContent = `
-                <h3>Accessoires</h3>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Chapeau de Fête">
-                    <div class="product-info">
-                        <h3>Chapeau de Fête</h3>
-                        <p>Un chapeau coloré pour célébrer votre événement.</p>
-                        <p><strong>Prix : 7 €</strong></p>
-                        <button class="btn" onclick="addToCart('Chapeau de Fête', '7 €')">Ajouter au Panier</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Guirlande">
-                    <div class="product-info">
-                        <h3>Guirlande</h3>
-                        <p>Guirlande festive pour embellir votre lieu de fête.</p>
-                        <p><strong>Prix : 15 €</strong></p>
-                        <button class="btn" onclick="addToCart('Guirlande', '15 €')">Ajouter au Panier</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById("boutiqueContent").innerHTML = accessoriesContent;
+        // Fermer un modal si l'utilisateur clique en dehors du contenu
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName("modal");
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
         }
-
-        function openDecorationServices() {
-            const decorationContent = `
-                <h3>Services de Décoration</h3>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Service de Décoration de Mariage">
-                    <div class="product-info">
-                        <h3>Décoration de Mariage</h3>
-                        <p>Nous offrons des services de décoration complets pour votre mariage.</p>
-                        <p><strong>Prix : Sur devis</strong></p>
-                        <button class="btn" onclick="addToCart('Service de Décoration de Mariage', 'Sur devis')">Ajouter au Panier</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200" alt="Service de Décoration d'Anniversaire">
-                    <div class="product-info">
-                        <h3>Décoration d'Anniversaire</h3>
-                        <p>Des décorations personnalisées pour rendre votre anniversaire inoubliable.</p>
-                        <p><strong>Prix : Sur devis</strong></p>
-                        <button class="btn" onclick="addToCart('Service de Décoration d\'Anniversaire', 'Sur devis')">Ajouter au Panier</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById("boutiqueContent").innerHTML = decorationContent;
-        }
-
-        // Gestion des soumissions de formulaire
-        document.getElementById("reservationForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert(`Commande confirmée pour ${document.getElementById("cakeName").value}.`);
-            closeReservationModal();
-            this.reset(); // Réinitialiser le formulaire
-        });
-
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            alert("Message envoyé !");
-            closeContactModal();
-            this.reset(); // Réinitialiser le formulaire
-        });
     </script>
+
 </body>
-    </html>
+            </html>
