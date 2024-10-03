@@ -207,10 +207,10 @@
         }
         
         
-        
-       #about-content {
+        #about-content {
             font-size: 14px;
-        }   .a2a_button_snapchat {
+        }  
+        .a2a_button_snapchat {
             background-color: yellow;
         }
     </style>
@@ -283,13 +283,30 @@
 <script src="script.js"></script>
   <div id="social-sharing">
     <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-      <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/Online_Shop13/"></a>
+      <a class="a2a_button_snapchat" href="https://restaurant-comorien.oldestlucious.repl.co/"></a>
       <a class="a2a_button_facebook"></a>
       <a class="a2a_button_twitter"></a>
       <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
     </div>
   </div>
   <script async src="https://static.addtoany.com/menu/page.js"></script>
+  
+  <script>
+var socialSharing = document.getElementById('social-sharing');
+var lastScrollTop = 0;
+
+window.addEventListener('scroll', function() {
+    var st = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (st > lastScrollTop) {
+        socialSharing.style.display = 'none'; // Masquer le code en descendant
+    } else {
+        socialSharing.style.display = 'block'; // Afficher le code en montant
+    }
+
+    lastScrollTop = st;
+});
+</script>
 <script>
     let cart = [];
 
