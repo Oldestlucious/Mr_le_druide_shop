@@ -3,525 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loveroom Secret Jungle 🌿</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<style>
-        /* Style de base */
+    <title>Profil Public Boutique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #333;
             font-family: 'Roboto', sans-serif;
-            background-color: #fff;
-            color: #333;
             margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
         }
 
-        header {
-            background-color: #228B22;
-            color: white;
+        .profile-container {
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            width: 350px;
             padding: 20px;
             text-align: center;
             position: relative;
         }
 
-        header h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3em;
-            margin: 0;
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ffeb3b;
+            margin: 10px auto;
+            object-fit: cover;
+            cursor: pointer;
         }
 
-        nav {
-            text-align: center;
-            padding: 15px;
-            background-color: #2E8B57;
+        .star {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            top: 101px;
+            left: 60%;
+            transform: translate(-50%, 0);
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         }
 
-        nav a {
-            color: white;
-            padding: 14px 20px;
+        .star::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #000;
+            clip-path: polygon(
+                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+            );
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .toggle-button {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #ffeb3b;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #ffdb00;
+        }
+
+        .toggle-button span {
+            margin-left: 8px;
+        }
+
+        .content-section {
+            display: none;
+            border-top: 1px solid #ddd;
+            margin-top: 15px;
+            padding-top: 10px;
+            text-align: left;
+        }
+
+        .content-title {
+            font-weight: bold;
+            color: #6200ea;
+            margin-bottom: 5px;
+        }
+
+#storeIcon {
+    font-size: 48px; /* Augmente la taille de l'icône */
+    background: linear-gradient(to bottom, #FF6347 50%, #1E90FF 50%); /* Rouge en haut, bleu en bas */
+    -webkit-background-clip: text; /* Utilise le dégradé pour la couleur de l'icône */
+    color: transparent; /* Rend le texte transparent pour afficher le dégradé */
+    cursor: pointer;
+    transition: transform 0.3s, filter 0.3s;
+}
+
+#storeIcon:hover {
+    transform: scale(1.2); /* Agrandit légèrement l'icône au survol */
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3)); /* Ajoute une ombre au survol */
+}
+
+
+        .follow-button {
+            display: inline-block;
+            background-color: #ffeb3b;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
-            margin: 0 10px;
-            border-radius: 5px;
-        }
-
-        nav a:hover {
-            background-color: white;
-            color: #2E8B57;
-        }
-
-        section {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-            text-align: center;
-        }
-
-        h2, h3 {
-            font-size: 2em;
-            color: #2E8B57;
-            margin-bottom: 20px;
-        }
-
-        .btn {
-            background-color: #228B22;
-            color: white;
-            padding: 10px 20px;
-            border: none;
+            margin-top: 15px;
             cursor: pointer;
-            border-radius: 25px;
-            font-size: 16px;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
 
-        .btn:hover {
-            background-color: #2E8B57;
+        .follow-button:hover {
+            background-color: #ffe600;
         }
 
-        .pack {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+        .shop-section {
+            display: none; /* Cachée par défaut */
+            margin-top: 20px; /* Ajout d'un espace */
         }
 
-        .pack-card {
-            background-color: #f5f5f5;
+        .product {
+            background: #f1f1f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+.product img {
+    width: 100%; /* Prend toute la largeur de son conteneur */
+    height: auto; /* Ajuste la hauteur automatiquement pour maintenir le rapport d'aspect */
+    max-height: 200px; /* Limite la hauteur maximale pour éviter les débordements */
+    object-fit: contain; /* Ajuste l'image pour qu'elle soit entièrement visible */
+    border-radius: 5px; /* Arrondit légèrement les coins des images (facultatif) */
+}
+
+        #cartModal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            background-color: #fff;
             padding: 20px;
-            margin: 10px;
             border-radius: 10px;
             width: 300px;
-            text-align: center;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
         }
 
-        .pack-card:hover {
-            transform: scale(1.05);
-        }
-
-        .pack-card img {
-            width: 100%;
-            border-radius: 10px;
+        #cartModal .cart-item {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #228B22;
+        #cartModal .cart-item button {
+            background-color: #f44336;
             color: white;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4); 
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 15% auto;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #000;
-            cursor: pointer;
-        }
-
-        /* Styles des formulaires */
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        input[type="time"],
-        textarea,
-        select {
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            width: 100%;
-        }
-
-        button[type="submit"] {
-            background-color: #228B22;
-            color: white;
-            padding: 10px 15px;
             border: none;
+            padding: 5px;
             border-radius: 5px;
             cursor: pointer;
         }
 
-        button[type="submit"]:hover {
-            background-color: #2E8B57;
-        }
-
-        /* Styles pour le mode rose */
-        .pink-mode {
-            background-color: #ffcccb;
-            color: #333;
-        }
-
-        .pink-mode header {
-            background-color: #ff69b4; /* Couleur rose vif */
-        }
-
-        .pink-mode nav {
-            background-color: #ff1493; /* Couleur rose foncé */
-        }
-
-        .pink-mode .btn {
-            background-color: #ff69b4; /* Couleur bouton rose */
-        }
-
-        .pink-mode .btn:hover {
-            background-color: #ff1493; /* Couleur bouton rose foncé */
-        }
-
-        /* Styles pour le panier */
-        #panier {
-            display: none;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+        .checkout-button {
+            background-color: #4CAF50;
+            color: white;
             padding: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 20px;
         }
 
-        #panier h3 {
-            margin: 0;
-        }
-
-        #panier .article {
-            margin: 5px 0;
-        }
-
-        /* Styles pour le panier flottant */
-        #panier {
-            position: fixed;
-            top: 20%;
-            right: 0;
-            width: 300px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border: 1px solid #ccc;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: none;
+        .visible {
+            display: block; /* Affiche la section */
         }
         
-        /* Styles pour la notification rapide */
-        #notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #4caf50;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        .pack-card {
-            margin-bottom: 20px;
+        
+        
+       #about-content {
+            font-size: 14px;
+        }   .a2a_button_snapchat {
+            background-color: yellow;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Loveroom Secret Jungle 🌿</h1>
-        <button class="toggle-theme" onclick="toggleTheme()">Mode Pink</button>
-    </header>
+<div class="profile-container">
+    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/89a59702-cad3-dfb7-580d-22fb843f8d3f.jpeg" alt="Photo de Profil" class="profile-image" id="profileImage">
+    <div class="star"></div> 
+    <div class="username">🗿Holdest🇯🇲</div>
+    <div class="status" id="statusText">Snapchateur depuis 2022</div>
 
-    <nav>
-        <a href="javascript:void(0)" onclick="openModal('aboutModal')">À propos de nous</a>
-        <a href="javascript:void(0)" onclick="openModal('contactModal')">Contact</a>
-        <a href="javascript:void(0)" onclick="openModal('reservationModal')">Réservation directe</a>
-        <a href="javascript:void(0)" onclick="openModal('boutiqueModal')">Boutique</a>
-        <a href="javascript:void(0)" onclick="togglePanier()">Panier</a>
-    </nav>
+    <div class="toggle-button" id="toggleDetails">
+        <span>Détails du Profil</span>
+        <span class="material-symbols-outlined">expand_more</span>
+    </div>
 
-<div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAGSaq08Es4/b5-N29Wxw49wsYoJ1LLz3Q/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
+    <div class="content-section" id="profileDetails">
+        <div class="content-title">Détails du Profil</div>
+        <div class="details">Nom d'utilisateur : @lucious-lion04</div>
+        <div class="details">Publications : 590 vues</div>
+        <div class="details">Amis : 9 400 k</div>
+        <div class="details">Étoiles : 5</div>
+    </div>
+
+    <div class="content-section">
+        <div class="content-title">Dernière mise à jour</div>
+        <div class="last-updated">1er octobre 2024</div>
+    </div>
+
+    <!-- Icône storefront avec interaction -->
+    <div class="toggle-button" id="showShopButton">
+ 
+        <span class="material-symbols-outlined" id="storeIcon">storefront</span>
+    </div>
+
+<!-- Section de la boutique -->
+<div class="shop-section" id="shopSection">
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="OCB Slim Noir">
+        <div class="product-name">OCB Slim Noir</div>
+        <div class="product-description">Papiers à rouler OCB Slim de couleur noire, parfaits pour une expérience de fumée élégante.</div>
+        <div class="product-price">20€</div>
+        <button class="buy-button" onclick="addToCart('OCB Slim Noir', 20)">Acheter</button>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6e800621-1c3d-6873-6009-34067c6bf220.jpeg" alt="OCB Slim Marron">
+        <div class="product-name">OCB Slim Marron</div>
+        <div class="product-description">Papiers à rouler OCB Slim de couleur marron, pour une touche naturelle à votre expérience.</div>
+        <div class="product-price">30€</div>
+        <button class="buy-button" onclick="addToCart('OCB Slim Marron', 30)">Acheter</button>
+    </div>
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/35301dd6-4fc6-19fa-00ab-f5a3fc8f85f3.jpeg" alt="OCB Slim Bleu">
+        <div class="product-name">OCB Slim Bleu</div>
+        <div class="product-description">Papiers à rouler OCB Slim de couleur bleue, pour une expérience de fumée distincte.</div>
+        <div class="product-price">30€</div>
+        <button class="buy-button" onclick="addToCart('OCB Slim Bleu', 30)">Acheter</button>
+    </div>
 </div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGSaq08Es4&#x2F;b5-N29Wxw49wsYoJ1LLz3Q&#x2F;view?utm_content=DAGSaq08Es4&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
 
-
-
-
-    <section>
-        <h2>Nos Services :</h2>
-        <div class="pack">
-            <div class="pack-card">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ff8d406f-893c-3cbf-ba8a-8417501275e4.jpg" alt="Pack Romantique">
-                <h3>Romantique</h3>
-                <p>Décoration romantique avec des pétales de roses et bougies pour une soirée intime.</p>
-                <p><strong>Prix : 150€</strong></p>
-                <button class="btn" onclick="openReservation('Pack Romantique', 50)">Réserver</button>
-            </div>
-
-            <div class="pack-card">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c8dbf126-5faa-ecbb-3944-83668e89f983.jpg" alt="Pack Anniversaire">
-                <h3>Pack Anniversaire</h3>
-                <p>Décoration festive pour célébrer un anniversaire inoubliable dans un cadre idyllique.</p>
-                <p><strong>Prix : 250€</strong></p>
-                <button class="btn" onclick="openReservation('Pack Anniversaire', 50)">Réserver</button>
-            </div>
-
-            <div class="pack-card">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/34f580d7-2eeb-cf49-9c46-0746e127fe45.jpg" alt="Pack Personnalisé">
-                <h3>love couple</h3>
-                <p>Décoration unique selon vos demandes pour tout type d'événements.</p>
-                <p><strong>Prix : Sur demande</strong></p>
-                <button class="btn" onclick="openReservation('Pack Personnalisé')">Réserver</button>
-            </div>
-            
-                  <div class="pack-card">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/45e8d80f-0f2c-b50e-cc6a-8ce24cab1bd6.jpg" alt="Pack Personnalisé">
-                <h3>Pack à la demande</h3>
-                <p>Décoration unique selon vos demandes pour tout type d'événements.</p>
-                <p><strong>Prix : Sur demande</strong></p>
-                <button class="btn" onclick="openReservation('Pack Personnalisé')">Réserver</button>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Loveroom Secret Jungle 🌿. Tous droits réservés.</p>
-    </footer>
-
-    <!-- Modals -->
-    <!-- About Modal -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('aboutModal')">&times;</span>
-            <h2>À propos de nous</h2>
-            <p>La Loveroom Secret Jungle est un lieu unique où romantisme et nature se rencontrent.</p>
-        </div>
-    </div>
-    <!-- Contact Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('contactModal')">&times;</span>
-            <h2>Contactez-nous</h2>
-            <form id="contactForm">
-                <label for="contactName">Nom :</label>
-                <input type="text" id="contactName" name="contactName" required>
-
-                <label for="contactEmail">Email :</label>
-                <input type="email" id="contactEmail" name="contactEmail" required>
-
-                <label for="contactMessage">Message :</label>
-                <textarea id="contactMessage" name="contactMessage" rows="4" required></textarea>
-
-                <button type="submit">Envoyer</button>
-            </form>
-        </div>
+    <!-- Modal du Panier -->
+    <div id="cartModal">
+        <h3>Mon Panier</h3>
+<div id="cartItems"></div>
+        <div class="checkout-button" id="checkoutButton" onclick="checkout()">Passer à la caisse</div>
     </div>
 
-    <!-- Reservation Modal -->
-    <div id="reservationModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('reservationModal')">&times;</span>
-            <h2>Réservation</h2>
-            <form id="reservationForm">
-                <label for="serviceName">Nom du service :</label>
-                <input type="text" id="serviceName" name="serviceName" readonly>
-
-                <label for="reservationDate">Date :</label>
-                <input type="date" id="reservationDate" name="reservationDate" required>
-
-                <label for="reservationTime">Heure :</label>
-                <input type="time" id="reservationTime" name="reservationTime" required>
-
-                <label for="clientName">Votre nom :</label>
-                <input type="text" id="clientName" name="clientName" required>
-
-                <label for="clientEmail">Votre email :</label>
-                <input type="email" id="clientEmail" name="clientEmail" required>
-
-                <button type="submit">Réserver</button>
-            </form>
-        </div>
+</div>
+<script src="script.js"></script>
+  <div id="social-sharing">
+    <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+      <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/Online_Shop13/"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
     </div>
+  </div>
+  <script async src="https://static.addtoany.com/menu/page.js"></script>
+<script>
+    let cart = [];
 
-    <!-- Boutique Modal -->
-    <div id="boutiqueModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('boutiqueModal')">&times;</span>
-            <h2>Boutique</h2>
-            <p>Achetez nos produits exclusifs :</p>
-            <div class="pack">
-                <div class="pack-card">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/c5ed5648-80a5-2cf0-9ae7-7abe36969786.jpeg" alt="Bougies Parfumées">
-                    <h3>Bougies Parfumées</h3>
-                    <p>Bougies parfumées pour créer une ambiance romantique et relaxante.</p>
-                    <p><strong>Prix : 20€</strong></p>
-                    <button class="btn" onclick="addToPanier('Bougies Parfumées', 20)">Ajouter au panier</button>
-                </div>
+    // Afficher/masquer les détails du profil
+    document.getElementById('toggleDetails').onclick = function() {
+        const profileDetails = document.getElementById('profileDetails');
+        profileDetails.classList.toggle('visible');
+        const icon = document.querySelector('#toggleDetails .material-symbols-outlined');
+        icon.textContent = profileDetails.classList.contains('visible') ? 'expand_less' : 'expand_more';
+    };
 
-                <div class="pack-card">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/f7ef1922-2990-826c-eeb5-70a605e08a67.jpg" alt="Pétales de Roses">
-                    <h3>Pétales de Roses</h3>
-                    <p>Pétales de roses fraîches pour décorer et rendre vos moments inoubliables.</p>
-                    <p><strong>Prix : 15€</strong></p>
-                    <button class="btn" onclick="addToPanier('Pétales de Roses', 15)">Ajouter au panier</button>
-                </div>
+    // Afficher/masquer la boutique lorsque l'icône est cliquée
+    document.getElementById('showShopButton').onclick = function(event) {
+        event.preventDefault(); // Empêche le lien de rafraîchir la page
+        const shopSection = document.getElementById('shopSection');
+        shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
 
-                <div class="pack-card">
-                    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/ca3d8cf3-9554-52b6-e7c9-fc0fcb6e6ad2.jpeg" alt="Huile de Massage">
-                    <h3>Huile de Massage</h3>
-                    <p>Huile de massage aux senteurs exotiques pour une expérience relaxante.</p>
-                    <p><strong>Prix : 25€</strong></p>
-                    <button class="btn" onclick="addToPanier('Huile de Massage', 25)">Ajouter au panier</button>
-                </div>
-                   <div class="pack-card">
-                <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2f70ab33-4d37-97d5-f666-a704295d253e.jpeg" alt="Pétales de Roses">
-                <h3>Brume corporelle rafraîchissante</h3>
-    <p>Une brume légère et parfumée pour hydrater et rafraîchir votre peau tout au long de la journée.</p>
-    <p><strong>Prix : 18€</strong></p>
-                <button class="btn" onclick="addToPanier('Pétales de Roses', 15)">Ajouter au panier</button>
-            </div>
-                <!-- Emplacement pour ajouter d'autres produits à l'avenir -->
-                <div id="extraProducts"></div>
-            </div>
-        </div>
-    </div>
+        // Change la couleur de l'icône
+        const storeIcon = document.getElementById('storeIcon');
+        storeIcon.classList.toggle('active');
+    };
 
-    <!-- Panier flottant -->
-    <div id="panier">
-        <h3>Votre Panier</h3>
-        <div id="panierItems"></div>
-        <button class="btn" onclick="validerPanier()">Valider la commande</button>
-    </div>
+    // Fonction pour ajouter un produit au panier
+    function addToCart(productName, price) {
+        cart.push({ name: productName, price: price });
+        updateCart();
+        showCartModal();
+    }
 
-    <!-- Notification rapide -->
-    <div id="notification"></div>
+    // Met à jour l'affichage du panier
+    function updateCart() {
+        const cartItemsContainer = document.getElementById('cartItems');
+        cartItemsContainer.innerHTML = '';
+        cart.forEach(item => {
+            const cartItem = document.createElement('div');
+            cartItem.className = 'cart-item';
+            cartItem.innerHTML = `${item.name} - ${item.price}€ <button onclick="removeFromCart('${item.name}')">Supprimer</button>`;
+            cartItemsContainer.appendChild(cartItem);
+        });
+    }
 
-    <script>
-        // Fonction pour ouvrir un modal
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
+    // Affiche le modal du panier
+    function showCartModal() {
+        const cartModal = document.getElementById('cartModal');
+        cartModal.style.display = 'block';
+    }
+
+    // Supprime un produit du panier
+    function removeFromCart(productName) {
+        cart = cart.filter(item => item.name !== productName);
+        updateCart();
+    }
+
+    // Fonction pour passer à la caisse
+    function checkout() {
+        alert('Merci pour votre achat !');
+        cart = [];
+        updateCart();
+        document.getElementById('cartModal').style.display = 'none'; // Cache le panier après le paiement
+    }
+
+    // Ferme le modal du panier en cliquant en dehors
+    window.onclick = function(event) {
+        const cartModal = document.getElementById('cartModal');
+        if (event.target === cartModal) {
+            cartModal.style.display = 'none';
         }
-
-        // Fonction pour fermer un modal
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
-        }
-
-        // Fonction pour ouvrir/fermer le panier
-        function togglePanier() {
-            const panier = document.getElementById('panier');
-            panier.style.display = (panier.style.display === 'none' || panier.style.display === '') ? 'block' : 'none';
-        }
-
-        // Fonction pour ajouter un article au panier
-        const panierArticles = [];
-
-        function addToPanier(nom, prix) {
-            panierArticles.push({ nom, prix });
-            updatePanier();
-            showNotification(`${nom} ajouté au panier`);
-            togglePanier();  // Afficher le panier automatiquement après ajout
-        }
-
-        // Fonction pour mettre à jour l'affichage du panier
-        function updatePanier() {
-            const panierItems = document.getElementById('panierItems');
-            panierItems.innerHTML = '';
-            panierArticles.forEach(article => {
-                const div = document.createElement('div');
-                div.className = 'article';
-                div.textContent = `${article.nom} - ${article.prix}€`;
-                panierItems.appendChild(div);
-            });
-        }
-
-        // Fonction pour valider la commande
-        function validerPanier() {
-            if (panierArticles.length === 0) {
-                alert("Votre panier est vide.");
-                return;
-            }
-            alert("Commande validée !");
-            panierArticles.length = 0; // Vider le panier
-            updatePanier(); // Mettre à jour l'affichage
-        }
-
-        // Fonction pour ouvrir la réservation avec des informations pré-remplies
-        function openReservation(serviceName, price) {
-            document.getElementById('serviceName').value = serviceName;
-            document.getElementById('reservationModal').style.display = "block";
-        }
-
-        // Fonction pour changer de thème
-        function toggleTheme() {
-            document.body.classList.toggle('pink-mode');
-        }
-
-        // Afficher la notification rapide
-        function showNotification(message) {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.style.display = 'block';
-
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 2000);  // Notification disparaît après 2 secondes
-        }
-
-        // Fermer un modal si l'utilisateur clique en dehors du contenu
-        window.onclick = function(event) {
-            const modals = document.getElementsByClassName("modal");
-            for (let i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
-                }
-            }
-        }
-    </script>
-
+    };
+</script>
 </body>
 </html>
