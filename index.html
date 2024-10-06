@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg" type="image/png">
+    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil Public Boutique</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        body {
+    body {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -165,33 +164,9 @@
     border-radius: 5px; /* Arrondit légèrement les coins des images (facultatif) */
 }
 
-        #cartModal {
-            display: none; /* Caché par défaut */
-            position: fixed;
-            right: 20px;
-            bottom: 80px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
+  
 
-        #cartModal .cart-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
 
-        #cartModal .cart-item button {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
 
         .checkout-button {
             background-color: #4CAF50;
@@ -214,6 +189,36 @@
         .a2a_button_snapchat {
             background-color: yellow;
         }
+    
+    
+
+        #cartModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        #openCartButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffeb3b;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -222,75 +227,178 @@
     <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/89a59702-cad3-dfb7-580d-22fb843f8d3f.jpeg" alt="Photo de Profil" class="profile-image" id="profileImage">
     <div class="star"></div> 
     <div class="username">🗿Holdest🇯🇲</div>
-    <div class="status" id="statusText">Snapchateur depuis 2022</div>
+<div class="status" id="statusText">Bienvenue dans ma boutique !</div>
 
-    <div class="toggle-button" id="toggleDetails">
-        <span>Détails du Profil</span>
-        <span class="material-symbols-outlined">expand_more</span>
-    </div>
+<div class="toggle-button" id="toggleDetails">
+    <span>Détails de la Boutique</span>
+    <span class="material-symbols-outlined">expand_more</span>
+</div>
 
-    <div class="content-section" id="profileDetails">
-        <div class="content-title">Détails du Profil</div>
-        <div class="details">Nom d'utilisateur : @lucious-lion04</div>
-        <div class="details">Publications : 590 vues</div>
-        <div class="details">Amis : 9 400 k</div>
-        <div class="details">Étoiles : 5</div>
-    </div>
+<div class="content-section" id="profileDetails">
+    <div class="content-title">Détails de la Boutique</div>
+    <div class="details">Nom de la boutique : Holdest Boutique</div>
+    <div class="details">Produits : 50 articles en stock</div>
+    
+    <!-- Ajout d'un encadré pour les clients satisfaits -->
+    <div class="details client-count" id="clientCount">Clients : 1 200+ satisfaits</div>
+    
+    <!-- Évaluations avec étoiles -->
+    <div class="details">Évaluations : ★★★★★ (4.8)</div> <!-- Ligne modifiée pour les évaluations -->
+</div>
 
-    <div class="content-section">
-        <div class="content-title">Dernière mise à jour</div>
-        <div class="last-updated">1er octobre 2024</div>
-    </div>
+<div class="content-section">
+    <div class="content-title">Dernière mise à jour</div>
+    <div class="last-updated">1er octobre 2024</div>
+</div>
+
+<style>
+    .client-count {
+        background-color: #4CAF50; /* Couleur de fond verte */
+        color: white; /* Texte en blanc */
+        padding: 10px; /* Espacement interne */
+        border-radius: 8px; /* Coins arrondis */
+        margin: 10px 0; /* Espacement autour de l'encadré */
+        font-weight: bold; /* Texte en gras */
+        text-align: center; /* Centre le texte */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
+    }
+
+    .details {
+        font-size: 18px; /* Taille de la police pour les détails */
+        margin: 5px 0; /* Espacement autour des lignes de détails */
+    }
+</style>
+
+<script>
+    // Initialisation du compteur de clients
+    let currentCount = 1200; // Valeur initiale
+    const incrementValue = Math.floor(Math.random() * 10) + 1; // Valeur d'incrément aléatoire
+    const clientCountElement = document.getElementById('clientCount');
+
+    // Fonction pour mettre à jour le compteur
+    function updateClientCount() {
+        currentCount += incrementValue; // Incrémenter le compteur
+        clientCountElement.innerText = `Clients : ${currentCount.toLocaleString()} satisfaits`; // Mettre à jour le texte
+    }
+
+    // Mettre à jour le compteur toutes les 5 secondes
+    setInterval(updateClientCount, 5000);
+</script>
 
     <!-- Icône storefront avec interaction -->
     <div class="toggle-button" id="showShopButton">
-
         <span class="material-symbols-outlined" id="storeIcon">storefront</span>
     </div>
 
-<!-- Section de la boutique -->
+<!-- Section boutique -->
 <div class="shop-section" id="shopSection">
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="OCB Slim Noir">
-        <div class="product-name">OCB Slim Noir</div>
-        <div class="product-description">Papiers à rouler OCB Slim de couleur noire, parfaits pour une expérience de fumée élégante.</div>
-        <div class="product-price">20€</div>
-        <button class="buy-button" onclick="addToCart('OCB Slim Noir', 20)">Acheter</button>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/6e800621-1c3d-6873-6009-34067c6bf220.jpeg" alt="OCB Slim Marron">
-        <div class="product-name">OCB Slim Marron</div>
-        <div class="product-description">Papiers à rouler OCB Slim de couleur marron, pour une touche naturelle à votre expérience.</div>
-        <div class="product-price">30€</div>
-        <button class="buy-button" onclick="addToCart('OCB Slim Marron', 30)">Acheter</button>
-    </div>
-    <div class="product">
-        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/35301dd6-4fc6-19fa-00ab-f5a3fc8f85f3.jpeg" alt="OCB Slim Bleu">
-        <div class="product-name">OCB Slim Bleu</div>
-        <div class="product-description">Papiers à rouler OCB Slim de couleur bleue, pour une expérience de fumée distincte.</div>
-        <div class="product-price">30€</div>
-        <button class="buy-button" onclick="addToCart('OCB Slim Bleu', 30)">Acheter</button>
-    </div>
+    <!-- Produits -->
+    <h3>Produits</h3>
+    
+<!-- Produit exemple -->
+<div class="product">
+    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="OCB Slim Noir">
+    <div class="product-name">OCB Slim Noir - 20€</div>
+    <button onclick="addToCart('OCB Slim Noir', '20')">Acheter</button>
 </div>
 
-    <!-- Modal du Panier -->
-    <div id="cartModal">
-        <h3>Mon Panier</h3>
-<div id="cartItems"></div>
-        <div class="checkout-button" id="checkoutButton" onclick="checkout()">Passer à la caisse</div>
-    </div>
+<!-- Nouveau produit: Bonbonne Crème Deluxe -->
+<div class="product">
+    <div class="product-name">Bonbonne Crème Deluxe - 30€</div>
+    <button onclick="addToCart('Bonbonne Crème Deluxe', '30')">Acheter</button>
+</div>
 
+<!-- Nouveau produit: Fast Gaz -->
+<div class="product">
+    <div class="product-name">Fast Gaz - 25€</div>
+    <button onclick="addToCart('Fast Gaz', '25')">Acheter</button>
+</div>
+
+<!-- Nouveau produit: Tank -->
+<div class="product">
+    <div class="product-name">Tank - 45€</div>
+    <button onclick="addToCart('Tank', '45')">Acheter</button>
+</div>
+
+<!-- Section Puff -->
+<h3>Puffs</h3>
+
+<!-- Nouveau produit: Puff goût fraise -->
+<div class="product">
+    <div class="product-name">Puff goût fraise 🍓 9000 - 15€</div>
+    <button onclick="addToCart('Puff goût fraise 9000', '15')">Acheter</button>
+</div>
+
+<!-- Nouveau produit: Puff goût myrtille -->
+<div class="product">
+    <div class="product-name">Puff goût myrtille 15000 - 18€</div>
+    <button onclick="addToCart('Puff goût myrtille 15000', '18')">Acheter</button>
+</div>
+
+<!-- Nouveau produit: Snouss Pablo Escobar -->
+<div class="product">
+    <div class="product-name">Snouss Pablo Escobar - 10€</div>
+    <button onclick="addToCart('Snouss Pablo Escobar', '10')">Acheter</button>
+</div>
+
+<!-- Section Boissons -->
+<h3>Boissons</h3>
+
+<!-- Nouveau produit: Coco -->
+<div class="product">
+    <div class="product-name">Coco - 2€</div>
+    <button onclick="addToCart('Coco', '2')">Acheter</button>
+</div>
+
+<!-- Nouveau produit: Fanta -->
+<div class="product">
+    <div class="product-name">Fanta - 2€</div>
+    <button onclick="addToCart('Fanta', '2')">Acheter</button>
+</div>
+
+<!-- Ajoutez d'autres produits ici si nécessaire -->
+      <!-- Modal du Panier et Formulaire -->
+      <div id='cartModal'>
+          <h3>Mon Panier</h3>
+          <div id='cartItems'></div>
+          <button class='checkout-button' onclick='checkout()'>Passer à la caisse</button>
+
+          <!-- Formulaire commande -->
+          <h3>Finaliser votre commande</h3>
+          <form id='checkoutForm' action='https://formspree.io/f/votre_id_formspree' method='POST'>
+              <!-- Champs du formulaire -->
+              <input type='text' name='name' placeholder='Nom complet' required />
+              <input type='email' name='email' placeholder='Email' required />
+              <input type='tel' name='phone' placeholder='Téléphone' required />
+              <textarea name='address' placeholder='Adresse de livraison' required></textarea>
+              <select name='deliveryTime' required>
+                  <!-- Options d'heure -->
+                  ...
+              </select>
+              <input type='hidden' name='orderDetails' id='orderDetails'>
+              <button type='submit'>Confirmer la commande</button>
+          </form>
+      </div>
+
+      <!-- Bouton flottant pour ouvrir le panier -->
+
+<button id='openCartButton'>🛒<span id="cartCount">0</span></button>
+    </div>  
+  <div id="alertModal" class="modal" style="display:none; position:fixed; top:0; width:100%; background-color:red; color:white; text-align:center; padding:10px;">
+    <span id="alertMessage"></span>
+</div>
 </div>
 <script src="script.js"></script>
-<div id="social-sharing">
-    <div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-        <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/holdest_shop/"></a>
-        <a class="a2a_button_facebook" href="https://oldestlucious.github.io/holdest_shop/"></a>
-        <a class="a2a_button_twitter" href="https://oldestlucious.github.io/holdest_shop/"></a>
-        <a class="a2a_dd" href="https://oldestlucious.github.io/holdest_shop/"></a>
+  <div id="social-sharing">
+    <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+      <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/holdest_shop/"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
     </div>
-</div>
-<script async src="https://static.addtoany.com/menu/page.js"></script>
+  </div>
+  <script async src="https://static.addtoany.com/menu/page.js"></script>
+
   <script>
 var socialSharing = document.getElementById('social-sharing');
 var lastScrollTop = 0;
@@ -308,73 +416,90 @@ window.addEventListener('scroll', function() {
 });
 </script>
 <script>
-    let cart = [];
+// Initialisation du panier
+let cart = [];
 
-    // Afficher/masquer les détails du profil
-    document.getElementById('toggleDetails').onclick = function() {
-        const profileDetails = document.getElementById('profileDetails');
-        profileDetails.classList.toggle('visible');
-        const icon = document.querySelector('#toggleDetails .material-symbols-outlined');
-        icon.textContent = profileDetails.classList.contains('visible') ? 'expand_less' : 'expand_more';
-    };
+// Ajouter un produit au panier
+function addToCart(productName, price) {
+    cart.push({name: productName, price});
+    updateCart();
+    showAlert(`${productName} a été ajouté au panier`);
+}
 
-    // Afficher/masquer la boutique lorsque l'icône est cliquée
-    document.getElementById('showShopButton').onclick = function(event) {
-        event.preventDefault(); // Empêche le lien de rafraîchir la page
-        const shopSection = document.getElementById('shopSection');
-        shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
 
-        // Change la couleur de l'icône
-        const storeIcon = document.getElementById('storeIcon');
-        storeIcon.classList.toggle('active');
-    };
+// Fonction pour afficher l'alerte dans un modal
+function showAlert(message) {
+    const alertModal = document.getElementById('alertModal');
+    const alertMessage = document.getElementById('alertMessage');
+    alertMessage.innerText = message;
+    alertModal.style.display = 'block';
+    
+    setTimeout(() => {
+        alertModal.style.display = 'none';
+    }, 3000); // L'alerte disparaît après 3 secondes
+}
 
-    // Fonction pour ajouter un produit au panier
-    function addToCart(productName, price) {
-        cart.push({ name: productName, price: price });
-        updateCart();
-        showCartModal();
-    }
 
-    // Met à jour l'affichage du panier
-    function updateCart() {
-        const cartItemsContainer = document.getElementById('cartItems');
-        cartItemsContainer.innerHTML = '';
-        cart.forEach(item => {
-            const cartItem = document.createElement('div');
-            cartItem.className = 'cart-item';
-            cartItem.innerHTML = `${item.name} - ${item.price}€ <button onclick="removeFromCart('${item.name}')">Supprimer</button>`;
-            cartItemsContainer.appendChild(cartItem);
-        });
-    }
+// Mettre à jour l'affichage du panier
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
+    let total = 0;
 
-    // Affiche le modal du panier
-    function showCartModal() {
-        const cartModal = document.getElementById('cartModal');
-        cartModal.style.display = 'block';
-    }
+    cart.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'cart-item';
+        itemElement.innerHTML = `${item.name} - ${item.price}€<button onclick='removeFromCart(${index})'>Supprimer</button>`;
+        cartItems.appendChild(itemElement);
+        total += parseFloat(item.price);
+    });
 
-    // Supprime un produit du panier
-    function removeFromCart(productName) {
-        cart = cart.filter(item => item.name !== productName);
-        updateCart();
-    }
+    const totalElement = document.createElement('div');
+    totalElement.innerHTML = `<strong>Total : ${total}€</strong>`;
+    cartItems.appendChild(totalElement);
 
-    // Fonction pour passer à la caisse
-    function checkout() {
-        alert('Merci pour votre achat !');
-        cart = [];
-        updateCart();
-        document.getElementById('cartModal').style.display = 'none'; // Cache le panier après le paiement
-    }
+    // Mettre à jour le nombre d'articles dans le panier
+    document.getElementById('cartCount').innerText = cart.length;
 
-    // Ferme le modal du panier en cliquant en dehors
-    window.onclick = function(event) {
-        const cartModal = document.getElementById('cartModal');
-        if (event.target === cartModal) {
-            cartModal.style.display = 'none';
-        }
-    };
+    document.getElementById('cartModal').style.display = 'block';
+}
+
+// Supprimer un produit du panier
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+// Passer à la caisse
+function checkout() {
+    document.getElementById('orderDetails').value = JSON.stringify(cart);
+}
+
+// Ouvrir et fermer le modal
+document.getElementById('openCartButton').onclick = function() {
+     document.getElementById('cartModal').style.display = 'block';
+};
+
+// Fermer le modal en cliquant en dehors
+window.onclick = function(event) {
+   if (event.target !== document.getElementById('cartModal') && event.target !== document.getElementById('openCartButton')) {
+       document.getElementById('cartModal').style.display = 'none';
+   }
+};
+
+// Afficher/masquer les détails du profil
+document.getElementById('toggleDetails').onclick = function() {
+     const profileDetails = document.getElementById('profileDetails');
+     profileDetails.classList.toggle('visible');
+};
+
+// Afficher/masquer la boutique
+document.getElementById('showShopButton').onclick = function(event) {
+    event.preventDefault();
+    const shopSection = document.getElementById('shopSection');
+    shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
+};
 </script>
+
 </body>
 </html>
