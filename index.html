@@ -1,506 +1,786 @@
 <!DOCTYPE html>
 <html lang="fr">
+    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/510c609d-34b6-ff32-1297-611ad553cfff.jpg" type="image/png">
+   
 <head>
-    <link rel="icon" href="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/d12d81c5-4994-1d15-d5dc-dbb4d433828f.jpg" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Public Boutique</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Menu Shop Coffee Savine</title>
+    <link rel="stylesheet" href="style.css">
     <style>
+        /* Styles généraux */
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #333;
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
-        }
-
-        .profile-container {
-            background-color: #fff;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            width: 350px;
-            padding: 20px;
+            padding: 0;
+            background-color: #f7f7f7;
             text-align: center;
-            position: relative;
         }
 
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #ffeb3b;
-            margin: 10px auto;
-            object-fit: cover;
-            cursor: pointer;
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
         }
 
-        .star {
-            width: 25px;
-            height: 25px;
-            position: absolute;
-            top: 101px;
-            left: 60%;
-            transform: translate(-50%, 0);
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .star::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #000;
-            clip-path: polygon(
-                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
-                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
-            );
-        }
-
-        .username {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            margin: 10px 0;
-        }
-
-        .status {
-            font-size: 16px;
-            color: #777;
-            margin-bottom: 15px;
-            cursor: pointer;
-        }
-
-        .toggle-button {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #ffeb3b;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s;
-        }
-
-        .toggle-button:hover {
-            background-color: #ffdb00;
-        }
-
-        .toggle-button span {
-            margin-left: 8px;
-        }
-
-        .content-section {
-            display: none;
-            border-top: 1px solid #ddd;
-            margin-top: 15px;
-            padding-top: 10px;
-            text-align: left;
-        }
-
-        .content-title {
-            font-weight: bold;
-            color: #6200ea;
-            margin-bottom: 5px;
-        }
-
-#storeIcon {
-    font-size: 48px; /* Augmente la taille de l'icône */
-    background: linear-gradient(to bottom, #FF6347 50%, #1E90FF 50%); /* Rouge en haut, bleu en bas */
-    -webkit-background-clip: text; /* Utilise le dégradé pour la couleur de l'icône */
-    color: transparent; /* Rend le texte transparent pour afficher le dégradé */
-    cursor: pointer;
-    transition: transform 0.3s, filter 0.3s;
-}
-
-#storeIcon:hover {
-    transform: scale(1.2); /* Agrandit légèrement l'icône au survol */
-    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3)); /* Ajoute une ombre au survol */
-}
-
-
-        .follow-button {
-            display: inline-block;
-            background-color: #ffeb3b;
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .follow-button:hover {
-            background-color: #ffe600;
-        }
-
-        .shop-section {
-            display: none; /* Cachée par défaut */
-            margin-top: 20px; /* Ajout d'un espace */
+        .product-section {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
         }
 
         .product {
-            background: #f1f1f1;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 10px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-.product img {
-    width: 100%; /* Prend toute la largeur de son conteneur */
-    height: auto; /* Ajuste la hauteur automatiquement pour maintenir le rapport d'aspect */
-    max-height: 200px; /* Limite la hauteur maximale pour éviter les débordements */
-    object-fit: contain; /* Ajuste l'image pour qu'elle soit entièrement visible */
-    border-radius: 5px; /* Arrondit légèrement les coins des images (facultatif) */
-}
 
-  
+        select, .add-to-cart {
+            margin-bottom: 10px;
+        }
 
+        .add-to-cart {
+            padding: 10px 20px;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
 
+        .add-to-cart:hover {
+            background-color: #FF3F2A;
+        }
 
-        .checkout-button {
+        .hidden {
+            display: none;
+        }
+
+        /* Styles pour la modale du panier */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .close-btn {
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-size: 18px;
+            color: #FF5733;
+        }
+
+        /* Styles pour le bouton flottant du panier */
+        #floatingCartBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        #floatingCartBtn:hover {
+            background-color: #FF3F2A;
+        }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: #4CAF50;
             color: white;
             padding: 10px;
             border-radius: 5px;
+            z-index: 1000;
+        }
+
+        /* Styles pour les boutons supplémentaires */
+        .toggle-section-btn {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            text-align: center;
-            margin-top: 20px;
+            transition: background-color 0.3s;
         }
 
-        .visible {
-            display: block; /* Affiche la section */
+        .toggle-section-btn:hover {
+            background-color: #0056b3;
         }
 
+        #homeBtn {
+            display: none; /* Caché par défaut */
+        }
+        
+.product-icon {
+    width: 30px; /* largeur de l'icône */
+    height: auto; /* hauteur automatique pour maintenir le ratio */
+    margin-right: 10px; /* espacement à droite */
+    cursor: pointer; /* curseur pour indiquer que l'image est cliquable */
+    transition: transform 0.3s; /* transition douce pour l'agrandissement */
+}
 
-        #about-content {
+.product-icon:hover {
+    transform: scale(1.1); /* léger agrandissement au survol */
+}
+
+/* Style pour la fenêtre modale */
+.modal {
+    display: none; /* caché par défaut */
+    position: fixed; /* position fixe */
+    z-index: 1000; /* au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%; /* plein écran */
+    height: 100%; /* plein écran */
+    background-color: rgba(0, 0, 0, 0.8); /* fond semi-transparent */
+    justify-content: center; /* centrer horizontalement */
+    align-items: center; /* centrer verticalement */
+}
+
+.modal img {
+    max-width: 80%; /* largeur maximum de l'image */
+    max-height: 80%; /* hauteur maximum de l'image */
+    border-radius: 10px; /* coins arrondis pour l'image */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Styles généraux pour le mode sombre */
+body.dark-mode {
+    background-color: #111;
+    color: #e0e0e0;
+}
+
+h1.dark-mode {
+    background-color: #333;
+    color: #FFD700; /* Or vif */
+}
+
+.dark-mode .product {
+    background-color: #1a1a1a;
+    border: 2px solid #444;
+    color: #ddd;
+}
+
+.dark-mode-btn {
+    padding: 10px 20px;
+    background-color: #444;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-btn:hover {
+    background-color: #666;
+}
+
+.dark-mode .add-to-cart {
+    background-color: #FFD700;
+    color: black;
+}
+
+.dark-mode .promo-banner {
+    background-color: #333;
+    color: #FFD700;
+}
+
+.dark-mode .price {
+    color: #FF4500; /* Orange vif pour les prix */
+}
+    </style>
+</head>
+<body>
+
+
+
+<!-- Flèche pour afficher la bannière -->
+<div id="showBannerBtn" class="show-banner-btn" onclick="showBanner()">▶️</div>
+
+<!-- Bannière promo futuriste -->
+<div id="promoBanner" class="promo-banner hidden" onclick="closeBanner(event)">
+    <div class="banner-content">
+        <h2>🌟 NOUVEL ARRIVAGE 🌟</h2>
+        <p>🟡 <strong>JAUNE MOUSSEUX</strong></p>
+        <p>💥 <strong>HASH FILTRE PREMIUM</strong></p>
+        <p>📦 <strong>100G "Kinder Bueno"*</strong> passe à <span class="price">230$</span> (meetup), passe à <span class="price">240$</span> (livraison)</p>
+        <p>🤣 On laisse la concu par terre avec leur tof à <span class="price">270€</span></p>
+        <p>⚡ Stock illimité !</p>
+        <p>☕ COFFEE DE MR LE DRUIDE "LA SAVINE" - Promo du jour : <span class="price">19€ le litre</span></p>
+        <p>🔥 On vide le stock !!!</p>
+        <button class="close-btn" onclick="closeBanner(event)">❌</button> <!-- Bouton de fermeture -->
+    </div>
+</div>
+
+<!-- CSS pour styliser la bannière et la flèche -->
+<style>
+    .promo-banner {
+        background-color: #2e2e2e;
+        color: #ffffff;
+        border-radius: 8px;
+        padding: 10px;
+        width: 320px;
+        position: fixed;
+        top: 20px;
+        right: 20px; /* Position de la bannière à droite */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        font-family: 'Arial', sans-serif;
+        font-size: 0.9rem;
+        text-align: left;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        opacity: 0.9;
+    }
+
+    .hidden {
+        display: none; /* Cacher la bannière par défaut */
+    }
+
+    .banner-content {
+        margin: 0;
+    }
+
+    .promo-banner h2 {
+        font-size: 1.2rem;
+        color: #ffeb3b; /* Jaune futuriste */
+        margin: 0 0 5px;
+    }
+
+    .promo-banner p {
+        margin: 3px 0;
+    }
+
+    .price {
+        font-weight: bold;
+        color: #81d4fa; /* Couleur pour les prix */
+    }
+
+    .show-banner-btn {
+        position: fixed;
+        top: 20px;
+        right: 0; /* Position de la flèche à droite de la page */
+        background-color: transparent;
+        border: none;
+        font-size: 2rem; /* Taille de la flèche */
+        color: #4caf50; /* Couleur de la flèche */
+        cursor: pointer;
+        z-index: 1000;
+        transition: color 0.3s;
+    }
+
+    .show-banner-btn:hover {
+        color: #45a049; /* Changement de couleur au survol */
+    }
+
+    .close-btn {
+        background: transparent;
+        border: none;
+        color: #ff6b6b; /* Couleur de la croix */
+        font-size: 1.2rem; /* Taille de la croix */
+        cursor: pointer;
+        position: absolute; /* Positionner la croix */
+        bottom: 10px; /* À 10px du bas */
+        right: 10px; /* À 10px de la droite */
+    }
+
+    .close-btn:hover {
+        color: #ff3b3b; /* Changement de couleur au survol */
+    }
+    
+            #about-content {
             font-size: 14px;
         }  
         .a2a_button_snapchat {
             background-color: yellow;
         }
-    
-    
-
-        #cartModal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-        }
-
-        #openCartButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ffeb3b;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-<div class="profile-container">
-    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/89a59702-cad3-dfb7-580d-22fb843f8d3f.jpeg" alt="Photo de Profil" class="profile-image" id="profileImage">
-    <div class="star"></div> 
-    <div class="username">🗿Holdest🇯🇲</div>
-<div class="status" id="statusText">Bienvenue dans ma boutique !</div>
-
-<div class="toggle-button" id="toggleDetails">
-    <span>Détails de la Boutique</span>
-    <span class="material-symbols-outlined">expand_more</span>
-</div>
-
-<div class="content-section" id="profileDetails">
-    <div class="content-title">Détails de la Boutique</div>
-    <div class="details">Nom de la boutique : Holdest Boutique</div>
-    <div class="details">Produits : 50 articles en stock</div>
-    
-    <!-- Ajout d'un encadré pour les clients satisfaits -->
-    <div class="details client-count" id="clientCount">Clients : 1 200+ satisfaits</div>
-    
-    <!-- Évaluations avec étoiles -->
-    <div class="details">Évaluations : ★★★★★ (4.8)</div> <!-- Ligne modifiée pour les évaluations -->
-</div>
-
-<div class="content-section">
-    <div class="content-title">Dernière mise à jour</div>
-    <div class="last-updated">1er octobre 2024</div>
-</div>
-
-<style>
-    .client-count {
-        background-color: #4CAF50; /* Couleur de fond verte */
-        color: white; /* Texte en blanc */
-        padding: 10px; /* Espacement interne */
-        border-radius: 8px; /* Coins arrondis */
-        margin: 10px 0; /* Espacement autour de l'encadré */
-        font-weight: bold; /* Texte en gras */
-        text-align: center; /* Centre le texte */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Ombre pour un effet de profondeur */
-    }
-
-    .details {
-        font-size: 18px; /* Taille de la police pour les détails */
-        margin: 5px 0; /* Espacement autour des lignes de détails */
-    }
 </style>
 
+<!-- JavaScript pour fermer et afficher la bannière -->
 <script>
-    // Initialisation du compteur de clients
-    let currentCount = 1200; // Valeur initiale
-    const incrementValue = Math.floor(Math.random() * 10) + 1; // Valeur d'incrément aléatoire
-    const clientCountElement = document.getElementById('clientCount');
-
-    // Fonction pour mettre à jour le compteur
-    function updateClientCount() {
-        currentCount += incrementValue; // Incrémenter le compteur
-        clientCountElement.innerText = `Clients : ${currentCount.toLocaleString()} satisfaits`; // Mettre à jour le texte
+    function closeBanner(event) {
+        // Ferme la bannière uniquement si on clique en dehors du contenu de la bannière ou sur la croix
+        if (event.target === document.getElementById('promoBanner') || event.target.classList.contains('close-btn')) {
+            document.getElementById('promoBanner').classList.add('hidden');
+        }
     }
 
-    // Mettre à jour le compteur toutes les 5 secondes
-    setInterval(updateClientCount, 5000);
-</script>
-
-    <!-- Icône storefront avec interaction -->
-    <div class="toggle-button" id="showShopButton">
-        <span class="material-symbols-outlined" id="storeIcon">storefront</span>
-    </div>
-
-<!-- Section boutique -->
-<div class="shop-section" id="shopSection">
-    <!-- Produits -->
-    <h3>Produits</h3>
-    
-<!-- Produit exemple -->
-<div class="product">
-    <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/b6853784-f7d6-42d1-7fd1-87cdf58f0348.jpeg" alt="OCB Slim Noir">
-    <div class="product-name">OCB Slim Noir - 20€</div>
-    <button onclick="addToCart('OCB Slim Noir', '20')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Bonbonne Crème Deluxe -->
-<div class="product">
-    <div class="product-name">Bonbonne Crème Deluxe - 30€</div>
-    <button onclick="addToCart('Bonbonne Crème Deluxe', '30')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Fast Gaz -->
-<div class="product">
-    <div class="product-name">Fast Gaz - 25€</div>
-    <button onclick="addToCart('Fast Gaz', '25')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Tank -->
-<div class="product">
-    <div class="product-name">Tank - 45€</div>
-    <button onclick="addToCart('Tank', '45')">Acheter</button>
-</div>
-
-<!-- Section Puff -->
-<h3>Puffs</h3>
-
-<!-- Nouveau produit: Puff goût fraise -->
-<div class="product">
-    <div class="product-name">Puff goût fraise 🍓 9000 - 15€</div>
-    <button onclick="addToCart('Puff goût fraise 9000', '15')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Puff goût myrtille -->
-<div class="product">
-    <div class="product-name">Puff goût myrtille 15000 - 18€</div>
-    <button onclick="addToCart('Puff goût myrtille 15000', '18')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Snouss Pablo Escobar -->
-<div class="product">
-    <div class="product-name">Snouss Pablo Escobar - 10€</div>
-    <button onclick="addToCart('Snouss Pablo Escobar', '10')">Acheter</button>
-</div>
-
-<!-- Section Boissons -->
-<h3>Boissons</h3>
-
-<!-- Nouveau produit: Coco -->
-<div class="product">
-    <div class="product-name">Coco - 2€</div>
-    <button onclick="addToCart('Coco', '2')">Acheter</button>
-</div>
-
-<!-- Nouveau produit: Fanta -->
-<div class="product">
-    <div class="product-name">Fanta - 2€</div>
-    <button onclick="addToCart('Fanta', '2')">Acheter</button>
-</div>
-
-<!-- Ajoutez d'autres produits ici si nécessaire -->
-      <!-- Modal du Panier et Formulaire -->
-      <div id='cartModal'>
-          <h3>Mon Panier</h3>
-          <div id='cartItems'></div>
-          <button class='checkout-button' onclick='checkout()'>Passer à la caisse</button>
-
-          <!-- Formulaire commande -->
-          <h3>Finaliser votre commande</h3>
-          <form id='checkoutForm' action='https://formspree.io/f/votre_id_formspree' method='POST'>
-              <!-- Champs du formulaire -->
-              <input type='text' name='name' placeholder='Nom complet' required />
-              <input type='email' name='email' placeholder='Email' required />
-              <input type='tel' name='phone' placeholder='Téléphone' required />
-              <textarea name='address' placeholder='Adresse de livraison' required></textarea>
-              <select name='deliveryTime' required>
-                  <!-- Options d'heure -->
-                  ...
-              </select>
-              <input type='hidden' name='orderDetails' id='orderDetails'>
-              <button type='submit'>Confirmer la commande</button>
-          </form>
-      </div>
-
-      <!-- Bouton flottant pour ouvrir le panier -->
-
-<button id='openCartButton'>🛒<span id="cartCount">0</span></button>
-    </div>  
-  <div id="alertModal" class="modal" style="display:none; position:fixed; top:0; width:100%; background-color:red; color:white; text-align:center; padding:10px;">
-    <span id="alertMessage"></span>
-</div>
-</div>
-<script src="script.js"></script>
-  <div id="social-sharing">
-    <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
-      <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/holdest_shop/"></a>
-      <a class="a2a_button_facebook"></a>
-      <a class="a2a_button_twitter"></a>
-      <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
-    </div>
-  </div>
-  <script async src="https://static.addtoany.com/menu/page.js"></script>
-
-  <script>
-var socialSharing = document.getElementById('social-sharing');
-var lastScrollTop = 0;
-
-window.addEventListener('scroll', function() {
-    var st = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (st > lastScrollTop) {
-        socialSharing.style.display = 'none'; // Masquer le code en descendant
-    } else {
-        socialSharing.style.display = 'block'; // Afficher le code en montant
+    function showBanner() {
+        document.getElementById('promoBanner').classList.remove('hidden');
     }
 
-    lastScrollTop = st;
-});
+    // Afficher la bannière automatiquement après 3 secondes
+    window.onload = function() {
+        setTimeout(showBanner, 3000); // Affiche la bannière après 3 secondes
+    };
 </script>
-<script>
-// Initialisation du panier
-let cart = [];
-
-// Ajouter un produit au panier
-function addToCart(productName, price) {
-    cart.push({name: productName, price});
-    updateCart();
-    showAlert(`${productName} a été ajouté au panier`);
-}
 
 
-// Fonction pour afficher l'alerte dans un modal
-function showAlert(message) {
-    const alertModal = document.getElementById('alertModal');
-    const alertMessage = document.getElementById('alertMessage');
-    alertMessage.innerText = message;
-    alertModal.style.display = 'block';
+<section class="product-section">
+<h1 id="shopTitle">Menu Shop Coffee Savine</h1>
+<button id="toggleExclusiveBtn" class="toggle-section-btn">COFFEE</button>
+<button id="homeBtn" class="toggle-section-btn">Retour à l'Accueil</button>
+
+<button id="darkModeToggle" class="dark-mode-btn">🖤 Mode Sombre</button>
+<div id="defaultProducts" class="product-list">
+       <!-- CANETTE 3€ -->
+    <div class="product">
+        <h3>CANETTE 3€</h3>
+        <p>Coca, Oasis, Fanta, Ice Tea</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/3c48792e-56d6-f15f-2056-18f70cccbd5b.jpeg" alt="Coca" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1d5a98cd-ae9c-1bfb-d927-b716570feb6d.jpeg" alt="Oasis" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/63940ceb-e857-ad3c-3cf9-758da245723b.jpeg" alt="Fanta" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/a780fc31-787e-dbf4-9e3a-e45208b269f4.jpeg" alt="Ice Tea" class="product-icon">
+        <select class="dropdown" id="canetteSelect">
+            <option value="Coca - 3€">Coca - 3€</option>
+            <option value="Oasis - 3€">Oasis - 3€</option>
+            <option value="Fanta - 3€">Fanta - 3€</option>
+            <option value="Ice Tea - 3€">Ice Tea - 3€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
     
-    setTimeout(() => {
-        alertModal.style.display = 'none';
-    }, 3000); // L'alerte disparaît après 3 secondes
-}
+    <!-- BOUTEILLES 5€ -->
+    <div class="product">
+        <h3>BOUTEILLES 3.50€</h3>
+        <p>Coca, Sprite, Oasis, Schweppes</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/12ff07cf-b827-825d-36c6-61e651be1065.jpeg" alt="Coca" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/424116dc-1d2c-5034-271e-2f506bddba3e.jpeg" alt="Sprite" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2bd3457e-e37e-c3c1-6dc5-31e9912fcd04.jpeg" alt="Oasis" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/5cadc9d6-ae94-2e1f-2a44-05473083a305.jpeg" alt="Schweppes" class="product-icon">
+        <select class="dropdown" id="bouteilleSelect">
+            <option value="Coca - 3.50€">Coca - 3.50€</option>
+            <option value="Sprite - 3.50€">Sprite - 3.50€</option>
+            <option value="Oasis - 3.50€">Oasis - 3.50€</option>
+            <option value="Schweppes - 3.50€">Schweppes - 3.50€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- ALCOOL 75CL -->
+    <div class="product">
+        <h3>ALCOOL 75CL</h3>
+        <p>Vodka 70cl - 18€, Whisky 70cl - 25€, Rhum 70cl - 17€, Gin 70cl, Vin - 6€, Champagne - 130€</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1a558120-5fc2-5656-fe0c-cc3572b5c166.jpeg" alt="Vodka" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2fd3d71e-8be0-ffc4-b1a5-1cb338138d63.jpeg" alt="Whisky" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/94967427-6521-ce09-9bb2-4326d7487ae1.jpeg" alt="Rhum" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/cf892e49-8189-daef-c0e4-8ba67b6c4850.jpeg" alt="Vin" class="product-icon">
+        <select class="dropdown" id="alcoolSelect">
+            <option value="Vodka - 18€">Vodka - 18€</option>
+            <option value="Whisky - 25€">Whisky - 25€</option>
+            <option value="Rhum - 17€">Rhum - 17€</option>
+            <option value="Gin - prix inconnu">Gin</option>
+            <option value="Vin - 6€">Vin - 6€</option>
+            <option value="Champagne - 130€">Champagne - 130€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- DILUENT 6€ -->
+    <div class="product">
+        <h3>DILUENT 6€</h3>
+        <p>Red Bull, Jus de fruit</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/14542ad6-7178-72d9-f961-454ffcf8a3e4.jpeg" alt="Red Bull" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/2e73e4d3-a55d-59ab-14d4-770009b0be2f.jpeg" alt="Jus de fruit" class="product-icon">
+        <select class="dropdown" id="diluentSelect">
+            <option value="Red Bull - 6€">Red Bull - 6€</option>
+            <option value="Jus de fruit - 6€">Jus de fruit - 6€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- SUCRERIE 5€ -->
+    <div class="product">
+        <h3>SUCRERIE 2.50€</h3>
+        <p>Chocolat, Barre choco, Paquet bonbon 15g, Cacahuètes, Chips</p>
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/61e14f0e-fa95-a883-0ad4-761f95be0cb1.jpeg" alt="Chocolat" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/1a392735-5e66-1ee6-c304-bd7534d0e94a.jpeg" alt="Bonbons" class="product-icon">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/200f5b78-0b10-6e59-2f58-ae3166b63953.jpeg" alt="Chips" class="product-icon">
+          <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7e50e79b-4a84-0147-7524-de3c05eb1807.jpeg" alt="Chips" class="product-icon">
+        <select class="dropdown" id="sucrerieSelect">
+            <option value="Chocolat - 2.50€">Chocolat - 2.50€</option>
+            <option value="Barre choco - 2.50€">Barre choco - 2.50€</option>
+            <option value="Paquet bonbon 15g - 2.50€">Paquet bonbon 15g - 2.50€</option>
+            <option value="Cacahuètes - 6€">Cacahuètes - 6€</option>
+            <option value="Chips - 3.50€">Chips - 3.50€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- CIGARETTE -->
+    <div class="product">
+        <h3>CIGARETTE 20€</h3>
+        <p>Marlboro, Camel, Philippe M, Winston</p>
+        <img src="chemin/vers/icone-marlboro.png" alt="Marlboro" class="product-icon">
+        <img src="chemin/vers/icone-camel.png" alt="Camel" class="product-icon">
+        <img src="chemin/vers/icone-philippe-m.png" alt="Philippe M" class="product-icon">
+        <img src="chemin/vers/icone-winston.png" alt="Winston" class="product-icon">
+        <select class="dropdown" id="cigaretteSelect">
+            <option value="Marlboro - 20€">Marlboro - 20€</option>
+            <option value="Camel - 20€">Camel - 20€</option>
+            <option value="Philippe M - 20€">Philippe M - 20€</option>
+            <option value="Winston - 20€">Winston - 20€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- FEUILLES 3€ -->
+    <div class="product">
+        <h3>FEUILLES 3€</h3>
+        <p>OCB, Blunt, Rizla</p>
+        <img src="chemin/vers/icone-ocb.png" alt="OCB" class="product-icon">
+        <img src="chemin/vers/icone-blunt.png" alt="Blunt" class="product-icon">
+        <img src="chemin/vers/icone-rizla.png" alt="Rizla" class="product-icon">
+        <select class="dropdown" id="feuillesSelect">
+            <option value="OCB - 3€">OCB - 3€</option>
+            <option value="Blunt - 3€">Blunt - 3€</option>
+            <option value="Rizla - 3€">Rizla - 3€</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+</div>
 
 
-// Mettre à jour l'affichage du panier
-function updateCart() {
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
-    let total = 0;
 
-    cart.forEach((item, index) => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item';
-        itemElement.innerHTML = `${item.name} - ${item.price}€<button onclick='removeFromCart(${index})'>Supprimer</button>`;
-        cartItems.appendChild(itemElement);
-        total += parseFloat(item.price);
+
+
+<div id="exclusiveProducts" class="product-list hidden">
+    <h2>MENU DRUID OF CREEPS</h2>
+    
+    <!-- Produit 1: JAUNE MOUSSEUX K BUENO -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/610e6e1a-0855-202d-588b-4882339ae010.png" alt="Jaune Mousseux K Bueno" class="product-icon">
+        <h3>JAUNE MOUSSEUX K BUENO</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="jauneMousseuxBuenoSelect">
+            <option value="Jaune Mousseux K Bueno - 10€ - 3G">10€ - 3G</option>
+            <option value="Jaune Mousseux K Bueno - 20€ - 6G">20€ - 6G</option>
+            <option value="Jaune Mousseux K Bueno - 30€ - 9G">30€ - 9G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 2: STATIC SIFT LEMON PIE -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/7b0d4b7a-116e-920f-6c61-a6e982ce2df3.jpeg" alt="Static Sift Lemon Pie" class="product-icon">
+        <h3>STATIC SIFT LEMON PIE</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="staticSiftLemonPieSelect">
+            <option value="Static Sift Lemon Pie - 30€ - 4.5G">30€ - 4.5G</option>
+            <option value="Static Sift Lemon Pie - 80€ - 10G">80€ - 10G</option>
+            <option value="Static Sift Lemon Pie - 300€ - 50G">300€ - 50G</option>
+            <option value="Static Sift Lemon Pie - 650€ - 100G">650€ - 100G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 3: CALI AMNESIA ALIEN OG -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e5220375-f58b-afa9-4f3d-c7281a31ab4a.jpeg" alt="Cali Amnesia Alien OG" class="product-icon">
+        <h3>CALI AMNESIA ALIEN OG</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="caliAmnesiaAlienOGSelect">
+            <option value="Cali Amnesia Alien OG - 20€ - 2.5G">20€ - 2.5G</option>
+            <option value="Cali Amnesia Alien OG - 40€ - 4.5G">40€ - 4.5G</option>
+            <option value="Cali Amnesia Alien OG - 300€ - 50G">300€ - 50G</option>
+            <option value="Cali Amnesia Alien OG - 550€ - 100G">550€ - 100G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 4: FILTRE 1200 GELATO -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/eec1402e-5d6d-6ef4-51ba-aa9018deceaa.jpeg" alt="Filtre 1200 Gelato" class="product-icon">
+        <h3>FILTRE 120 U GELATO</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="filtreGelatoSelect">
+            <option value="Filtre 1200 Gelato - 30€ - 5G">30€ - 5G</option>
+            <option value="Filtre 1200 Gelato - 70€ - 10G">70€ - 10G</option>
+            <option value="Filtre 1200 Gelato - 280€ - 50G">280€ - 50G</option>
+            <option value="Filtre 1200 Gelato - 600€ - 100G">600€ - 100G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 5: COCAINE MARADONA -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/e550f531-7539-5ee0-88fe-1452cba56209.jpeg" alt="Cocaine Maradona" class="product-icon">
+        <h3>COCAINE MARADONA</h3>
+        <p>No farm's.</p>
+        <select class="dropdown" id="cocaineMaradonaSelect">
+            <option value="Cocaine Maradona - 20€ - 0.2G">20€ - 0.2G</option>
+            <option value="Cocaine Maradona - 40€ - 0.5G">40€ - 0.5G</option>
+            <option value="Cocaine Maradona - 300€ - 5G">300€ - 5G</option>
+            <option value="Cocaine Maradona - 500€ - 10G">500€ - 10G</option>
+            <option value="Cocaine Maradona - 60€ - 1.16G">60€ - 1.16G</option>
+            <option value="Cocaine Maradona - 1750€ - 50G">1750€ - 50G</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+
+    <!-- Produit 6: ECSTASY AUDI -->
+    <div class="product">
+        <img src="https://mcusercontent.com/40a9f1a77d46874eba2309d88/images/9c1152e9-829e-3c69-e09b-254bd79f1832.jpeg" alt="Ecstasy Audi" class="product-icon">
+        <h3>ECSTASY AUDI</h3>
+        <p>Arrivages imminents.</p>
+        <select class="dropdown" id="ecstasyAudiSelect">
+            <option value="Ecstasy Audi - 10€ - 1 unité">10€ - 1 unité</option>
+            <option value="Ecstasy Audi - 15€ - 2 unités">15€ - 2 unités</option>
+            <option value="Ecstasy Audi - 25€ - 3 unités">25€ - 3 unités</option>
+            <option value="Ecstasy Audi - 30€ - 4 unités">30€ - 4 unités</option>
+        </select>
+        <button class="add-to-cart">Ajouter</button>
+    </div>
+</div>
+
+
+
+
+    <!-- Fenêtre modale pour afficher l'image agrandie -->
+    <div id="imageModal" class="modal">
+        <img id="modalImage" src="" alt="Image Agrandie">
+    </div>
+
+    <button id="floatingCartBtn">🛒</button>
+
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Votre Panier</h2>
+            <ul id="cartItems"></ul>
+            <p id="totalPrice">Total: 0€</p>
+            <button id="submitOrder">Commander</button>
+        </div>
+    </div>
+
+    <!-- Notification de succès -->
+    <div class="notification" id="notification" style="display: none;">
+        Produit ajouté au panier !
+    </div>
+
+ <div id="social-sharing">
+        <div id="social-sharing" class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px; top:150px;">
+            <a class="a2a_button_snapchat" href="https://oldestlucious.github.io/coffee-savine/"></a>
+            <a class="a2a_button_facebook"></a>
+            <a class="a2a_button_twitter"></a>
+            <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+        </div>
+    </div>
+
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+    <script>
+        var socialSharing = document.getElementById('social-sharing');
+        var lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            var st = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (st > lastScrollTop) {
+                socialSharing.style.display = 'none'; // Masquer le code en descendant
+            } else {
+                socialSharing.style.display = 'block'; // Afficher le code en montant
+            }
+
+            lastScrollTop = st;
+        });
+</script>
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+        const cartModal = document.getElementById("cartModal");
+        const cartItemsList = document.getElementById("cartItems");
+        const totalPriceDisplay = document.getElementById("totalPrice");
+        const notification = document.getElementById("notification");
+        const toggleExclusiveBtn = document.getElementById("toggleExclusiveBtn");
+        const homeBtn = document.getElementById("homeBtn");
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            totalPrice += price;
+            updateCartDisplay();
+            showNotification(`${product} a été ajouté au panier.`);
+        }
+
+        function updateCartDisplay() {
+            cartItemsList.innerHTML = ''; // Réinitialiser l'affichage du panier
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.product} - ${item.price.toFixed(2)}€`;
+                cartItemsList.appendChild(li);
+            });
+            totalPriceDisplay.textContent = `Total: ${totalPrice.toFixed(2)}€`;
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productSelect = this.previousElementSibling;
+                const selectedValue = productSelect.value;
+                const [product, price] = selectedValue.split(' - ');
+                const numericPrice = parseFloat(price.replace('€', '').trim());
+                addToCart(product, numericPrice);
+            });
+        });
+
+        document.getElementById("floatingCartBtn").addEventListener("click", function() {
+            cartModal.style.display = "flex"; // Affiche la modale
+        });
+
+        document.querySelector(".close-btn").addEventListener("click", function() {
+            cartModal.style.display = "none"; // Cache la modale
+        });
+
+        window.addEventListener("click", function(event) {
+            if (event.target === cartModal) {
+                cartModal.style.display = "none"; // Cache la modale si on clique en dehors
+            }
+        });
+
+        // Fonction pour soumettre la commande
+        function submitOrder() {
+            const orderDetails = cart.map(item => `${item.product} - ${item.price.toFixed(2)}€`).join('\n');
+            const total = totalPrice.toFixed(2);
+            const orderMessage = `Nouvelle commande:\n\n${orderDetails}\nTotal: ${total}€`;
+
+            // Envoi de la commande via Formspree
+            fetch('https://formspree.io/f/xkgnwdzb', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: orderMessage })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Affiche une notification de succès
+                    notification.textContent = 'Commande réussie !'; // Met à jour le message de notification
+                    notification.style.display = 'block'; // Affiche la notification
+                    setTimeout(() => notification.style.display = 'none', 3000);
+                    // Réinitialise le panier
+                    cart = [];
+                    totalPrice = 0;
+                    updateCartDisplay();
+                } else {
+                    alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
+                }
+            })
+            .catch(error => {
+                console.error('Erreur:', error);
+                alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
+            });
+        }
+
+        // Ajouter l'événement pour le bouton de soumission
+        document.getElementById("submitOrder").addEventListener("click", submitOrder);
+
+        // Fonction pour afficher ou masquer les produits exclusifs
+        function toggleExclusiveProducts() {
+            const exclusiveSection = document.getElementById("exclusiveProducts");
+            const defaultSection = document.getElementById("defaultProducts");
+
+            if (exclusiveSection.classList.contains("hidden")) {
+                exclusiveSection.classList.remove("hidden");
+                defaultSection.classList.add("hidden");
+                toggleExclusiveBtn.style.display = "none"; // Cacher le bouton d'affichage
+                homeBtn.style.display = "inline-block"; // Afficher le bouton retour
+            } else {
+                exclusiveSection.classList.add("hidden");
+                defaultSection.classList.remove("hidden");
+                toggleExclusiveBtn.style.display = "inline-block"; // Afficher le bouton d'affichage
+                homeBtn.style.display = "none"; // Cacher le bouton retour
+            }
+        }
+
+        // Ajouter un événement pour le bouton d'affichage des produits exclusifs
+        toggleExclusiveBtn.addEventListener("click", toggleExclusiveProducts);
+
+        // Ajouter un événement pour le bouton retour à l'accueil
+        homeBtn.addEventListener("click", function() {
+            const exclusiveSection = document.getElementById("exclusiveProducts");
+            const defaultSection = document.getElementById("defaultProducts");
+            exclusiveSection.classList.add("hidden"); // Cacher la section exclusive
+            defaultSection.classList.remove("hidden"); // Afficher la section par défaut
+            toggleExclusiveBtn.style.display = "inline-block"; // Afficher le bouton d'affichage
+            homeBtn.style.display = "none"; // Cacher le bouton retour
+        });
+
+        // Fonction pour afficher la notification
+        function showNotification(message) {
+            notification.textContent = message; // Met à jour le message de notification
+            notification.style.display = 'block'; // Affiche la notification
+            setTimeout(() => {
+                notification.style.display = 'none'; // Cache la notification après 3 secondes
+            }, 3000);
+        }
+
+    
+ 
+        
+// Fonction pour ouvrir la modale avec l'image agrandie
+document.querySelectorAll('.product-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modalImage.src = this.src; // Changez la source de l'image modale
+        modal.style.display = 'flex'; // Affichez la modale
     });
+});
 
-    const totalElement = document.createElement('div');
-    totalElement.innerHTML = `<strong>Total : ${total}€</strong>`;
-    cartItems.appendChild(totalElement);
+// Fermer la modale en cliquant à l'extérieur de l'image
+document.getElementById('imageModal').addEventListener('click', function(event) {
+    if (event.target !== this) return; // Ignorez les clics sur l'image
+    this.style.display = 'none'; // Cachez la modale
+});
 
-    // Mettre à jour le nombre d'articles dans le panier
-    document.getElementById('cartCount').innerText = cart.length;
 
-    document.getElementById('cartModal').style.display = 'block';
-}
 
-// Supprimer un produit du panier
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    const elements = document.querySelectorAll('h1, .promo-banner, .product, .add-to-cart');
+    elements.forEach(el => el.classList.toggle('dark-mode'));
+});
 
-// Passer à la caisse
-function checkout() {
-    document.getElementById('orderDetails').value = JSON.stringify(cart);
-}
 
-// Ouvrir et fermer le modal
-document.getElementById('openCartButton').onclick = function() {
-     document.getElementById('cartModal').style.display = 'block';
-};
 
-// Fermer le modal en cliquant en dehors
-window.onclick = function(event) {
-   if (event.target !== document.getElementById('cartModal') && event.target !== document.getElementById('openCartButton')) {
-       document.getElementById('cartModal').style.display = 'none';
-   }
-};
-
-// Afficher/masquer les détails du profil
-document.getElementById('toggleDetails').onclick = function() {
-     const profileDetails = document.getElementById('profileDetails');
-     profileDetails.classList.toggle('visible');
-};
-
-// Afficher/masquer la boutique
-document.getElementById('showShopButton').onclick = function(event) {
-    event.preventDefault();
-    const shopSection = document.getElementById('shopSection');
-    shopSection.style.display = shopSection.style.display === 'block' ? 'none' : 'block';
-};
-</script>
-
+    </script>
 </body>
-</html>
+    </html>
